@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>test</title>
+</head>
+<body>
+  <script src="./lodash.js"></script>
+  <script>
+    const list = [
+        { id: 0, name: "yx" },
+        { id: 2, name: "yj", parentId: 0 },
+        { id: 4, name: "yd", parentId: 0 },
+        { id: 7, name: "yf", parentId: 2 }
+      ]
+  const __arrToTree = list.filter(item => {
+      item.chidren = list.filter(item1 => {
+        return item.id === item1.parentId
+      })
+      return item.parentId === 0
+    })
+
+  let res ;
+  const arrToTrss = (arr) =>{
+    res= arr.filter(item =>{
+      item.chidren = arr.filter(ite =>{
+          return item.id === ite.parentId
+      })
+      return item.parentId
+    })
+    return res
+  }  
+
+      
+      console.log("函数调用的结果=======", __arrToTree)  
+        //转换为
+
+      const tree = {
+          id: 0,
+          name: "yx",
+          children: [
+            {
+              id: 2,
+              name: "yj",
+              children: [
+                { id: 7, name: "yf" }
+              ]
+            },
+            { id: 4, name: "yd" }
+          ]
+        }
+      console.log("想要的结果======",tree);
+  </script>
+</body>
+</html>
