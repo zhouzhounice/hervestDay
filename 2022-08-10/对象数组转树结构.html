@@ -8,48 +8,391 @@
   <script src="./lodash.js"></script>
   <script>
     const list = [
-        { id: 0, name: "yx" },
-        { id: 2, name: "yj", parentId: 0 },
-        { id: 4, name: "yd", parentId: 0 },
-        { id: 7, name: "yf", parentId: 2 }
-      ]
-  const __arrToTree = list.filter(item => {
-      item.chidren = list.filter(item1 => {
-        return item.id === item1.parentId
-      })
-      return item.parentId === 0
-    })
-
-  let res ;
-  const arrToTrss = (arr) =>{
-    res= arr.filter(item =>{
-      item.chidren = arr.filter(ite =>{
-          return item.id === ite.parentId
-      })
-      return item.parentId
-    })
-    return res
-  }  
-
-      
-      console.log("函数调用的结果=======", __arrToTree)  
-        //转换为
-
-      const tree = {
-          id: 0,
-          name: "yx",
-          children: [
-            {
-              id: 2,
-              name: "yj",
-              children: [
-                { id: 7, name: "yf" }
-              ]
-            },
-            { id: 4, name: "yd" }
-          ]
+        {
+          "searchValue": null,
+          "createBy": "admin",
+          "createTime": "2022-08-16 15:26:25",
+          "updateBy": null,
+          "updateTime": null,
+          "remark": "",
+          "params": {},
+          "subjectId": 24,
+          "parentId": 0,
+          "subjectTypeId": 5,
+          "subjectAmbTypeId": 1,
+          "code": "0001",
+          "name": "营业收入_合计",
+          "sortBy": 1,
+          "status": "0",
+          "ambId": null,
+          "subjectAttr": {
+            "attrRemark": null
+          },
+          "key": "24",
+          "title": "营业收入_合计",
+          "value": 24
+        },
+        {
+          "searchValue": null,
+          "createBy": "admin",
+          "createTime": "2022-08-16 16:36:45",
+          "updateBy": null,
+          "updateTime": null,
+          "remark": "",
+          "params": {},
+          "subjectId": 32,
+          "parentId": 27,
+          "subjectTypeId": 5,
+          "subjectAmbTypeId": 1,
+          "code": "00010102",
+          "name": "test2",
+          "sortBy": 1,
+          "status": "0",
+          "ambId": null,
+          "subjectAttr": {
+            "attrRemark": null
+          },
+          "key": "32",
+          "title": "test2",
+          "value": 32
+        },
+        {
+          "searchValue": null,
+          "createBy": "admin",
+          "createTime": "2022-08-16 16:00:31",
+          "updateBy": null,
+          "updateTime": null,
+          "remark": "",
+          "params": {},
+          "subjectId": 28,
+          "parentId": 24,
+          "subjectTypeId": 5,
+          "subjectAmbTypeId": 1,
+          "code": "000102",
+          "name": "沃尔玛销售额",
+          "sortBy": 1,
+          "status": "0",
+          "ambId": null,
+          "subjectAttr": {
+            "attrRemark": null
+          },
+          "key": "28",
+          "title": "沃尔玛销售额",
+          "value": 28
+        },
+        {
+          "searchValue": null,
+          "createBy": "admin",
+          "createTime": "2022-08-16 16:00:07",
+          "updateBy": null,
+          "updateTime": null,
+          "remark": "",
+          "params": {},
+          "subjectId": 27,
+          "parentId": 24,
+          "subjectTypeId": 5,
+          "subjectAmbTypeId": 1,
+          "code": "000101",
+          "name": "亚马逊站点销售额",
+          "sortBy": 1,
+          "status": "0",
+          "ambId": null,
+          "subjectAttr": {
+            "attrRemark": null
+          },
+          "key": "27",
+          "title": "亚马逊站点销售额",
+          "value": 27
+        },
+        {
+          "searchValue": null,
+          "createBy": "admin",
+          "createTime": "2022-08-16 16:36:29",
+          "updateBy": null,
+          "updateTime": null,
+          "remark": "",
+          "params": {},
+          "subjectId": 31,
+          "parentId": 27,
+          "subjectTypeId": 5,
+          "subjectAmbTypeId": 1,
+          "code": "00010101",
+          "name": "test",
+          "sortBy": 1,
+          "status": "0",
+          "ambId": null,
+          "subjectAttr": {
+            "attrRemark": null
+          },
+          "key": "31",
+          "title": "test",
+          "value": 31
+        },
+        {
+          "searchValue": null,
+          "createBy": "admin",
+          "createTime": "2022-08-10 21:22:02",
+          "updateBy": null,
+          "updateTime": null,
+          "remark": "123",
+          "params": {},
+          "subjectId": 9,
+          "parentId": 7,
+          "subjectTypeId": 1,
+          "subjectAmbTypeId": 1,
+          "code": "02001",
+          "name": "测试子科目",
+          "sortBy": 2,
+          "status": "0",
+          "ambId": null,
+          "subjectAttr": {
+            "attrRemark": null
+          },
+          "key": "9",
+          "title": "测试子科目",
+          "value": 9
+        },
+        {
+          "searchValue": null,
+          "createBy": "admin",
+          "createTime": "2022-08-11 11:25:29",
+          "updateBy": null,
+          "updateTime": null,
+          "remark": "",
+          "params": {},
+          "subjectId": 22,
+          "parentId": 21,
+          "subjectTypeId": 1,
+          "subjectAmbTypeId": 1,
+          "code": "12123",
+          "name": "测试子科目",
+          "sortBy": 2,
+          "status": "0",
+          "ambId": null,
+          "subjectAttr": {
+            "attrRemark": null
+          },
+          "key": "22",
+          "title": "测试子科目",
+          "value": 22
+        },
+        {
+          "searchValue": null,
+          "createBy": "admin",
+          "createTime": "2022-08-11 11:27:00",
+          "updateBy": null,
+          "updateTime": null,
+          "remark": "123",
+          "params": {},
+          "subjectId": 23,
+          "parentId": 22,
+          "subjectTypeId": 1,
+          "subjectAmbTypeId": 1,
+          "code": "010000001",
+          "name": "ces",
+          "sortBy": 2,
+          "status": "0",
+          "ambId": null,
+          "subjectAttr": {
+            "attrRemark": null
+          },
+          "key": "23",
+          "title": "ces",
+          "value": 23
+        },
+        {
+          "searchValue": null,
+          "createBy": "admin",
+          "createTime": "2022-08-16 15:27:00",
+          "updateBy": null,
+          "updateTime": null,
+          "remark": "",
+          "params": {},
+          "subjectId": 25,
+          "parentId": 0,
+          "subjectTypeId": 5,
+          "subjectAmbTypeId": 1,
+          "code": "0002",
+          "name": "亚马逊其他收入_合计",
+          "sortBy": 2,
+          "status": "0",
+          "ambId": null,
+          "subjectAttr": {
+            "attrRemark": null
+          },
+          "key": "25",
+          "title": "亚马逊其他收入_合计",
+          "value": 25
+        },
+        {
+          "searchValue": null,
+          "createBy": "admin",
+          "createTime": "2022-08-16 16:01:01",
+          "updateBy": null,
+          "updateTime": null,
+          "remark": "",
+          "params": {},
+          "subjectId": 29,
+          "parentId": 25,
+          "subjectTypeId": 5,
+          "subjectAmbTypeId": 1,
+          "code": "000201",
+          "name": "费用调整",
+          "sortBy": 2,
+          "status": "0",
+          "ambId": null,
+          "subjectAttr": {
+            "attrRemark": null
+          },
+          "key": "29",
+          "title": "费用调整",
+          "value": 29
+        },
+        {
+          "searchValue": null,
+          "createBy": "admin",
+          "createTime": "2022-08-16 16:01:36",
+          "updateBy": null,
+          "updateTime": null,
+          "remark": "",
+          "params": {},
+          "subjectId": 30,
+          "parentId": 25,
+          "subjectTypeId": 5,
+          "subjectAmbTypeId": 1,
+          "code": "000202",
+          "name": "销售佣金退款",
+          "sortBy": 2,
+          "status": "0",
+          "ambId": null,
+          "subjectAttr": {
+            "attrRemark": null
+          },
+          "key": "30",
+          "title": "销售佣金退款",
+          "value": 30
+        },
+        {
+          "searchValue": null,
+          "createBy": "admin",
+          "createTime": "2022-08-16 15:27:48",
+          "updateBy": null,
+          "updateTime": null,
+          "remark": "",
+          "params": {},
+          "subjectId": 26,
+          "parentId": 0,
+          "subjectTypeId": 5,
+          "subjectAmbTypeId": 1,
+          "code": "0003",
+          "name": "贝米巴收入_合计",
+          "sortBy": 3,
+          "status": "0",
+          "ambId": null,
+          "subjectAttr": {
+            "attrRemark": null
+          },
+          "key": "26",
+          "title": "贝米巴收入_合计",
+          "value": 26
+        },
+        {
+          "searchValue": null,
+          "createBy": "admin",
+          "createTime": "2022-08-11 10:41:47",
+          "updateBy": null,
+          "updateTime": null,
+          "remark": "123",
+          "params": {},
+          "subjectId": 17,
+          "parentId": 11,
+          "subjectTypeId": 1,
+          "subjectAmbTypeId": 1,
+          "code": "21",
+          "name": "12",
+          "sortBy": 12,
+          "status": "0",
+          "ambId": 1,
+          "subjectAttr": {
+            "attrRemark": null
+          },
+          "key": "17",
+          "title": "12",
+          "value": 17
+        },
+        {
+          "searchValue": null,
+          "createBy": "admin",
+          "createTime": "2022-08-11 11:04:27",
+          "updateBy": null,
+          "updateTime": null,
+          "remark": "test",
+          "params": {},
+          "subjectId": 18,
+          "parentId": 11,
+          "subjectTypeId": 1,
+          "subjectAmbTypeId": 1,
+          "code": "1233467",
+          "name": "test2",
+          "sortBy": 12,
+          "status": "0",
+          "ambId": 1,
+          "subjectAttr": {
+            "attrRemark": null
+          },
+          "key": "18",
+          "title": "test2",
+          "value": 18
         }
-      console.log("想要的结果======",tree);
+      ]
+    const data = [
+        { id: '01', name: '张大大', pid: '', job: '项目经理' },
+        { id: '02', name: '小亮', pid: '01', job: '产品leader' },
+        { id: '03', name: '小美', pid: '01', job: 'UIleader' },
+        { id: '04', name: '老马', pid: '01', job: '技术leader' },
+        { id: '05', name: '老王', pid: '01', job: '测试leader' },
+        { id: '06', name: '老李', pid: '01', job: '运维leader' },
+        { id: '07', name: '小丽', pid: '02', job: '产品经理' },
+        { id: '08', name: '大光', pid: '02', job: '产品经理' },
+        { id: '09', name: '小高', pid: '03', job: 'UI设计师' },
+        { id: '10', name: '小刘', pid: '04', job: '前端工程师' },
+        { id: '11', name: '小华', pid: '04', job: '后端工程师' },
+        { id: '12', name: '小李', pid: '04', job: '后端工程师' },
+        { id: '13', name: '小赵', pid: '05', job: '测试工程师' },
+        { id: '14', name: '小强', pid: '05', job: '测试工程师' },
+        { id: '15', name: '小涛', pid: '06', job: '运维工程师' }
+      ]
+
+    function toTree1 (arr, parentId) {
+        function loop (parentId) {
+          return arr.reduce((acc, cur) => {
+            if (cur.parentId  === parentId) {
+              cur.children = loop(cur.subjectId)
+              acc.push(cur)
+            }
+            return acc
+          }, [])
+        }
+        return loop(parentId)
+      }
+      console.log(toTree1(list,0))
+    function toTree (data, pid ) {
+          let map = new Map(),
+            res = []
+          data.forEach(item => map.set(item.subjectId, item))
+          data.forEach(item => {
+            let { parentId } = item,
+              parent;
+            if (parentId === pid) {
+              res.push(item)
+              return
+            }
+            parent = map.get(item.parentId)
+            parent.children ? parent.children.push(item) : parent.children = [item]
+          })
+          return res
+        }
+    console.log(toTree(list,0))
   </script>
 </body>
 </html>
