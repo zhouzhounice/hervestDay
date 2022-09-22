@@ -1,5 +1,5 @@
-import React from 'react'
-import { user } from './content'
+import * as React from 'react'
+import { user } from './Content.ts'
 
 const Content: React.FC = () => {
     const { name } = user
