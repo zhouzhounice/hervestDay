@@ -3,13 +3,26 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { createStore } from 'redux';
+import { enthusiasm } from './reducers/index';
+import { StoreState } from './types/index';
+import Hello from '../../containers/Hello';
+import { Provider} from "react-redux";
+
+
+const store = createStore<StoreState>(enthusiasm,{
+    enthusiasmLevel:1,
+    languageName:'TypeScript'
+})
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+      <Provider store={store}>
+          <Hello />
+      </Provider>
   </React.StrictMode>
 );
 

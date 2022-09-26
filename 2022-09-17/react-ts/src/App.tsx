@@ -1,6 +1,7 @@
 import React from 'react';
-import Hello from "./Hello/Hello";
+import Hello from "./components/Hello/Hello";
 import './App.css';
+
 
 function App() {
   return (
