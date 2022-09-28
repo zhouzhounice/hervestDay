@@ -1414,20 +1414,38 @@
         "2022-09-13": "0.00"
       }
     ]
+
+    const list2 = [
+      {
+        "subjectParentId": 0,
+        "subjectId": 1,
+      },
+      {
+        "subjectParentId": 1,
+        "subjectId": 2,
+      },
+      {
+        "subjectParentId": 0,
+        "subjectId": 3,
+      },
+    ]
+    // 判断没有子元素就不给children属性
   function toTree1 (arr, parentId) {
       function loop (parentId) {
         return arr.reduce((acc, cur) => {
-          if (cur.subjectParentId === parentId) {
-            cur.children = loop(cur.subjectId);
-            acc.push(cur);
+          if (cur.subjectParentId === parentId) {           
+              cur.children = loop(cur.subjectId);             
+              acc.push(cur);
           }
           return acc;
-        }, []);
+        }, []).length === 0 && undefined;
       }
       return loop(parentId);
     }
-  const res = toTree1(list,0);
-  console.log(res)
+  // const res = toTree1(list,0);
+  // console.log(res)
+
+  console.log(toTree1(list2, 0))
   </script>
 </body>
 </html>
