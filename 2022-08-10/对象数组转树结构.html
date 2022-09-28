@@ -1417,19 +1417,18 @@
 
     const list2 = [
       {
-        "subjectParentId": 0,
-        "subjectId": 1,
+        ambId:1,
+        parentId:2,
       },
       {
-        "subjectParentId": 1,
-        "subjectId": 2,
+        ambId:2,
+        parentId:3,
       },
       {
-        "subjectParentId": 0,
-        "subjectId": 3,
+        ambId:3,
+        parentId:4,
       },
-    ]
-    // 判断没有子元素就不给children属性
+    ] // 判断没有子元素就不给children属性
   function toTree1 (arr, parentId) {
       function loop (parentId) {
         return arr.reduce((acc, cur) => {
@@ -1445,7 +1444,27 @@
   // const res = toTree1(list,0);
   // console.log(res)
 
-  console.log(toTree1(list2, 0))
+  function transTree (arr) {
+      const targetArr = []
+      // 进行数据处理 todo
+      // 1.形成map对象结构
+      const map = {}
+      arr.forEach(item => {
+        map[item.ambId] = item
+        map[item.ambId].children = []
+      })
+      // 通过pid进行匹配
+      arr.forEach(item => {
+        if (map[item.parentId]) {
+          map[item.parentId].children.push(item)
+        } else {
+          targetArr.push(item)
+        }
+      })
+      return targetArr
+    }
+
+  console.log(transTree(list2))
   </script>
 </body>
 </html>
