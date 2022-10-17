@@ -1,0 +1,75 @@
+.tabTitle {
+  position: relative;
+  font-weight: initial;
+
+  &::before {
+    position: absolute;
+    top: -10px;
+    left: -16px;
+    width: calc(100% + 24px);
+    height: calc(100% + 20px);
+    content: ' ';
+  }
+
+  &::after {
+    position: absolute;
+    top: -10px;
+    right: -40px;
+    width: 12px;
+    height: calc(100% + 20px);
+    content: ' ';
+  }
+}
+
+.content {
+  flex: auto;
+}
+
+:global {
+  .custom-by-switch-tabs {
+    .ant-layout {
+      .ant-layout {
+        // 当值 Tabs force render 时向右切换出现闪烁的纵向滚动条
+        overflow: hidden;
+      }
+    }
+  }
+
+  .switch-tabs-fixed {
+    > .ant-tabs-nav {
+      // height: 41px;
+      // border-bottom: 1px solid #fff;
+      box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+    }
+
+    > .ant-tabs-content-holder {
+      // 当值 Tabs force render 时向右切换出现闪烁的纵向滚动条
+      overflow: hidden;
+
+      .ant-tabs-content {
+        .ant-tabs-tabpane {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .ant-tabs-tabpane-active {
+          height: calc(100vh - 88px);
+          overflow: auto;
+        }
+      }
+    }
+  }
+
+  .switch-tabs {
+    .ant-tabs-tab-remove {
+      width: 1.6em;
+      height: 1.6em;
+      padding: 0;
+      border-radius: 0.8em;
+
+      &:hover {
+        background: #d9d9d9;
+      }
+    }
+  }
+}
