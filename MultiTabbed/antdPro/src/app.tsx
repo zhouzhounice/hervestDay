@@ -1,12 +1,14 @@
 import Footer from '@/components/Footer';
 import RightContent from '@/components/RightContent';
 import { BookOutlined, LinkOutlined } from '@ant-design/icons';
-import type { Settings as LayoutSettings } from '@ant-design/pro-components';
-import { PageLoading, SettingDrawer } from '@ant-design/pro-components';
-import type { RunTimeLayoutConfig } from 'umi';
+import { PageLoading } from '@ant-design/pro-components';
 import { history, Link } from 'umi';
-import defaultSettings from '../config/defaultSettings';
 import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
+import SwitchTabsLayout from './layouts/SwitchTabsLayout';
+import defaultSettings from '../config/defaultSettings';
+import type { Settings } from '../config/defaultSettings';
+import type { RunTimeLayoutConfig } from 'umi';
+import { ReactElement, JSXElementConstructor } from 'react';
 
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
@@ -20,7 +22,7 @@ export const initialStateConfig = {
  * @see  https://umijs.org/zh-CN/plugins/plugin-initial-state
  * */
 export async function getInitialState(): Promise<{
-  settings?: Partial<LayoutSettings>;
+  settings?: Partial<Settings>;
   currentUser?: API.CurrentUser;
   loading?: boolean;
   fetchUserInfo?: () => Promise<API.CurrentUser | undefined>;
@@ -34,6 +36,16 @@ export async function getInitialState(): Promise<{
     }
     return undefined;
   };
+  if (process.env.NODE_ENV === 'production') {
+    return {
+      fetchUserInfo,
+      currentUser: {
+        name: 'Yuns',
+        avatar: 'https://avatars.githubusercontent.com/u/18096089',
+      },
+      settings: defaultSettings,
+    };
+  }
   // 如果不是登录页面，执行
   if (history.location.pathname !== loginPath) {
     const currentUser = await fetchUserInfo();
@@ -50,14 +62,31 @@ export async function getInitialState(): Promise<{
 }
 
 // ProLayout 支持的api https://procomponents.ant.design/components/layout
-export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) => {
+export const layout: RunTimeLayoutConfig = ({ initialState }) => {
+  const { switchTabs, ...restSettings } = initialState?.settings || {};
   return {
-    rightContentRender: () => <RightContent />,
+    rightContentRender: () => (
+      <RightContent switchTabsReloadable={switchTabs?.mode && switchTabs.reloadable} />
+    ),
     disableContentMargin: false,
     waterMarkProps: {
       content: initialState?.currentUser?.name,
     },
-    footerRender: () => <Footer />,
+    className: switchTabs?.mode && 'custom-by-switch-tabs',
+    childrenRender: (children: ReactElement<any, string | JSXElementConstructor<any>>, props: { route: any; }) => {
+      const { route } = props;
+      return (
+        <SwitchTabsLayout
+          mode={switchTabs?.mode}
+          persistent={switchTabs?.persistent}
+          fixed={switchTabs?.fixed}
+          routes={route!.routes}
+          footerRender={() => <Footer />}
+        >
+          {children}
+        </SwitchTabsLayout>
+      );
+    },
     onPageChange: () => {
       const { location } = history;
       // 如果没有登录，重定向到 login
@@ -81,27 +110,6 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
     // 自定义 403 页面
     // unAccessible: <div>unAccessible</div>,
     // 增加一个 loading 的状态
-    childrenRender: (children, props) => {
-      // if (initialState?.loading) return <PageLoading />;
-      return (
-        <>
-          {children}
-          {!props.location?.pathname?.includes('/login') && (
-            <SettingDrawer
-              disableUrlParams
-              enableDarkTheme
-              settings={initialState?.settings}
-              onSettingChange={(settings) => {
-                setInitialState((preInitialState) => ({
-                  ...preInitialState,
-                  settings,
-                }));
-              }}
-            />
-          )}
-        </>
-      );
-    },
-    ...initialState?.settings,
+    ...restSettings,
   };
 };

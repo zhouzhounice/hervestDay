@@ -1,6 +1,6 @@
+import React from 'react';
 import { Space, Tooltip } from 'antd';
 import { QuestionCircleOutlined, ReloadOutlined } from '@ant-design/icons';
-import React from 'react';
 import { useModel, SelectLang, useIntl } from 'umi';
 import Avatar from './AvatarDropdown';
 import HeaderSearch from '../HeaderSearch';
