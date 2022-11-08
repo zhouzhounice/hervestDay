@@ -1,5 +1,5 @@
 // 函数式声明
-function foo(name: string):number {
+function foo_99(name: string):number {
   return name.length
 }
 // 函数表达式声明
