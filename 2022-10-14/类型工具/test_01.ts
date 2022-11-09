@@ -67,8 +67,99 @@ type UnionIntersection2 = (string|number|symbol) & string;
 
 // 索引签名类型 - 在接口或者类型别名中，通过语法快速声明一个键值类型一致的类型结构
 interface AllStringTypes {
+  // propA:number;
   [key: string]:string;
 }
 
 type PropType1 = AllStringTypes['123']
 type PropType2 = AllStringTypes['Anne']
+
+// 字符串索引签名类型中声明数字类型的健或symbol类型的健
+const obj_14: AllStringTypes = {
+  "anne" : "455",
+  599:'anne',
+  [Symbol('ddd')]:'symbol'
+}
+
+// 索引签名类型也可以和具体的键值对类型声明并存，但是键值类型要符合签名类型的声明
+interface StringOrBooleanTypes {
+  propA: number;
+  propB: boolean;
+  [key: string]: number | boolean;
+}
+
+// 索引类型查询、
+interface Foo_01 {
+  anne:1;
+  599:2;
+}
+type FooKeys = keyof Foo_01
+
+// 索引类型访问
+interface NumberRecode {
+  [key: string]: number;
+}
+type PropType3 = NumberRecode[string]
+
+// 映射类型
+type Stringify<T> = {
+  [K in keyof T]: string;
+}
+
+interface Foo_02 {
+  prop1:string;
+  prop2:number;
+  prop3:boolean;
+  prop4:() => void;
+}
+
+type StringifiedFoo = Stringify<Foo_02>
+
+// 等价于
+// interface StringifiedFoo {
+//   prop1: string;
+//   prop2: string;
+//   prop3: string;
+//   prop4: string;
+// }
+
+// 熟悉又陌生的typeof
+const str = 'anne';
+const obj = {name:'anne'};
+
+const nullValue = null;
+const undefinedValue = undefined;
+
+type Str = typeof str;
+type Obj = typeof obj;
+type Null = typeof nullValue;
+type Undefined = typeof undefinedValue;
+
+// 在工具类型中使用typeof
+const func = (input: string) =>{
+  return input.length>10
+}
+
+const func2: typeof func = (name: string) => {
+  return name ==='anne'
+}
+
+// 类型守卫
+function foo_15(input: string | number) {
+  if(typeof input === 'string'){}
+  if(typeof input === 'number'){}
+}
+
+declare const strOrNumberOrBool: string | number |boolean;
+if(typeof strOrNumberOrBool === "string"){
+  strOrNumberOrBool.charAt(1);
+}else if(typeof strOrNumberOrBool === 'number'){
+  strOrNumberOrBool.toFixed();
+} else if(typeof strOrNumberOrBool === 'boolean'){
+  strOrNumberOrBool === true;
+} else {
+  const _exhaustiveCheck: never = strOrNumberOrBool;
+  throw new Error(`Unknown input type: ${_exhaustiveCheck}`)
+}
+
+// 提取出来
