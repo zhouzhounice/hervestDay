@@ -163,3 +163,42 @@ if(typeof strOrNumberOrBool === "string"){
 }
 
 // 提取出来
+function isString(input:unknown):input is string {
+  return typeof input === "string"
+}
+
+function foo_16(input:string|number){
+  if (isString(input)) {
+    // 类型“string | number”上不存在属性“replace”。
+    (input).replace("linbudu", "linbudu599")
+  }
+  if (typeof input === 'number') { }
+  // ...
+}
+// 常用守卫 类型保护
+export type Falsy = false | "" | 0 | null | undefined;
+export const isFalsy = (val: unknown): val is Falsy => !val;
+
+export type Primitive = string | number | boolean | undefined;
+export const isPrimitive = (val: unknown): val is Primitive => ['string','number','boolean','undefined'].includes(typeof val)
+
+// in 与 instanceof 的类型保护
+interface Foo_03 {
+  foo: string;
+  fooOnly: boolean;
+  shared:number;
+}
+
+interface Bar_03 {
+  bar: string;
+  barOnly: boolean;
+  shared: number;
+}
+
+function handle(input:Foo_03 | Bar_03){
+  if('foo' in input){
+    input.fooOnly;
+  }else {
+    input.barOnly;
+  }
+}
