@@ -27,3 +27,9 @@ function interview(round) {
     }, 500)
   })
 }
+
+const arr = [{name:'1'}]
+const res = arr.map((item)=>{
+  console.log(item)
+})
+console.log("res===",res)
