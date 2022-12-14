@@ -12,7 +12,7 @@ let playerLastAction = null;
 let sameCount = 0;
 
 http.createServer(function(request, response){
-  const parsedUrl = new URL(request.url, 'http://whatever.com')
+  // const parsedUrl = new URL(request.url, 'http://whatever.com')
   if(parsedUrl.pathname == '/favicon.ico'){
     response.writeHead(200);
     response.end();
@@ -62,7 +62,7 @@ http.createServer(function(request, response){
   } else if (gameResult == 1) {
     response.end('你赢了！')
     // 玩家胜利次数统计+1
-    playerWon++
+    playerWon++;
   } else {
     response.end('你输了！')
   }
