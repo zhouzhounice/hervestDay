@@ -1,17 +1,13 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
+import TodoList from './components/Todolist.vue';
 </script>
 
 <template>
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+   <h1>这是首页</h1>
+    <TodoList />
   </div>
-  <HelloWorld msg="Hello World" />
 </template>
 
 <style scoped>
