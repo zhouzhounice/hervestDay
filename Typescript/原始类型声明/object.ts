@@ -1,4 +1,3 @@
-import { test } from '@playwright/test';
 interface IDescription {
   name1_02:string;
   age1_02:number;
@@ -89,7 +88,7 @@ type dom_02 = typeof div;
 
 // 其他骚操作
 type StringOrNumber_02 = string | number;
-type Text = string | {text:string};
+type Text9 = string | {text:string};
 // type NameLookup = Dictionary<string, Person>
 type Callback<T> = (data:T) => void;
 type Pair<T> = [T,T]
