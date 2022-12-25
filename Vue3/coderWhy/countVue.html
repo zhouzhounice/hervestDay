@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>test</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script src="./vuejs/vue.global.js"></script>
+  <script>
+    const why = {
+      template: `
+        <h1>{{count}}</h1>
+        <button @click="increment">点击 +1</button>
+        <button @click="decrement">点击 -1</button>
+        `,
+        data:()=>{
+          return {
+            count:0,
+          }
+        },
+        methods: {
+          increment(){
+            this.count++;
+          },
+          decrement(){
+            this.count--;
+          }
+        },
+    }
+    const app = Vue.createApp(why);
+    app.mount("#app")
+  </script>
+</body>
+
+</html>

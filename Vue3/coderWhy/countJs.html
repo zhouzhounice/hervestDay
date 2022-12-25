@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>test</title>
+</head>
+<body>
+  <h1 id="counter">0</h1>
+  <button id="increment">点击 +1</button>
+  <button id="decrement">点击 -1</button>
+
+  <script>
+    
+    const counterEl = document.getElementById('counter')
+    const incrementEl = document.getElementById('increment')
+    const decrementEl = document.getElementById('decrement')
+
+    let count = 0;
+    counterEl.innerHTML = count
+
+    incrementEl.addEventListener('click',()=>{
+      count += 1;
+      counterEl.innerHTML = count
+    })
+
+    decrementEl.addEventListener('click',()=>{
+      count -= 1;
+      counterEl.innerHTML = count
+    })
+
+  </script>
+</body>
+</html>
