@@ -8,14 +8,17 @@
 
 <body>
   <div id="app"></div>
+  <template id="why">
+    <div>
+      <h1>{{count}}</h1>
+        <button @click="increment">点击 +1</button>
+        <button @click="decrement">点击 -1</button>
+    </div>
+  </template>
   <script src="./vuejs/vue.global.js"></script>
   <script>
     const why = {
-      template: `
-        <h1>{{count}}</h1>
-        <button @click="increment">点击 +1</button>
-        <button @click="decrement">点击 -1</button>
-        `,
+      template:'#why',
         data:()=>{
           return {
             count:0,
