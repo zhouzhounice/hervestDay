@@ -18,8 +18,27 @@
     <div>
       <!-- <img v-bind:src="imgUrl" /> -->
       <a :href="link">百度</a>
+      <hr />
       <!-- v-bind 动态绑定class 对象语法 -->
       <div :class="{'active':false}">哈哈</div>
+      <hr />
+      <!-- v-if 条件判断 -->
+      <h2 v-if="isShow">是否显示</h2>
+      <button @click="handleClick">点击</button>
+      <hr />
+      <!-- v-model v-if同时使用 -->
+      <input type="text" v-model="grade" />
+      <h3 v-if="grade < 60">不及格</h3>
+      <h3 v-else-if="grade < 90 && grade >= 60">良好</h3>
+      <h3 v-else>优秀</h3>
+      <hr />
+      <!-- v-show 使用 -->
+      <h1 v-show="true">v-show的隐藏</h1>
+      <button>点击</button>
+      <!-- v-for使用 -->
+      <ul>
+        <li v-for="item in movies">{{item}}</li>
+      </ul>
     </div>
   </template>
   <script src="./vuejs/vue.global.js"></script>
@@ -29,11 +48,22 @@
         data:()=>{
           return {
             imgUrl:"Hello World",
-            link:'https://www.baidu.com'
+            link:'https://www.baidu.com',
+            isShow:true,
+            grade:90,
+            isShow1:true,
+            movies:[
+              "星际穿越",
+              "盗梦空间",
+              "教父",
+              "大话西游"
+            ]
           }
         },
         methods: {
-          
+          handleClick(){
+            this.isShow = !this.isShow
+          }
         },
     }
     const app = Vue.createApp(why);
