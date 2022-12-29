@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>test</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <template id="why">
+    <div>
+      <h1>{{fullName}}</h1>
+      <h1>{{result}}</h1>
+      <h1>{{reverseMassage}}</h1>
+    </div>
+  </template>
+  <script src="./vuejs/vue.global.js"></script>
+  <script>
+    const why = {
+      template: '#why',
+      data: () => {
+        return {
+          fistName: "anne",
+          listName:'li',
+          score:80,
+          message:'hello world'
+        }
+      },
+      computed: {
+        fullName(){
+          return `${this.fistName} ${this.listName}`
+        },
+        result(){
+          return this.score >= 60?'及格':'不及格'
+        },
+        reverseMassage(){
+          return this.message.split(' ').reverse().join(' ')
+        }
+      },
+    }
+    const app = Vue.createApp(why);
+    app.mount("#app")
+  </script>
+</body>
+
+</html>

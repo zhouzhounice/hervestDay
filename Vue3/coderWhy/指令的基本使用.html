@@ -39,6 +39,14 @@
       <ul>
         <li v-for="item in movies">{{item}}</li>
       </ul>
+      <!-- v-for遍历对象 -->
+      <ul>
+        <template v-for="(value,key) in obj">
+          <li>
+            {{value}} - {{key}}
+          </li>
+        </template>
+      </ul>
     </div>
   </template>
   <script src="./vuejs/vue.global.js"></script>
@@ -57,7 +65,12 @@
               "盗梦空间",
               "教父",
               "大话西游"
-            ]
+            ],
+            obj:{
+              name:'anne',
+              age:18,
+              height:183
+            }
           }
         },
         methods: {
