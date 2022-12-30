@@ -1,4 +1,5 @@
 import { IsFalse } from '../../Typescript_test/test-utils';
+import { Input } from 'antd';
 function Foo1_12(input:string | number) {
   if(typeof input === 'string') {}
   if(typeof input === 'number') {}
@@ -47,3 +48,78 @@ const IsFalse = (val:unknown):val is Falsy => !val;
 type Primitive = string | number | boolean | undefined;
 const isPrimitive = (val:unknown):val is Primitive => ['string','unknown','boolean','undefined'].includes(typeof val);
 
+// in关键字的使用
+interface Foo1_12 {
+  foo:string;
+  fooOnly:boolean;
+  shared:number;
+}
+interface Foo2_12 {
+  bar:string;
+  barOnly:boolean;
+  shared:number;
+}
+
+function handle(input:Foo1_12 | Foo2_12){
+  if('foo' in input){
+    input.fooOnly
+  }else {
+    input.barOnly
+  }
+}
+
+// 共同属性的字面量类型差异
+function ensureArray(input:number|number[]):number[]{
+  if(Array.isArray(input)){
+    return input
+  }else{
+    return [input]
+  }
+}
+
+interface Foo3_12 {
+  kind:'foo';
+  diffType:string;
+  fooOnly:boolean;
+  shared:number;
+}
+
+interface Bar3_12 {
+  kind:'bar';
+  diffType:number;
+  barOnly:boolean;
+  shared:number;
+}
+
+function handle1(input:Foo3_12 | Bar3_12){
+  if(input.kind === 'foo'){
+    input.fooOnly;
+  }else{
+    input.barOnly;
+  }
+}
+
+// 对于同名，但不同类型的属性 需要用字面量类型区分，并不能用简单的typeof
+function handle2(input:Foo3_12 | Bar3_12){
+  if(typeof input.diffType === 'string'){
+    // input.fooOnly; // 类型上不存在属性
+  }
+}
+
+// instanceof也可以用来进行类型保护
+class FooBase {}
+class BarBase {}
+class Foo extends FooBase {
+  fooOnly(){}
+}
+class Bar extends BarBase {
+  barOnly(){}
+}
+
+function handle4(Input: Foo | Bar){
+  if(Input instanceof FooBase){
+    Input.fooOnly()
+  } else {
+    Input.barOnly();
+  }
+}
