@@ -1,5 +1,3 @@
-import { IsFalse } from '../../Typescript_test/test-utils';
-import { Input } from 'antd';
 function Foo1_12(input:string | number) {
   if(typeof input === 'string') {}
   if(typeof input === 'number') {}
@@ -109,17 +107,17 @@ function handle2(input:Foo3_12 | Bar3_12){
 // instanceof也可以用来进行类型保护
 class FooBase {}
 class BarBase {}
-class Foo extends FooBase {
+class Foo4_12 extends FooBase {
   fooOnly(){}
 }
-class Bar extends BarBase {
+class Bar4_12 extends BarBase {
   barOnly(){}
 }
 
-function handle4(Input: Foo | Bar){
-  if(Input instanceof FooBase){
+function handle4(Input: Foo4_12 | Bar4_12) {
+  if (Input instanceof FooBase) {
     Input.fooOnly()
   } else {
-    Input.barOnly();
+    Input.barOnly()
   }
 }
