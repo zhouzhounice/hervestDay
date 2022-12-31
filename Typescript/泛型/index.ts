@@ -126,3 +126,20 @@ function handle_03<T>(payload:T):Promise<[T]>{
  const handle_04 = <T extends any>(input:T):T =>{
   return input
  }
+
+ // class中的泛型
+ class Queue<TElementType> {
+  private _list: TElementType[];
+
+  constructor(initial:TElementType[]){
+    this._list = initial
+  }
+  // 入队一个队列泛型子类型的元素
+  enqueue<TType extends TElementType>(ele:TType):TElementType[]{
+    this._list.push(ele);
+    return this._list
+  }
+
+  // 入队一个任意类型元素(无需为队列泛型子类型)
+  
+ }
