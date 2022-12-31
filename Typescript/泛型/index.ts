@@ -1,3 +1,4 @@
+
 // 泛型初体验
 type Factory_01<T> = T | number |string
 
@@ -53,3 +54,75 @@ type Res2_02 = Factory2_02<101>
 
 // 无需显示传入泛型参数也能调用，并且默认值为success
 type Res4_02 = Factory2_02; //success
+
+// 多泛型关联
+type Condition<Type,Condition,TruthyResult,FalsyResult> = Type extends Condition? TruthyResult : FalsyResult;
+
+type Result1 = Condition<'anne',string,"passed!","reject!">; // passed!
+type Result2 = Condition<'anne',boolean,"passed!","reject!">;// reject!
+
+type ProcessInput<
+Input,
+SecondInput extends Input = Input,
+ThirdInput extends Input = SecondInput
+> = number
+
+// 响应类型的泛型处理
+interface IRes<TData = unknown> {
+  code:number;
+  error?:string;
+  data:TData;
+}
+
+interface IUserProfileRes {
+  name:string;
+  homepage:string;
+  avatar:string
+}
+
+// function fetchUserProfile():Promise<IRes<IUserProfileRes>>{}
+
+type StatusSucceed = boolean;
+// function handleOperation():Promise<IRes<StatusSucceed>>{}
+
+// 函数的泛型
+function handle_01<T>(input:T):T{
+  return input
+}
+const parameter1 = 'anne';
+let parameter2 = 24;
+
+handle_01(parameter1)
+handle_01(parameter2)
+
+function swap<T,U>([start,end]:[T,U]):[U,T]{
+  return [end,start]
+}
+// 函数泛型的约束与默认值
+function handle_02<T extends string | number>(Input:T):T{
+  return Input
+}
+
+function Swap<T extends number,U extends number>([start,end]:[T,U]){
+  return [start,end]
+}
+/* 
+const obj = {a:1,b:2,c:3}
+pick(obj,["a","c"]) // {a:1.c:3}
+*/
+// pick的类型声明
+// pick<T extends object, U extends keyof T>(object: T, ...props: Array<U>): Pick<T, U>;
+// 被函数内部逻辑消费
+function handle_03<T>(payload:T):Promise<[T]>{
+  return new Promise<[T]>((res,rej)=>{
+    res([payload])
+  })
+}
+
+// 箭头函数的泛型
+// const handle_04 = <T>(input:T):T => {
+//   return input
+// }
+ const handle_04 = <T extends any>(input:T):T =>{
+  return input
+ }
