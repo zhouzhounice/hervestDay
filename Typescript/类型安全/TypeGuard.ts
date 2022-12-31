@@ -67,7 +67,7 @@ function handle(input:Foo1_12 | Foo2_12){
 }
 
 // 共同属性的字面量类型差异
-function ensureArray(input:number|number[]):number[]{
+function ensureArray_12(input:number|number[]):number[]{
   if(Array.isArray(input)){
     return input
   }else{
