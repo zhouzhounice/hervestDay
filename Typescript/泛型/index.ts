@@ -129,17 +129,54 @@ function handle_03<T>(payload:T):Promise<[T]>{
 
  // class中的泛型
  class Queue<TElementType> {
-  private _list: TElementType[];
+   private _list: TElementType[]
 
-  constructor(initial:TElementType[]){
-    this._list = initial
-  }
-  // 入队一个队列泛型子类型的元素
-  enqueue<TType extends TElementType>(ele:TType):TElementType[]{
-    this._list.push(ele);
+   constructor(initial: TElementType[]) {
+     this._list = initial
+   }
+   // 入队一个队列泛型子类型的元素
+   enqueue<TType extends TElementType>(ele: TType): TElementType[] {
+     this._list.push(ele)
+     return this._list
+   }
+
+   // 入队一个任意类型元素(无需为队列泛型子类型)
+   enqueueWithUnknownType<TType>(element:TType):(TElementType | TType)[]{
+    return [...this._list,element]
+   }
+
+   // 出队
+   dequeue():TElementType[]{
+    this._list.shift();
     return this._list
-  }
-
-  // 入队一个任意类型元素(无需为队列泛型子类型)
-  
+   }
  }
+
+ // 内置对象的泛型
+ function Foo1_13() {
+  return new Promise<boolean>((res,rej)=>{
+    res(true)
+  })
+ }
+ // Promise
+ interface PromiseConstructor {
+  resolve<T>(value:T | PromiseLike<T>):Promise<T>
+ }
+ declare var Promise_01: PromiseConstructor
+
+ // 数组Array<T>当中 泛型参数代表数组的元素类型
+ const arr_01:Array<number> = [1,2,3]
+//  arr_01.push('anne')
+// arr_01.includes('anne')
+
+arr_01.find(()=> false)
+
+// 第一种reduce
+arr_01.reduce((prev,curr,idx,arr) => {
+  return prev
+},1)
+
+// 第二中reduce
+arr_01.reduce<number[]>((prev,curr,idx,arr)=>{
+  return [...prev,curr]
+},[])
