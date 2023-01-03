@@ -1,5 +1,6 @@
 <script setup>
 import {ref, computed, watchEffect} from 'vue';
+// import { useFullscreen } from '@vueuse/core';
 import {useMouse} from '../utils/useMouse';
 let count = ref(1);
 let color = ref('pink');
@@ -11,10 +12,8 @@ function add(){
   color.value = Math.random()>0.5?'yellowgreen':'pink'
 }
 let {x,y} = useMouse()
+// const {isFullscreen,enter,exit,toggle} = useFullscreen()
 
-watchEffect(()=>{
-  console.log('数据被修改了', doubel.value)
-})
 </script>
 
 <template>
@@ -23,6 +22,7 @@ watchEffect(()=>{
       <h1>当前纵坐标的值为{{ y }}</h1>
       <h2 @click="add">点击此处切换颜色{{ count }}</h2>
       <p>{{ count }} × 2 = {{ doubel }}</p>
+      <button>点我全屏</button>
     </div>
 </template>
 
