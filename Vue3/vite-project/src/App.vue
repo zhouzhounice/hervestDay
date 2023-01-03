@@ -1,11 +1,14 @@
 <script setup>
 import TodoList from './components/Todolist.vue';
+import MouseMove from './components/MouseMove.vue';
 </script>
 
 <template>
   <div>
    <h1>这是首页</h1>
     <TodoList />
+    <hr />
+    <MouseMove />
   </div>
 </template>
 
