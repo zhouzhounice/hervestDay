@@ -1,6 +1,10 @@
 <script setup>
+import { ref } from 'vue';
 import TodoList from './components/Todolist.vue';
 import MouseMove from './components/MouseMove.vue';
+import Rate from './components/Rate.vue';
+
+let score = ref(3)
 </script>
 
 <template>
@@ -9,6 +13,8 @@ import MouseMove from './components/MouseMove.vue';
     <TodoList />
     <hr />
     <MouseMove />
+    <hr />
+    <Rate :value="0" />
   </div>
 </template>
 
