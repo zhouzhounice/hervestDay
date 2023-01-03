@@ -18,3 +18,8 @@ console.log(double) // 2
 
 obj.count = 2;
 console.log(double) //4
+
+// 语法缺陷： 
+// 1.当删除obj的属性时，set就不会再执行 所以需要单独提供$delete函数去删除数据
+// 2.对数组的一些改变也监听不到，所以需要重写数组的push等方法来达到相应式的目的
+
