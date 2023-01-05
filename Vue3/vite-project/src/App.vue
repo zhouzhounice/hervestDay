@@ -1,22 +1,33 @@
+<template>
+  <div>
+   <h1>点击进入首页</h1>
+    <TodoList />
+    <hr />
+    <MouseMove />
+    <hr />
+    <Rate :value="score" @update-rate="update" />
+    <hr />
+    <A />
+    <h1>啦啦啦</h1>
+  </div>
+</template>
+
+
 <script setup>
 import { ref } from 'vue';
 import TodoList from './components/Todolist.vue';
 import MouseMove from './components/MouseMove.vue';
 import Rate from './components/Rate.vue';
+import A from './components/A.vue';
 
-let score = ref(3)
+let score = ref(3.5);
+
+function update(num){
+  score.value = num
+}
 </script>
 
-<template>
-  <div>
-   <h1>这是首页</h1>
-    <TodoList />
-    <hr />
-    <MouseMove />
-    <hr />
-    <Rate :value="0" />
-  </div>
-</template>
+
 
 <style scoped>
 .logo {

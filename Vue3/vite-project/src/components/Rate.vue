@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, computed,ref  } from 'vue';
+import { defineProps, computed,ref,defineEmits  } from 'vue';
 let props = defineProps({
   value:Number,
   theme:{type:String,default:'orange'}
@@ -25,7 +25,10 @@ function mouseOver(i){
 function mouseOut(){
   width.value = props.value
 }
-
+let emits = defineEmits('update-rate')
+function onRate(num){
+  emits('update-rate',num)
+}
 const fontwidth = computed(()=>`width:${width.value}em;`)
 </script>
 
@@ -34,7 +37,7 @@ const fontwidth = computed(()=>`width:${width.value}em;`)
       <div class="rate" @mouseout="mouseOut">
         <span @mousemove="mouseOver(num)" v-for="num in 5" :key="num">☆</span>
         <span class="hollow" :style="fontwidth">
-          <span @mouseover="mouseOver(num)" v-for="num in 5" :key="num">★</span>
+          <span @click="onRate(num)" @mouseover="mouseOver(num)" v-for="num in 5" :key="num">★</span>
         </span>
       </div>
 <!--       {{ rate }} -->
