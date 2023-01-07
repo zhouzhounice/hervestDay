@@ -8,7 +8,9 @@
     <Rate :value="score" @update-rate="update" />
     <hr />
     <A />
-    <h1>啦啦啦</h1>
+    <hr />
+    <CountVue />
+
   </div>
 </template>
 
@@ -19,6 +21,7 @@ import TodoList from './components/Todolist.vue';
 import MouseMove from './components/MouseMove.vue';
 import Rate from './components/Rate.vue';
 import A from './components/A.vue';
+import CountVue from './components/Count.vue';
 
 let score = ref(3.5);
 
