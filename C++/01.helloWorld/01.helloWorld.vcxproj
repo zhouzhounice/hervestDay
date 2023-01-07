@@ -130,7 +130,10 @@
     <ClCompile Include="helloWorld.cpp" />
     <ClCompile Include="sizeof关键字.cpp" />
     <ClCompile Include="变量.cpp" />
+    <ClCompile Include="字符串类型.cpp" />
+    <ClCompile Include="布尔类型.cpp" />
     <ClCompile Include="常量.cpp" />
+    <ClCompile Include="数据的输入.cpp" />
     <ClCompile Include="数据类型.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
