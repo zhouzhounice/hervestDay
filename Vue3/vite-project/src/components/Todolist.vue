@@ -3,10 +3,12 @@
     <input type="text" v-model="title" @keydown.enter="addTodo" />
     <button  @click="clear">清理</button>
     <ul v-if="todos.length">
+     <transition-group name="flip-list" tag="ul"> 
       <li v-for="todo in todos" :key="todo.key">
         <input type="checkbox" v-model="todo.done" />
         <span :class="{ done: todo.done }"> {{ todo.title }}</span>
       </li>
+      </transition-group>
     </ul>
     <div v-else>暂无数据</div>
     <div>
@@ -21,3 +23,18 @@ import {useTodos} from '../utils/useTodos'
 
 let { title, todos, addTodo, clear, active, all, allDone } = useTodos();
 </script>
+
+<style scoped>
+.flip-list-move{
+  transition: transform 0.8s ease;
+}
+.flip-list-enter-active,
+.flip-list-leave-active{
+  transition: all 1s ease;
+}
+.flip-list-enter-from,
+.flip-list-leave-to{
+  opacity: 0;
+  transform: translateX(30px);
+}
+</style>
