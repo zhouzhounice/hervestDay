@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from './miniRouter/index.js';
+import { createRouter, createWebHashHistory } from 'vue-router';
 import Home from '../pages/home.vue';
 import About from '../pages/about.vue';
 /* 

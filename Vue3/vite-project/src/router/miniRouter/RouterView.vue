@@ -1,6 +1,6 @@
 <script setup>
 import {computed} from 'vue';
-import { useRouter } from '../miniRouter/index';
+import { useRouter } from 'vue-router';
 let router = useRouter();
 
 const comp = computed(()=>{

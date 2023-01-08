@@ -1,45 +1,35 @@
 <template>
-  <div>
-   <h1>点击进入首页</h1>
-    <TodoList />
-    <hr />
-    <MouseMove />
-    <hr />
-    <Rate :value="score" @update-rate="update" />
-    <hr />
-    <A />
-    <hr />
-    <CountVue />
-
+  <div id="app">
+    <router-view />
   </div>
 </template>
 
 
 <script setup>
-import { ref } from 'vue';
-import TodoList from './components/Todolist.vue';
-import MouseMove from './components/MouseMove.vue';
-import Rate from './components/Rate.vue';
-import A from './components/A.vue';
-import CountVue from './components/Count.vue';
-
-let score = ref(3.5);
-
-function update(num){
-  score.value = num
+import { useRouter } from "vue-router";
+const router = useRouter()
+const toHome = () =>{
+  router.push('/')
+}
+const toAbout = () =>{
+  router.push('/about')
 }
 </script>
 
 
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
+.container {
+  display: flex;
+  justify-content: space-around;
+  width: 300px;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+.hover:hover {
+  color:  #646cffaa;
 }
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
