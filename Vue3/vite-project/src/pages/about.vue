@@ -10,7 +10,8 @@
     <A />
     <hr />
     <CountVue />
-
+    <hr />
+    <Heading :level="1">Hello JSX</Heading>
   </div>
 </template>
 
@@ -22,6 +23,7 @@ import MouseMove from '../components/MouseMove.vue';
 import Rate from '../components/Rate.vue';
 import A from '../components/A.vue';
 import CountVue from '../components/Count.vue';
+import Heading from '../components/Heading.jsx';
 
 let score = ref(3.5);
 

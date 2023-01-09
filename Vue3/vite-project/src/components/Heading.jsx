@@ -8,10 +8,7 @@ export default defineComponent({
     }
   },
   setup(props,{ slots }){
-    return () => h(
-      'h' +props.level,
-      {},
-      slots.default()
-    )
+    const tag = 'h'+props.level;
+    return () => <tag>{slots.default()}</tag>
   }
 })
