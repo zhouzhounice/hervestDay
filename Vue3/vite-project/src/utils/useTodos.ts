@@ -1,9 +1,14 @@
-import { ref,computed,watchEffect } from "vue";
+import { ref,computed,watchEffect,Ref } from "vue";
 import { useStorage } from './useStorage';
 
+interface Todo {
+  title:string;
+  done:boolean;
+  key:string;
+}
 export function useTodos(){
   let title = ref('')
-  let todos = useStorage('todos',[])
+  let todos:Ref<Todo[]> = useStorage('todos',[])
 
   watchEffect(()=>{
     localStorage.setItem('todos',JSON.stringify(todos.value))
