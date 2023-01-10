@@ -17,7 +17,15 @@
     <p>green</p>
     <div>red</div>
     <script>
-      document.getElementsByTagName('p')[0].innerText = 'pink'
+      document.getElementsByTagName('p')[0].innerText = 'pink';
+      showName();
+      var showName = function(){
+        console.log(2)
+      }
+    function showName(){
+      console.log(1)
+    }
+    showName()
     </script>
 </body>
 </html>
