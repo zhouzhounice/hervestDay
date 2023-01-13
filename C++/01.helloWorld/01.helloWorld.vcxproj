@@ -133,8 +133,10 @@
     <ClCompile Include="字符串类型.cpp" />
     <ClCompile Include="布尔类型.cpp" />
     <ClCompile Include="常量.cpp" />
+    <ClCompile Include="循环结构.cpp" />
     <ClCompile Include="数据的输入.cpp" />
     <ClCompile Include="数据类型.cpp" />
+    <ClCompile Include="猜数字游戏.cpp" />
     <ClCompile Include="运算符.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

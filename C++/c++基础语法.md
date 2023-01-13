@@ -301,5 +301,27 @@ int main()
 
 ### 循环结构
 
+```c++
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int num = 10;
+
+	while (num>0) {
+		cout << num << endl;
+		num--;
+	}
+
+	system("pause");
+	return 0;
+}
+```
+
+
+
+注：循环结构中，程序必须提供退出循环的出口。否则会出现死循环
+
 
 

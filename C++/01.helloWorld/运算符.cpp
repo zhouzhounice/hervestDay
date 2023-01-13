@@ -2,7 +2,7 @@
 using namespace std;
 #include <string>
 
-int main()
+int main9()
 {
 
 	// 1.ÕûĞÍÊäÈë

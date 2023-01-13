@@ -42,5 +42,11 @@
     <ClCompile Include="运算符.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="循环结构.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="猜数字游戏.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
