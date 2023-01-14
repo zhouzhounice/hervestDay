@@ -1,2 +1,2 @@
 ﻿  猜数字游戏.cpp
-LINK : fatal error LNK1168: 无法打开 D:\03_gitHub\hervestDay\C++\01.helloWorld\x64\Debug\01.helloWorld.exe 进行写入
+  01.helloWorld.vcxproj -> D:\03_gitHub\hervestDay\C++\01.helloWorld\x64\Debug\01.helloWorld.exe

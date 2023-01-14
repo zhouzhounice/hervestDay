@@ -1,11 +1,11 @@
 #include <iostream>
 using namespace std;
-// #include <ctime>
+ #include <ctime>
 
 int main()
 {
 	// 生成随机数
-	// srand((unsigned int)time(NULL));
+	 srand((unsigned int)time(NULL));
 	int randNum = rand() % 100 + 1;
 	cout << randNum << endl;
 	// 定义用户输入的数字
@@ -24,7 +24,7 @@ int main()
 		else
 		{
 			cout << "你猜对了" << endl;
-			// break;
+			break;
 		}
 
 	}
