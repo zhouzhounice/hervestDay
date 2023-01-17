@@ -36,6 +36,7 @@ var bar = {
     myName:"time.geekbang.com",
     printName: function () {
         console.log(myName)
+        console.log(this.myName)
     }    
 }
 function foo() {
@@ -46,6 +47,12 @@ let myName = "极客邦"
 let _printName = foo()
 _printName()
 bar.printName()
+
+function CreateObj(){
+  this.name = '极客时间'
+}
+
+var myObj = new CreateObj()
 
 
 
