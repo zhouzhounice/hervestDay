@@ -53,6 +53,7 @@ function CreateObj(){
 }
 
 var myObj = new CreateObj()
+console.log(myObj)
 
 
 
