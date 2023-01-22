@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>test</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <template id="why">
+    您的问题：<input type="text" v-model="message">
+    <button @click="queryAnswer">查找答案</button>
+    <p>{{answer}}</p>
+  </template>
+  <script src="./vuejs/vue.global.js"></script>
+  <script>
+    const why = {
+      template: '#why',
+      data: () => {
+        return {
+          message:'Hello world',
+          answer:''
+        }
+      },
+      methods: {
+        queryAnswer () {
+          console.log(`你问题${this.message}的答案是 哈哈哈`)
+          this.answer = '略'
+        }
+      },
+      watch:{
+        message(newValue,oldValue){
+          console.log('新值',newValue)
+          console.log('旧值',oldValue)
+          this.queryAnswer()
+        }
+      },
+      computed: {
+        // fullName(){
+        //   return `${this.fistName} ${this.listName}`
+        // },
+        fullName: {
+          get: function () {
+            return `${this.fistName} ${this.listName}`
+          },
+          set: function (newName) {
+            const names = newName.split(" ");
+            this.fistName = names[0]
+            this.listName = names[1]
+          }
+        }
+      },
+    }
+    const app = Vue.createApp(why);
+    app.mount("#app")
+  </script>
+</body>
+
+</html>
