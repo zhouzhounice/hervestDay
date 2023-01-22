@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>test</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <template id="why">
+    <div>
+      <button @click='handleChange'>点击替换名字</button>
+      <h1>{{fullName}}</h1>
+    </div>
+  </template>
+  <script src="./vuejs/vue.global.js"></script>
+  <script>
+    const why = {
+      template: '#why',
+      data: () => {
+        return {
+          fistName: "anne",
+          listName:'li',
+        }
+      },
+      methods:{
+        handleChange(){
+          this.fullName = 'Coder Why'
+        }
+      },
+      computed: {
+        // fullName(){
+        //   return `${this.fistName} ${this.listName}`
+        // },
+        fullName:{
+          get:function(){
+            return `${this.fistName} ${this.listName}`
+          },
+          set:function(newName){
+            const names = newName.split(" ");
+            this.fistName = names[0]
+            this.listName = names[1]
+          }
+        }
+      },
+    }
+    const app = Vue.createApp(why);
+    app.mount("#app")
+  </script>
+</body>
+
+</html>
