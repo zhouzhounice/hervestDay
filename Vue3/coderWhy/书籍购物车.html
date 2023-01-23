@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>test</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <template id="why">
+    <table>
+      <table border="1">
+        <tr>
+          <th></th>
+          <th>书籍名称</th>
+          <th>出版日期</th>
+          <th>价格</th>
+          <th>购买数量</th>
+          <th>操作</th>
+        </tr>
+        <tr v-for="(item,index) in books">
+          <td>{{index+1}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.data}}</td>
+          <td>{{item.price}}</td>
+          <td>
+            <button @click="decrement(index)" :disabled="books[index].count<=1?true:false">-</button>
+            <b>{{item.count}}</b>
+            <button @click="increment(index)">+</button>
+          </td>
+          <td>
+            <button @click="removeBook(index)">移除</button>
+          </td>
+        </tr>
+      </table>
+    </table>
+    总价：xxx元
+  </template>
+  <script src="./vuejs/vue.global.js"></script>
+  <script src="./books.js"></script>
+</body>
+
+</html>

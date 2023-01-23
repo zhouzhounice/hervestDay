@@ -1,0 +1,55 @@
+Vue.createApp({
+  template:'#why',
+  data:()=>{
+    return {
+      books:[
+        {
+          id:1,
+          name:"《算法导论》",
+          data:'2006-9',
+          price:85,
+          count:1
+        },
+        {
+          id:2,
+          name:"《UNXI编程艺术》",
+          data:'2006-2',
+          price:59,
+          count:1
+        },
+        {
+          id:3,
+          name:"《编程珠玑》",
+          data:'2008-10',
+          price:39,
+          count:1
+        },
+        {
+          id:4,
+          name:"《代码大全》",
+          data:'2006-3',
+          price:128,
+          count:1
+        },
+      ]
+    }
+  },
+  computed:{
+    totalPrice(){
+      let finaPrice = 0;
+       
+    }
+  },
+  methods: {
+    increment(index){
+      this.books[index].count++;
+    },
+    decrement(index){
+      this.books[index].count--;
+    },
+    removeBook(index){
+      console.log(index)
+      this.books.splice(index,1)
+    }
+  },
+}).mount("#app")
