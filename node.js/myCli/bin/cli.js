@@ -10,17 +10,12 @@
 // }
 
 const { program } = require('commander');
-
+const { myHelp } = require('../lib/core/help');
+const { myCommander } = require('../lib/core/create')
 // 设置一个指令参数
-program.option('-f --framwork <framwork>','设置框架')
+myHelp(program)
 // 设置一个创建脚手架的命令
-program
-.command('create <project> [other...]')
-.alias('crt')
-.description('创建项目')
-.action((project,args)=>{
-  // 命令行的执行逻辑代码
-  console.log(project)
-  console.log(args)
-})
+myCommander(program)
+
+
 program.parse(process.argv)
