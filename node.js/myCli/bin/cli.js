@@ -9,9 +9,9 @@
 //   console.log('获取到命令参数')
 // }
 
-const { program } = require('commander');
-const { myHelp } = require('../lib/core/help');
-const { myCommander } = require('../lib/core/create')
+import { program } from 'commander';
+import myHelp  from '../lib/core/help.js';
+import  myCommander  from '../lib/core/create.js';
 // 设置一个指令参数
 myHelp(program)
 // 设置一个创建脚手架的命令

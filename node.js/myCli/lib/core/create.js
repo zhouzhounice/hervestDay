@@ -1,4 +1,5 @@
-const { myAction } = require('./action')
+import myAction from './action.js';
+
 const myCommander = function(program){
 // 设置一个创建脚手架的命令
   program
@@ -7,4 +8,5 @@ const myCommander = function(program){
 .description('创建项目')
 .action(myAction)
 }
-exports.myCommander = myCommander
+// exports.myCommander = myCommander
+export default myCommander
