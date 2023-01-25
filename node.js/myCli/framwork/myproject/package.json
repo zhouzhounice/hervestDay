@@ -1,20 +1,19 @@
 {
-  "name": "mycli",
+  "name": "koatemplate",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "bin": {
+  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "scripts": {
-    "dev": ""
+  "repository": {
+    "type": "git",
+    "url": "git@gitee.com:beiyaoyaoyao/koa-template.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "commander": "^10.0.0",
-    "download-git-repo": "^3.0.2",
-    "inquirer": "^9.1.4"
-  },
-  "type": "module"
+    "koa": "^2.13.4"
+  }
 }
