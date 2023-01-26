@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "bin": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "mycli":"./bin/cli.js"
   },
   "scripts": {
-    "dev": ""
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
