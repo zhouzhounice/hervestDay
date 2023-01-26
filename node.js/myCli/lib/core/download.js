@@ -1,5 +1,6 @@
 import download from "download-git-repo";
 import ora from "ora";
+import chalk from "chalk";
 
 const downLoadFun = (url,proj) =>{
   const spinner = ora().start();
@@ -10,8 +11,8 @@ const downLoadFun = (url,proj) =>{
     }else{
       spinner.fail('代码模板下载失败！')
     }
-    console.log(`Done! you run :`);
-    console.log(`cd ${proj}`);
+    console.log(`${chalk.green.bold('Done!')} ${chalk.bold('you run :')}`);
+    console.log(`${chalk.cyan('cd')} ${proj}`);
     console.log(`npm install`);
     console.log(`npm run dev`);
 })
