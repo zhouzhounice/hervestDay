@@ -37,7 +37,25 @@ app.post('/',async function(req,res){
   }
   console.log(req.body)
 });
-
+app.put('/:id',async (req,res)=>{
+  const id =Number.parseInt(req.params.id);
+  let userInfo = await db.getDb();
+  let user = userInfo.users.find(item => item.id === id);
+  if(!user){
+    res.status(403).json({
+      error:'用户不存在'
+    })
+  }
+  userInfo.users[id-1] = {
+    ...user,
+    ...req.body
+  }
+  if(!await db.addserveDb(userInfo)){
+    res.status(201).json({
+      msg:'信息修改成功！'
+    })
+  }
+})
 app.listen(3031,()=>{
   console.log('http://127.0.0.1:3031');
 })
