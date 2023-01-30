@@ -3,12 +3,23 @@ const db = require('./db')
 
 const app = express();
 const router = require("./router")
+const routerVideo = require("./router/video")
 // const router = express.Router();
 
 // 接受客户端发送的不同格式的数据
 // app.use(express.urlencoded());
 app.use(express.json());
 app.use(router)
+app.use("/video",routerVideo);
+// 错误处理中间件 - 路由没匹配到
+app.use((req,res,next)=>{
+  res.status(404).send('404 Not Found.')
+})
+// 错误处理中间件 - 代码逻辑错误
+app.use((err,req,res,next)=>{
+  console.log(err)
+  res.status(500).send('service Error')
+})
 // 最基本的中间件
 // app.use((req,res,next)=>{
 //   console.log(`${req.method} - ${req.url} - ${Date.now()}`);
