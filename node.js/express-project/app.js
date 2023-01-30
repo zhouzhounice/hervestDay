@@ -16,7 +16,7 @@ app.use(cors());
 app.use(morgan('dev'));
 
 // 加载路由
-app.use('/api/v1',router);
+app.use('/api',router);
 
 const PORT = process.env.PORT || 3031;
 app.listen(PORT,()=>{
