@@ -2,6 +2,7 @@ const { User } = require('../model/index')
 
 exports.register = async (req,res) =>{
   console.log(req.body)
+  return
   const UserModel = new User(req.body);
   const dbBack = await UserModel.save();
   const user = dbBack.toJSON()
