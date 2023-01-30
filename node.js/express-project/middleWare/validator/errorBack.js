@@ -8,8 +8,8 @@ module.exports = validator =>{
         return res.status(401).json({
           error: errors.array()
         })
+        // console.log(errors)
+      }
       next()
-      // console.log(errors)
-    }
   }
 }
