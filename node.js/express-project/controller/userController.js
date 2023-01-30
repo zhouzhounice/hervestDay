@@ -1,5 +1,6 @@
 const { User } = require('../model/index')
 
+// 用户注册
 exports.register = async (req,res) =>{
   console.log(req.body);
   const UserModel = new User(req.body);
@@ -9,6 +10,16 @@ exports.register = async (req,res) =>{
   res.status(201).json({user})
 }
 
+// 用户登陆
+exports.login = async (req,res) =>{
+  // 客户端数据验证
+  console.log(req.body)
+  const userDb = await User.findOne(req.body);
+
+  // 连接数据库查询
+
+  res.status(200).json(userDb)
+}
 exports.list = async (req,res)=>{
   console.log(req.method);
   // JSON.parse('(')

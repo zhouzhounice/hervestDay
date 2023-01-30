@@ -9,6 +9,10 @@ router
 .post('/register',
 validator.register,
 userController.register)
+.post('/logins',
+validator.login,
+userController.login
+)
 .get('/list',userController.list)
 .delete('/',userController.delete)
 
