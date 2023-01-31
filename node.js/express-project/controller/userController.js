@@ -1,4 +1,6 @@
-const { User } = require('../model/index')
+const { User } = require('../model/index');
+const jwt = require("jsonwebtoken");
+const { createToken } = require("../util/jwt")
 
 // 用户注册
 exports.register = async (req,res) =>{
@@ -14,10 +16,13 @@ exports.register = async (req,res) =>{
 exports.login = async (req,res) =>{
   // 客户端数据验证
   console.log(req.body)
-  const userDb = await User.findOne(req.body);
-
+  let userDb = await User.findOne(req.body);
+  if(!userDb){
+    res.status(402).json({error:"邮箱或者密码不正确"})
+  }
   // 连接数据库查询
-
+  userDb = userDb.toJSON();
+  userDb.token = await createToken(userDb);
   res.status(200).json(userDb)
 }
 exports.list = async (req,res)=>{
