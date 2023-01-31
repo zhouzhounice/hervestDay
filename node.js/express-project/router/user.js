@@ -15,6 +15,7 @@ validator.login,
 userController.login
 )
 .get('/list',verifyToken,userController.list)
+.put('/',verifyToken,validator.update,userController.update)
 .delete('/',userController.delete)
 
 module.exports = router

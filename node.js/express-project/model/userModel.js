@@ -24,6 +24,15 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: null
   },
+  cover: {
+    type: String,
+    default: null
+  },
+  channeldes: {
+    type: String,
+    default: null
+  },
+
   ...baseModel
 })
 

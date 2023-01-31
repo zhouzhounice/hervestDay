@@ -1,5 +1,4 @@
 const { User } = require('../model/index');
-const jwt = require("jsonwebtoken");
 const { createToken } = require("../util/jwt")
 
 // 用户注册
@@ -25,8 +24,15 @@ exports.login = async (req,res) =>{
   userDb.token = await createToken(userDb);
   res.status(200).json(userDb)
 }
+
+// 用户的修改
+exports.update = async (req,res) =>{
+  const id = req.user.userInfo._id;
+ const updateData =await User.findByIdAndUpdate(id,req.body,{new:true});
+  res.status(202).json({user:updateData})
+}
 exports.list = async (req,res)=>{
-  console.log(req.method);
+  // console.log(req.user.userInfo);
   // JSON.parse('(')
   res.send('/user-list')
 }
