@@ -17,9 +17,9 @@ userController.register)
 validator.login,
 userController.login
 )
-.get('/list',verifyToken,userController.list)
-.put('/',verifyToken,validator.update,userController.update)
-.post('/headimg',verifyToken,upload.single('headimg'),userController.headImg)
+.get('/list',verifyToken(),userController.list)
+.put('/',verifyToken(),validator.update,userController.update)
+.post('/headimg',verifyToken(),upload.single('headimg'),userController.headImg)
 .delete('/',userController.delete)
 
 module.exports = router

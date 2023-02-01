@@ -26,19 +26,25 @@ module.exports.createToken = async userInfo =>{
     )
 }
 
-module.exports.verifyToken = async (req,res,next) =>{ 
+module.exports.verifyToken = (required=true) =>{
+  return async (req,res,next) =>{ 
   // console.log(req.headers)
   let token = req.headers.authorization
   token = token ? token.split("Bearer ")[1] : null;
   // console.log(token)
-  if(!token){
-    res.status(402).json({error:"请传入token"})
-  }
-  try{
+  if(token){
+    try{
   let userInfo = await verfiy(token,uuid);
   req.user = userInfo
     next()
   } catch(error) {
     res.status(402).json({error:'无效的token'})
   }
+  }else if(required){
+    res.status(402).json({error:"请传入token"})
+  }else{
+    next()
+  }
+  
+}
 }
