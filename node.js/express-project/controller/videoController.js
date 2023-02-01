@@ -1,9 +1,15 @@
 const {Video} = require("../model/index");
 
-exports.list = async (req,res)=>{
-  console.log(req.method);
-  // JSON.parse('(')
-  res.send('/video-list')
+exports.videolist = async (req,res)=>{
+  let {pageNum=1,pageSize=10} = req.body
+  let videoList = await Video.find()
+                              .skip((pageNum - 1) * pageSize)
+                              .limit(pageSize)
+                              .sort({createAt:-1})
+                              .populate('user'); // 关联查询用户信息
+  // 获取信息总条数
+  const videoListCount = await Video.countDocuments();
+  res.status(200).json({videoList,videoListCount})
 }
 
 

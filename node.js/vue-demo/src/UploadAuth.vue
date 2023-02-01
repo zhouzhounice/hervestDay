@@ -157,7 +157,11 @@
             // 如果 uploadInfo.videoId 不存在,调用 获取视频上传地址和凭证接口(https://help.aliyun.com/document_detail/55407.html)
             if (!uploadInfo.videoId) {
               let createUrl = 'http://127.0.0.1:3031/api/video/getvoucher'
-              axios.get(createUrl).then(({data}) => {
+              axios.get(createUrl,{
+                headers:{
+                  Authorization:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mbyI6eyJfaWQiOiI2M2Q4OGY0OGZlMzdmZjMzYTA0NTkzYTUiLCJ1c2VyTmFtZSI6IkFubmUiLCJlbWFpbCI6InRlc3QxQHFxLmNvbSIsInBob25lIjoiMTMzNDU2MzEyMzEiLCJpbWFnZSI6bnVsbCwiY292ZXIiOm51bGwsImNoYW5uZWxkZXMiOiJBbm5l55qE6aKR6YGTIiwiY3JlYXRlQXQiOiIyMDIzLTAxLTMxVDAzOjQ3OjE2LjgwN1oiLCJ1cGRhdGVBdCI6IjIwMjMtMDEtMzFUMDM6NDc6MTYuODA3WiIsIl9fdiI6MH0sImlhdCI6MTY3NTIyOTM0MSwiZXhwIjoxNjc1MzE1NzQxfQ.0qiOpUhPs85hrgztA6CzdnWsaJcNzIo-ufFBMGL5F1s"
+                }
+              }).then(({data}) => {
                 let uploadAuth = data.vod.UploadAuth
                 let uploadAddress = data.vod.UploadAddress
                 let videoId = data.vod.VideoId
