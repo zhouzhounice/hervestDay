@@ -6,7 +6,7 @@ exports.videolist = async (req,res)=>{
                               .skip((pageNum - 1) * pageSize)
                               .limit(pageSize)
                               .sort({createAt:-1})
-                              .populate('user'); // 关联查询用户信息
+                              .populate('user','_id userName image'); // 关联查询用户信息
   // 获取信息总条数
   const videoListCount = await Video.countDocuments();
   res.status(200).json({videoList,videoListCount})
@@ -24,4 +24,14 @@ exports.createvideo = async (req,res)=>{
     res.status(500).json({err:error})
   }
   
+}
+
+// 获取视频详情
+exports.video = async (req,res) =>{
+  console.log(req.params)
+  const { id:videoId } = req.params;
+  const videoInfo = await Video
+                      .findById(videoId)
+                      .populate('user','_id userName image')
+  res.status(200).json(videoInfo)
 }
