@@ -21,7 +21,7 @@ const videoSchema = new mongoose.Schema({
   },
   cover:{
     type:String,
-    required:true
+    required:false
   },
 
   ...baseModel
