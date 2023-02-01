@@ -1,9 +1,13 @@
+const fs = require('fs');
+const { promisify } = require('util');
 const { User } = require('../model/index');
-const { createToken } = require("../util/jwt")
+const { createToken } = require("../util/jwt");
+
+const rename = promisify(fs.rename);
 
 // 用户注册
 exports.register = async (req,res) =>{
-  console.log(req.body);
+  // console.log(req.body);
   const UserModel = new User(req.body);
   const dbBack = await UserModel.save();
   const user = dbBack.toJSON()
@@ -14,7 +18,7 @@ exports.register = async (req,res) =>{
 // 用户登陆
 exports.login = async (req,res) =>{
   // 客户端数据验证
-  console.log(req.body)
+  // console.log(req.body)
   let userDb = await User.findOne(req.body);
   if(!userDb){
     res.status(402).json({error:"邮箱或者密码不正确"})
@@ -41,4 +45,21 @@ exports.delete = async (req,res)=>{
   console.log(req.method);
   // JSON.parse('(')
   res.send('/user-list')
+}
+
+// 用户上传头像
+exports.headImg = async (req,res) =>{
+  // console.log(req.file)
+  const fileTextArr = req.file.originalname.split('.');
+  const fileText = fileTextArr[fileTextArr.length-1];
+
+  try {
+   await rename(
+    './public/'+req.file.filename,
+    './public/'+req.file.filename+'.'+fileText
+    );
+    res.status(201).json({filepath:req.file.filename+'.'+fileText})
+  } catch (error) {
+    res.status(500).json({err:error})
+  }
 }

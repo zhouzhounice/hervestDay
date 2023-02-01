@@ -18,6 +18,9 @@ app.use(morgan('dev'));
 // 加载路由
 app.use('/api',router);
 
+// 处理静态资源文件
+app.use(express.static('public'))
+
 const PORT = process.env.PORT || 3031;
 app.listen(PORT,()=>{
   console.log(`http://127.0.0.1:${PORT}`);

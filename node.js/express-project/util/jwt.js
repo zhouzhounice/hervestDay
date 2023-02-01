@@ -27,10 +27,10 @@ module.exports.createToken = async userInfo =>{
 }
 
 module.exports.verifyToken = async (req,res,next) =>{ 
-  console.log(req.headers)
+  // console.log(req.headers)
   let token = req.headers.authorization
   token = token ? token.split("Bearer ")[1] : null;
-  console.log(token)
+  // console.log(token)
   if(!token){
     res.status(402).json({error:"请传入token"})
   }
