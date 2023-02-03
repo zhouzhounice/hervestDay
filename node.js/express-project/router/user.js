@@ -17,6 +17,7 @@ userController.register)
 validator.login,
 userController.login
 )
+.get('/getuser/:userId',verifyToken(false),userController.getuser)
 .get('/subscribe/:userId',verifyToken(),userController.subscribe)
 .get('/unsubscribe/:userId',verifyToken(),userController.unsubscribe)
 .get('/list',verifyToken(),userController.list)

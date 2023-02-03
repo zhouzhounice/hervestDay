@@ -1,5 +1,6 @@
 const fs = require('fs');
 const { promisify } = require('util');
+const { _:{pick} } = require("lodash");
 const { User } = require('../model/index');
 const { Subscribe } = require('../model/index');
 const { createToken } = require("../util/jwt");
@@ -114,4 +115,24 @@ exports.unsubscribe = async (req,res) =>{
   }else{
     res.status(401).json({err:"还未订阅此频道"})
   }  
+}
+
+// 查看频道详情
+exports.getuser = async (req,res) =>{
+  let isSubscribe = false;
+  if(req.user){
+    await Subscribe.findOne({
+      channel:req.params.userId,
+      user:req.user.userInfo._id
+    })
+    if(record){
+      isSubscribe = true
+    }
+  }
+  const user = await User.findById(req.params.userId)
+  console.log(user)
+  // user.isSubscribe = isSubscribe
+  res.status(200).json({
+    ...pick(user, ['_id', 'userName', 'image', 'subscribeCount', 'cover','channeldes']), isSubscribe
+  })
 }
