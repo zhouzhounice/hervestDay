@@ -4,6 +4,7 @@ const { _:{pick} } = require("lodash");
 const { User } = require('../model/index');
 const { Subscribe } = require('../model/index');
 const { createToken } = require("../util/jwt");
+const { channel } = require('diagnostics_channel');
 
 const rename = promisify(fs.rename);
 
@@ -82,7 +83,7 @@ exports.subscribe = async (req,res) =>{
   if(!record){
     await new Subscribe({
       user: id,
-      channle:channelId
+      channel:channelId
     }).save()
 
    const user =  await User.findById(channelId);
@@ -135,4 +136,27 @@ exports.getuser = async (req,res) =>{
   res.status(200).json({
     ...pick(user, ['_id', 'userName', 'image', 'subscribeCount', 'cover','channeldes']), isSubscribe
   })
+}
+
+// 获取关注列表与粉丝列表
+exports.getsubscribe = async (req,res) =>{
+  // 根据用户id查找
+  let subscribeList = await Subscribe.find({
+    user:req.params.userId
+  }).populate('channel')
+  subscribeList = subscribeList.map(item => {
+    return pick(item.channel, ['_id', 'userName', 'image', 'subscribeCount', 'cover', 'channeldes'])
+  })
+  res.status(200).json(subscribeList)
+}
+
+// 获取粉丝列表
+exports.getchannel = async (req,res) =>{
+  let channelList = await Subscribe.find({
+    user: req.user.userInfo._id
+  }).populate('user')
+  channelList = channelList.map(item => {
+    return pick(item.user, ['_id', 'userName', 'image', 'subscribeCount', 'cover', 'channeldes'])
+  })
+  res.status(200).json(channelList)
 }
