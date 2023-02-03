@@ -156,12 +156,12 @@
             // 如果 uploadInfo.videoId 存在, 调用 刷新视频上传凭证接口(https://help.aliyun.com/document_detail/55408.html)
             // 如果 uploadInfo.videoId 不存在,调用 获取视频上传地址和凭证接口(https://help.aliyun.com/document_detail/55407.html)
             if (!uploadInfo.videoId) {
+              console.log(uploadInfo)
               let createUrl = 'http://127.0.0.1:3031/api/video/getvoucher'
               axios.get(createUrl,{
                 headers:{
-                  Authorization:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mbyI6eyJfaWQiOiI2M2Q4OGY0OGZlMzdmZjMzYTA0NTkzYTUiLCJ1c2VyTmFtZSI6IkFubmUiLCJlbWFpbCI6InRlc3QxQHFxLmNvbSIsInBob25lIjoiMTMzNDU2MzEyMzEiLCJpbWFnZSI6bnVsbCwiY292ZXIiOm51bGwsImNoYW5uZWxkZXMiOiJBbm5l55qE6aKR6YGTIiwiY3JlYXRlQXQiOiIyMDIzLTAxLTMxVDAzOjQ3OjE2LjgwN1oiLCJ1cGRhdGVBdCI6IjIwMjMtMDEtMzFUMDM6NDc6MTYuODA3WiIsIl9fdiI6MH0sImlhdCI6MTY3NTIyOTM0MSwiZXhwIjoxNjc1MzE1NzQxfQ.0qiOpUhPs85hrgztA6CzdnWsaJcNzIo-ufFBMGL5F1s"
-                }
-              }).then(({data}) => {
+                  'token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mbyI6eyJjb3ZlciI6bnVsbCwiY2hhbm5lbGRlcyI6bnVsbCwic3Vic2NyaWJlQ291bnQiOjAsIl9pZCI6IjYzZDc4ZWY1ZTNlMzdkYjk4YTEzM2I1NyIsInVzZXJOYW1lIjoia2FrIiwiZW1haWwiOiJ0ZXN0MkBxcS5jb20iLCJwaG9uZSI6IjEzMzI0NTM0NTYzIiwiaW1hZ2UiOm51bGwsImNyZWF0ZUF0IjoiMjAyMy0wMS0zMFQwOToyMTo0My44MTBaIiwidXBkYXRlQXQiOiIyMDIzLTAxLTMwVDA5OjIxOjQzLjgxMFoiLCJfX3YiOjB9LCJpYXQiOjE2NzUzODgwNTcsImV4cCI6MTY3NTQ3NDQ1N30.bINmqvJe4s_xSWpqUF8SGTAv17EK1Rgj_7YjQe6S8MY'}
+                }).then(({data}) => {
                 let uploadAuth = data.vod.UploadAuth
                 let uploadAddress = data.vod.UploadAddress
                 let videoId = data.vod.VideoId

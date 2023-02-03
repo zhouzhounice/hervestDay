@@ -1,4 +1,4 @@
-const {Video} = require("../model/index");
+const { Video, Videocomment } = require("../model/index");
 
 exports.videolist = async (req,res)=>{
   let {pageNum=1,pageSize=10} = req.body
@@ -13,7 +13,7 @@ exports.videolist = async (req,res)=>{
 }
 
 
-// 用户上传视频
+// 用户上传视频 将视频写入数据库
 exports.createvideo = async (req,res)=>{
   const id = req.user.userInfo._id;
   const videoModel = new Video({...req.body,user:id});
@@ -34,4 +34,23 @@ exports.video = async (req,res) =>{
                       .findById(videoId)
                       .populate('user','_id userName image')
   res.status(200).json(videoInfo)
+}
+
+// 用户评论功能
+exports.comment = async (req,res) =>{
+  const { id } = req.params
+  const videoInfo = await Video.findById(id);
+  if(!videoInfo) {
+    return res.status(404).json({err:"视频不存在"})
+  }
+
+  const comment = await new Videocomment({
+    content:req.body.content,
+    user:req.user.userInfo._id,
+    video:id
+  }).save()
+  videoInfo.commentCount++;
+  await videoInfo.save();
+
+  res.status(201).json(comment)
 }

@@ -8,7 +8,8 @@ const { videoValidate } = require("../middleWare/validator/videoValidate")
 
 router.get('/videolist',verifyToken(false),videoController.videolist)
 router.get('/video/:id',verifyToken(false),videoController.video)
-router.get('/getvoucher',verifyToken(),vodController.getVoucher)
+router.post('/comment/:id', verifyToken(), videoController.comment)
+router.get('/getvoucher',vodController.getVoucher)
 router.post('/createvideo',verifyToken(),videoValidate,videoController.createvideo)
 
 

@@ -21,7 +21,7 @@ userController.login
 .get('/subscribe/:userId',verifyToken(),userController.subscribe)
 .get('/unsubscribe/:userId',verifyToken(),userController.unsubscribe)
 .get('/getsubscribe/:userId', userController.getsubscribe)
-  .get('/getchannel/:userId', verifyToken(), userController.getchannel)
+.get('/getchannel/:userId', verifyToken(), userController.getchannel)
 .get('/list',verifyToken(),userController.list)
 .put('/',verifyToken(),validator.update,userController.update)
 .post('/headimg',verifyToken(),upload.single('headimg'),userController.headImg)
