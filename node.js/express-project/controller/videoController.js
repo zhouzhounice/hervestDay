@@ -1,4 +1,4 @@
-const { Video, Videocomment,Like } = require("../model/index");
+const { Video, Videocomment,Like,Subscribe } = require("../model/index");
 
 exports.videolist = async (req,res)=>{
   let {pageNum=1,pageSize=10} = req.body
@@ -30,9 +30,26 @@ exports.createvideo = async (req,res)=>{
 exports.video = async (req,res) =>{
   console.log(req.params)
   const { id:videoId } = req.params;
-  const videoInfo = await Video
+  
+  let videoInfo = await Video
                       .findById(videoId)
-                      .populate('user','_id userName image')
+                      .populate('user','_id userName image');
+    videoInfo = videoInfo.toJSON();
+    videoInfo.islike = false
+    videoInfo.isdislike = false
+  videoInfo.isSubscribe = false
+  if(req.user.userInfo){
+    const userId = req.user.userInfo._id;
+    if(await Like.findOne({user:userId,video:videoId,like:1})){
+      videoInfo.islike = true
+    }
+    if(await Like.findOne({user:userId,video:videoId,like:-1})){
+      videoInfo.isdislike = true
+    }
+    if (await Subscribe.findOne({user:userId,channel:videoInfo.user._id})){
+      videoInfo.isSubscribe = true
+    }
+  }
   res.status(200).json(videoInfo)
 }
 
@@ -170,4 +187,22 @@ exports.dislikeVideo = async(req,res) =>{
     ...videoInfo.toJSON(),
     isdisLike
   })
+}
+
+// 获取喜欢视频的列表
+exports.likeList = async(req,res)=>{
+  const {pageNum=1,pageSize=3} = req.body;
+  var likes = await Like.find({
+    like:1,
+    user:req.user.userInfo._id
+  }).skip((pageNum-1)*pageSize)
+  .limit(pageSize)
+  .populate('video','_id title videoId user');
+
+  var likeCount = await Like.countDocuments({
+    like: 1,
+    user: req.user.userInfo._id
+  })
+
+  res.status(200).json({...likes,likeCount})
 }

@@ -15,6 +15,8 @@ router.get('/getvoucher',vodController.getVoucher)
 router.post('/createvideo',verifyToken(),videoValidate,videoController.createvideo)
 router.get('/like/:id',verifyToken(),videoController.likeVideo)
 router.get('/dislike/:id',verifyToken(),videoController.dislikeVideo)
+router.get('/dislike/:id',verifyToken(),videoController.dislikeVideo)
+router.get('/likelist',verifyToken(),videoController.likeList)
 
 
 module.exports = router
