@@ -67,3 +67,20 @@ exports.commentList = async (req,res) =>{
   const commentCount = await Videocomment.countDocuments({video:id})
   res.status(200).json({ ...commentList, commentCount })
 }
+
+// 视频评论删除
+exports.deleteComment = async (req,res) =>{
+  const {id,commentId} = req.params;
+  const videoInfo = await Video.findById(id);
+  if(!videoInfo) {
+    return res.status(404).json('视频不存在');
+  }
+  const commentInfo = await Videocomment.findById(commentId);
+  if(!commentInfo){
+    return res.status(404).json('评论不存在');
+  }
+  await commentInfo.remove();
+  videoInfo.commentCount--;
+  await videoInfo.save();
+  res.status(200).json('删除成功！')
+}
