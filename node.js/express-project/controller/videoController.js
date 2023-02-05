@@ -1,4 +1,4 @@
-const { Video, Videocomment } = require("../model/index");
+const { Video, Videocomment,Like } = require("../model/index");
 
 exports.videolist = async (req,res)=>{
   let {pageNum=1,pageSize=10} = req.body
@@ -83,4 +83,91 @@ exports.deleteComment = async (req,res) =>{
   videoInfo.commentCount--;
   await videoInfo.save();
   res.status(200).json('删除成功！')
+}
+
+// 喜欢某视频
+exports.likeVideo = async(req,res) =>{
+  const { id } = req.params;
+  const {_id:userId } = req.user.userInfo
+  const videoInfo =await Video.findById(id);
+
+  if(!videoInfo){
+    return res.status(404).json('视频不存在');
+  }
+  let isLike = true;
+  let doc =await Like.findOne({
+    user:userId,
+    video:id
+  })
+  if(doc && doc.like === 1){
+    await doc.remove()
+    isLike = false
+  }else if(doc && doc.like === -1){
+    doc.like = 1;
+    await doc.save()
+  }else {
+    await new Like({
+      user:userId,
+      video:id,
+      like:1
+    }).save()
+  }
+  console.log(videoInfo.save);
+  videoInfo.likeCount = await Like.countDocuments({
+    video:id,
+    like:1
+  });
+  videoInfo.disLikeCount = await Like.countDocuments({
+    video:id,
+    like:-1
+  });
+  await videoInfo.save();
+  res.status(200).json({
+    ...videoInfo.toJSON(),
+    isLike
+  })
+}
+
+// 不喜欢某视频
+exports.dislikeVideo = async(req,res) =>{
+  const { id } = req.params;
+  const {_id:userId } = req.user.userInfo
+  const videoInfo =await Video.findById(id);
+
+  if(!videoInfo){
+    return res.status(404).json('视频不存在');
+  }
+  let isdisLike = true;
+  let doc =await Like.findOne({
+    user:userId,
+    video:id
+  })
+  if(doc && doc.like === -1){
+    await doc.remove()
+  }else if(doc && doc.like === 1){
+    doc.like = -1;
+    await doc.save()
+    isdisLike = false
+
+  }else {
+    await new Like({
+      user:userId,
+      video:id,
+      like:-1
+    }).save()
+    isdisLike = false
+  }
+  videoInfo.likeCount = await Like.countDocuments({
+    video:id,
+    like:1
+  });
+  videoInfo.disLikeCount = await Like.countDocuments({
+    video:id,
+    like:-1
+  });
+  await videoInfo.save();
+  res.status(200).json({
+    ...videoInfo.toJSON(),
+    isdisLike
+  })
 }

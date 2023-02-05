@@ -13,6 +13,8 @@ router.post('/comment/:id', verifyToken(), videoController.comment)
 router.delete('/comment/:id/:commentId', verifyToken(), videoController.deleteComment)
 router.get('/getvoucher',vodController.getVoucher)
 router.post('/createvideo',verifyToken(),videoValidate,videoController.createvideo)
+router.get('/like/:id',verifyToken(),videoController.likeVideo)
+router.get('/dislike/:id',verifyToken(),videoController.dislikeVideo)
 
 
 module.exports = router
