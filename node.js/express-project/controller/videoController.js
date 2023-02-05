@@ -54,3 +54,16 @@ exports.comment = async (req,res) =>{
 
   res.status(201).json(comment)
 }
+
+// 视频评论列表展示
+exports.commentList = async (req,res) =>{
+  const { id } = req.params;
+  const {pageNum = 1,pageSize = 10} = req.body;
+  const commentList =  await Videocomment
+                      .find({video:id})
+                      .skip((pageNum-1)*pageSize)
+                      .limit(pageSize)
+                      .populate('user',"_id userName image")
+  const commentCount = await Videocomment.countDocuments({video:id})
+  res.status(200).json({ ...commentList, commentCount })
+}
