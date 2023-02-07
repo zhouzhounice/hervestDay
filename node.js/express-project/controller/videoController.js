@@ -1,4 +1,4 @@
-const { Video, Videocomment,Like,Subscribe } = require("../model/index");
+const { Video, Videocomment,Like,Subscribe,Collect } = require("../model/index");
 
 exports.videolist = async (req,res)=>{
   let {pageNum=1,pageSize=10} = req.body
@@ -205,4 +205,27 @@ exports.likeList = async(req,res)=>{
   })
 
   res.status(200).json({...likes,likeCount})
+}
+
+// 收藏视频
+exports.collectVideo = async(req,res) =>{
+  const {id} = req.params;
+  const userId = req.user.userInfo._id;
+  const video = await Video.findById(id);
+  if(!video){
+    return res.status(404).json({err:"该视频不存在"});
+  }
+  var doc = await Collect.findOne({
+    user:userId,
+    video:id,
+  })
+  if(doc){
+    return rea.status(403).json({err:'你已经收藏过该视频了'});
+  }
+  const mycollect = await Collect({
+    user:userId,
+    video:id
+  }).save()
+
+  res.status(201).json(mycollect)
 }

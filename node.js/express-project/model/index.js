@@ -17,4 +17,5 @@ module.exports = {
   Subscribe:mongoose.model('Subscribe',require('./subscribeModel')),
   Videocomment: mongoose.model('Videocomment',require('./commentModel')),
   Like: mongoose.model('Like',require('./likeModel')),
+  Collect: mongoose.model('Collect',require('./collectModule')),
 }
