@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ioredis": "^5.3.0",
     "mongodb": "^4.13.0"
   }
 }
