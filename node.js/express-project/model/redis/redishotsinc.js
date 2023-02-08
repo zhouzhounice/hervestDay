@@ -10,3 +10,15 @@ exports.hotInc = async (videoId,incNum) =>{
   }
   return inc
 }
+
+exports.topHots = async (num) =>{
+  const sort = await redis.zrevrange('videohosts',0,-1,"withscores");
+  const newArr = sort.slice(0,num * 2)
+  const obj = {}
+  for(let i=0;i<newArr.length;i++){
+    if(i%2===0){
+      obj[newArr[i]] = newArr[i+1]
+    }
+  }
+  return obj
+}

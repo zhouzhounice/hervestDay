@@ -19,6 +19,7 @@ router
 .get('/dislike/:id',verifyToken(),videoController.dislikeVideo)
 .get('/likelist',verifyToken(),videoController.likeList)
 .get('/collect/:id',verifyToken(),videoController.collectVideo)
+.get('/gethots/:id',videoController.gethots)
 
 
 module.exports = router

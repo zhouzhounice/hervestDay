@@ -1,5 +1,5 @@
 const { Video, Videocomment,Like,Subscribe,Collect } = require("../model/index");
-const {hotInc} = require('../model/redis/redishotsinc')
+const {hotInc, topHots} = require('../model/redis/redishotsinc')
 
 exports.videolist = async (req,res)=>{
   let {pageNum=1,pageSize=10} = req.body
@@ -236,4 +236,12 @@ exports.collectVideo = async(req,res) =>{
   }
 
   res.status(201).json(mycollect)
+}
+
+// 获取热门视频
+exports.gethots = async (req,res) =>{
+  let {id} = req.params;
+  let tops = await topHots(id);
+  res.status(200).json({tops})
+
 }
