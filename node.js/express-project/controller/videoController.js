@@ -1,4 +1,5 @@
 const { Video, Videocomment,Like,Subscribe,Collect } = require("../model/index");
+const {hotInc} = require('../model/redis/redishotsinc')
 
 exports.videolist = async (req,res)=>{
   let {pageNum=1,pageSize=10} = req.body
@@ -50,6 +51,7 @@ exports.video = async (req,res) =>{
       videoInfo.isSubscribe = true
     }
   }
+  await hotInc(videoId,1)
   res.status(200).json(videoInfo)
 }
 
@@ -66,6 +68,7 @@ exports.comment = async (req,res) =>{
     user:req.user.userInfo._id,
     video:id
   }).save()
+  await hotInc(videoId,2)
   videoInfo.commentCount++;
   await videoInfo.save();
 
@@ -122,12 +125,14 @@ exports.likeVideo = async(req,res) =>{
   }else if(doc && doc.like === -1){
     doc.like = 1;
     await doc.save()
+    await hotInc(videoId,2)
   }else {
     await new Like({
       user:userId,
       video:id,
       like:1
     }).save()
+    await hotInc(id,2)
   }
   console.log(videoInfo.save);
   videoInfo.likeCount = await Like.countDocuments({
@@ -220,12 +225,15 @@ exports.collectVideo = async(req,res) =>{
     video:id,
   })
   if(doc){
-    return rea.status(403).json({err:'你已经收藏过该视频了'});
+    return res.status(403).json({err:'你已经收藏过该视频了'});
   }
   const mycollect = await Collect({
     user:userId,
     video:id
   }).save()
+  if (mycollect){
+    await hotInc(id,3)
+  }
 
   res.status(201).json(mycollect)
 }
