@@ -1,10 +1,12 @@
 const Koa = require('koa');
 // const Router = require('@koa/router');
 const router = require('./router');
+const {koaBody} = require('koa-body');
 const app = new Koa();
 // const router = new Router();
 
-app.use(router.routes())
+app.use(koaBody())
+app.use(router.routes());
 // app.use(async ctx=>{
 //   ctx.body = 'Hello koa'
 // })
