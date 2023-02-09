@@ -27,7 +27,10 @@ app.use(router.routes());
 //   console.log('three-2');
 // });
 // router.get();
-
+app.on('error',(err,ctx)=>{
+  console.log(err);
+  ctx.body = err
+})
 
 app.listen(3001,()=>{
   console.log('http://127.0.0.1:3001')
