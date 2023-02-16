@@ -64,6 +64,9 @@ import { Mode } from 'use-switch-tabs';
         <div>
           <router-link to="/about">About</router-link>
         </div>
+        <div>
+          <router-link to="/echarts">Echarts</router-link>
+        </div>
     </el-aside>
     <el-main>
       <router-view></router-view>
