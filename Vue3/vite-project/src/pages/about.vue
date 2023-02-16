@@ -12,6 +12,8 @@
     <CountVue />
     <hr />
     <Heading :level="1">Hello JSX</Heading>
+    <hr />
+    
   </div>
 </template>
 

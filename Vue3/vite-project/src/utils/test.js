@@ -46,7 +46,7 @@ const arr = [
   }
 ]
 
-export default function toArry(obj){
+function toArry(obj){
   const isObj = Object.prototype.toString.call(obj) === '[object Object]'
   if(!isObj) return
   return Object.keys(obj).map(item =>  ({
@@ -60,4 +60,10 @@ export default function toArry(obj){
     data:obj[item].map(it => it.statValue),
     type:'bar'
   }))
+}
+
+export default {
+  toArry,
+  obj,
+  arr
 }

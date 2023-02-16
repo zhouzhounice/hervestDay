@@ -11,9 +11,9 @@ function createStore(options){
 }
 
 class Store {
-  install(app){
-    app.provide(STORE_KEY,this)
-  }
+  // install(app){
+  //   app.provide(STORE_KEY,this)
+  // }
   constructor(options){
     this.$option = options;
     this._state = reactive({
