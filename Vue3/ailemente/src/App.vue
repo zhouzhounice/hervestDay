@@ -1,6 +1,18 @@
 <template>
   <div>
-     <el-container>  
+    
+  <el-button type="primary">
+    按钮
+  </el-button>
+  <el-button type="success">
+    按钮
+  </el-button>
+  <el-button>按钮</el-button>
+  <el-button size="small">
+    按钮
+  </el-button>
+  
+     <!-- <el-container>  
       <el-header>Header</el-header>  
       <el-main>Main</el-main>  
       <el-footer>Footer</el-footer>
@@ -26,7 +38,7 @@
           <el-footer>Footer</el-footer>
         </el-container>
       </el-container>
-    </el-container>
+    </el-container> -->
   </div>
 </template>
 <script setup lang="ts">
