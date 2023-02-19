@@ -12,14 +12,15 @@ export function createElement(type,config,children){
 }
 
 const ReactElement = function (type,key,ref,self,source,owner,props){
-	const element = {
+	let element;
+	element = {
 		$$typeof: REACT_ELEMENT_TYPE,
 		
 		type,
 		key,
 		ref,
 		props,
-		_owner:owner
-	}
+		_owner: owner
+	};
 	return element
 }
