@@ -1,5 +1,5 @@
-import { effect } from './effect';
-import { reactive } from './reactive';
+import { effect } from '../effect';
+import { reactive } from '../reactive';
 
 describe('测试响应式',()=>{
   test('reactive基本使用',()=>{
