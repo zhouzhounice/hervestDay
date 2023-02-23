@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "fivst-cli-anne": "^1.0.0"
+    "fivst-cli-anne": "^1.0.0",
+    "fivst-cli-lib":"^1.0.0"
   }
 }
