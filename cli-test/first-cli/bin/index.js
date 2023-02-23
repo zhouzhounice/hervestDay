@@ -4,7 +4,6 @@ console.log(lib);
 // 注册一个命名 imooc-test init
 const argv = require('process').argv;
 const command = argv[2]
-console.log(command)
 if(command){
   if(lib[command]){
     lib[command]();
