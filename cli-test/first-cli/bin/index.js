@@ -13,6 +13,10 @@ cli
 .alias("h","help")
 .alias("v","version")
 .strict()
+.recommendCommands()
+.fail((err)=>{
+  console.log(err)
+})
 .wrap(cli.terminalWidth())
 .options({
   debug:{
@@ -31,4 +35,17 @@ cli
 .epilogue(dedent`   Welcome!
 Your own footer description!
 `)  // 非严格模式可以识别简写h
+.command('init [name]','Do init a project',(yargs)=>{
+  yargs
+    .option('name',{
+      type:'string',
+      describe:'Name of a project',
+      alias:'n'
+    });
+},
+(argv) =>{
+  console.log(argv)
+}
+)
+
 .argv;
