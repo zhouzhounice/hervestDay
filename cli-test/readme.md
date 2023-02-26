@@ -46,3 +46,14 @@
 - 将脚手架发布的npm包
 
   **注：**npm publish时报403错误原因，重名了
+
+## 实现命令行UI显示
+
+### 命令行渲染标准
+
+- ANSI escape code
+
+### 脚手架常用UI库
+
+- chalk：颜色渲染
+- ora：loading状态
