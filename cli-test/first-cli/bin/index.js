@@ -16,5 +16,24 @@ program
   .option('-e, --env <envName>','获取环境变量名称')
   .parse(process.argv)
 
-console.log(program.opts().debug)
-console.log(program.opts().env)
+// console.log(program.opts().debug)
+// console.log(program.opts().env)
+
+// command注册命令
+const clone = program.command('clone')
+clone
+// .description('clone a repository')
+  .action(()=>{
+    console.log('do clone')
+  })
+
+// addCommand注册命令
+const service = new commander.Command('service');
+service
+  .command('star [port]')
+  .description('start service at some port')
+  .action((port)=>{
+    console.log('do service start',port)
+  })
+
+  console.log(clone)
