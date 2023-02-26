@@ -1,51 +1,20 @@
 #!/usr/bin/env node
+const commander = require('commander');
+const process = require('process');
+const pkg = require('../package.json');
+const program = new commander.Command(); // 新创建一个实例
 
-const yargs = require('yargs/yargs');
-const { hideBin } = require('yargs/helpers');
-const dedent = require('dedent')
-// console.log(hideBin(process.argv))
-const arg = hideBin(process.argv);
-const cli = yargs(arg);
+// program
+//   .version(pkg.version)
+//   .parse(process.argv)
 
-cli
-.usage('Usage:fivst-cli-anne [command] <options>')
-.demandCommand(1)
-.alias("h","help")
-.alias("v","version")
-.strict()
-.recommendCommands()
-.fail((err)=>{
-  console.log(err)
-})
-.wrap(cli.terminalWidth())
-.options({
-  debug:{
-    type:'boolean',
-    describe:'Bootstrap debug mode',
-    alias:'d'
-  }
-})
-.option('registry',{
-  type:'string',
-  describe:'Define global registry',
-  alias:'r'
-})
-  .group(['debug'],'Dev options:')
-  .group(['registry'],'Extra options:')
-.epilogue(dedent`   Welcome!
-Your own footer description!
-`)  // 非严格模式可以识别简写h
-.command('init [name]','Do init a project',(yargs)=>{
-  yargs
-    .option('name',{
-      type:'string',
-      describe:'Name of a project',
-      alias:'n'
-    });
-},
-(argv) =>{
-  console.log(argv)
-}
-)
+program
+  .name(Object.keys(pkg.bin)[0])
+  .usage('<command> [options]')
+  .version(pkg.version)
+  .option('-d, --debug','是否开启调试模式',false)
+  .option('-e, --env <envName>','获取环境变量名称')
+  .parse(process.argv)
 
-.argv;
+console.log(program.opts().debug)
+console.log(program.opts().env)
