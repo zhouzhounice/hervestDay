@@ -36,4 +36,4 @@ service
     console.log('do service start',port)
   })
 
-  console.log(clone)
+require('./inquirer')
