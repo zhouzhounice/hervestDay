@@ -1,0 +1,13 @@
+0 silly argv {
+0 silly argv   _: [ 'add' ],
+0 silly argv   globs: [ 'packages/init' ],
+0 silly argv   lernaVersion: '6.5.1',
+0 silly argv   '$0': 'C:\\Users\\安\\AppData\\Roaming\\npm\\node_modules\\lerna\\dist\\cli.js',
+0 silly argv   pkg: '@anne.cn/utild'
+0 silly argv }
+1 notice cli v6.5.1
+2 verbose rootPath D:\03_gitHub\hervestDay\cli-test\second-cli
+3 error HttpErrorGeneral: 404 Not Found - GET https://registry.npmjs.org/@anne.cn%2futild - Not found
+3 error     at D:\03_gitHub\hervestDay\cli-test\second-cli\node_modules\npm-registry-fetch\lib\check-response.js:93:15
+3 error     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+3 error     at async RegistryFetcher.packument (D:\03_gitHub\hervestDay\cli-test\second-cli\node_modules\pacote\lib\registry.js:92:19)

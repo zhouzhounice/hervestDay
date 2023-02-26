@@ -1,7 +1,7 @@
 <script setup>
 import {ref, computed, watchEffect} from 'vue';
 // import { useFullscreen } from '@vueuse/core';
-import {useMouse} from '../utils/useMouse';
+import {useMouse} from '../index/useMouse';
 let count = ref(1);
 let color = ref('pink');
 

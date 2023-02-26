@@ -6,7 +6,7 @@ export default{
 
 <script setup lang='ts'>
   import {computed,withDefaults} from 'vue';
-  import { useGlobalConfig } from '../../../utils/useGlobalConfig';
+  import { useGlobalConfig } from '../../../index/useGlobalConfig';
 
 
   interface Props {

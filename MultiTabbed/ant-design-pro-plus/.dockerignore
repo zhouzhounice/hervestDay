@@ -2,7 +2,7 @@
 
 # dependencies
 **/node_modules
-/src/utils/request-temp.js
+/src/index/request-temp.js
 
 # production
 /.vscode

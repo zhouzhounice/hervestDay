@@ -1,5 +1,6 @@
 'use strict';
 const  Command = require('@anne.cn/command')
+const {log} = require('@anne.cn/utils')
 class InitCommand extends Command {
   get command() {
     return 'init [name]'
@@ -17,7 +18,8 @@ class InitCommand extends Command {
   }
   
   action([name,opts]){
-    console.log(name,opts)
+    log.success('init',name,opts)
+    // console.log(name,opts)
   }
   
   preAction(){

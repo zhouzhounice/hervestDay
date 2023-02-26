@@ -1,7 +1,7 @@
 {
-  "name": "@anne.cn/init",
+  "name": "@anne.cn/utils",
   "version": "0.0.0",
-  "description": "init commend",
+  "description": "anne-cli utils",
   "author": "zhouzhounice <894425013@qq.com>",
   "homepage": "https://github.com/zhouzhounice/hervestDay#readme",
   "license": "ISC",
@@ -18,13 +18,12 @@
     "url": "git+https://github.com/zhouzhounice/hervestDay.git"
   },
   "scripts": {
-    "test": "node ./__tests__/init.test.js"
+    "test": "node ./__tests__/utils.test.js"
   },
   "bugs": {
     "url": "https://github.com/zhouzhounice/hervestDay/issues"
   },
   "dependencies": {
-    "@anne.cn/command": "^0.0.0",
-    "@anne.cn/utils": "^0.0.0"
+    "npmlog": "^7.0.1"
   }
 }

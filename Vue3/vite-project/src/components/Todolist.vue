@@ -3,7 +3,7 @@
     <input type="text" v-model="title" @keydown.enter="addTodo" />
     <button  @click="clear">清理</button>
     <ul v-if="todos.length">
-     <transition-group name="flip-list" tag="ul"> 
+     <transition-group name="flip-list" tag="ul">
       <li v-for="(todo,i) in todos" :key="todo.key">
         <input type="checkbox" v-model="todo.done" />
         <span :class="{ done: todo.done }"> {{ todo.title }}</span>
@@ -20,11 +20,11 @@
 </template>
 
 <script setup>
-import {useTodos} from '../utils/useTodos'
+import {useTodos} from '../index/useTodos'
 
-function removeTodo(e,i){ 
+function removeTodo(e,i){
   console.log(i)
-  todos.value.splice(i,1) 
+  todos.value.splice(i,1)
 }
 let { title, todos, addTodo, clear, active, all, allDone } = useTodos();
 </script>
