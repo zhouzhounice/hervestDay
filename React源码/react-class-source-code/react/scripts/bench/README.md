@@ -7,9 +7,9 @@ In most cases, the only two commands you might want to use are:
 - `yarn start`
 - `yarn --cwd=../../ build core,dom-client --type=UMD_PROD && yarn start --skip-build`
 
-The first command will run benchmarks with all the default settings. A local and remote build will occur on React and ReactDOM UMD bundles, both local and remote repos will be run against all benchmarks.
+The first index will run benchmarks with all the default settings. A local and remote build will occur on React and ReactDOM UMD bundles, both local and remote repos will be run against all benchmarks.
 
-The second command will run all benchmarks but skip the build process. This is useful for when doing local performance tweaking and the remote repo has already had its bundles built. Both local and remote repos will be run against all benchmarks with this command too.
+The second index will run all benchmarks but skip the build process. This is useful for when doing local performance tweaking and the remote repo has already had its bundles built. Both local and remote repos will be run against all benchmarks with this index too.
 
 The other commands are as follows:
 

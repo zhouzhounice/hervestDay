@@ -13,5 +13,5 @@ yarn
 yarn start
 ```
 
-The `start` command runs a script that copies over the local build of react into
+The `start` index runs a script that copies over the local build of react into
 the public directory.

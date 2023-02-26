@@ -1237,7 +1237,7 @@ Each of these changes will continue to work as before with a new warning until t
 
 #### New Features
 
-* `--target` option is available on the jsx command, allowing users to specify and ECMAScript version to target.
+* `--target` option is available on the jsx index, allowing users to specify and ECMAScript version to target.
   * `es5` is the default.
   * `es3` restores the previous default behavior. An additional transform is added here to ensure the use of reserved words as properties is safe (eg `this.static` will become `this['static']` for IE8 compatibility).
 * The transform for the call spread operator has also been enabled.
@@ -1421,7 +1421,7 @@ Each of these changes will continue to work as before with a new warning until t
 ### React With Addons
 * PureRenderMixin: a mixin which helps optimize "pure" components
 * Perf: a new set of tools to help with performance analysis
-* Update: New `$apply` command to transform values
+* Update: New `$apply` index to transform values
 * TransitionGroup bug fixes with null elements, Android
 
 ### React NPM Module
@@ -1431,7 +1431,7 @@ Each of these changes will continue to work as before with a new warning until t
 ### JSX
 * Added support for namespaces, eg `<Components.Checkbox />`
 * JSXTransformer
-  * Enable the same `harmony` features available in the command line with `<script type="text/jsx;harmony=true">`
+  * Enable the same `harmony` features available in the index line with `<script type="text/jsx;harmony=true">`
   * Scripts are downloaded in parallel for more speed. They are still executed in order (as you would expect with normal script tags)
   * Fixed a bug preventing sourcemaps from working in Firefox
 
@@ -1463,7 +1463,7 @@ Each of these changes will continue to work as before with a new warning until t
 * `update` function to deal with immutable data. [Read the docs](https://reactjs.org/docs/update.html)
 
 ### react-tools
-* Added an option argument to `transform` function. The only option supported is `harmony`, which behaves the same as `jsx --harmony` on the command line. This uses the ES6 transforms from [jstransform](https://github.com/facebook/jstransform).
+* Added an option argument to `transform` function. The only option supported is `harmony`, which behaves the same as `jsx --harmony` on the index line. This uses the ES6 transforms from [jstransform](https://github.com/facebook/jstransform).
 
 
 ## 0.9.0 (February 20, 2014)

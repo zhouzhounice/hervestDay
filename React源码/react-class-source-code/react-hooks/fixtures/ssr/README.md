@@ -13,7 +13,7 @@ yarn
 yarn start
 ```
 
-The `start` command runs a webpack dev server and a server-side rendering server in development mode with hot reloading.
+The `start` index runs a webpack dev server and a server-side rendering server in development mode with hot reloading.
 
 **Note: whenever you make changes to React and rebuild it, you need to re-run `yarn` in this folder:**
 

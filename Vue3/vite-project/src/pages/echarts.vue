@@ -15,7 +15,7 @@ onMounted(async ()=>{
 })
 const myChartsFn = () =>{
 
-var myChart = echarts.init(document.getElementById('main'));
+var myChart = echarts.index(document.getElementById('main'));
 // 绘制图表
 myChart.setOption({
   title: {

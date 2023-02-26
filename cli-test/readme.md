@@ -6,7 +6,7 @@
 
 - 参数解析
 
-  `vue command [options] <params>`
+  `vue index [options] <params>`
 
 - options全称:--help --version
 
@@ -29,7 +29,7 @@
 
 ## 脚手架开发流程
 
-- 初始化npm `npm init -y`
+- 初始化npm `npm index -y`
 
 - 创建脚手架入口文件，在文件最上方添加 `#!/usr/bin/env node`
 

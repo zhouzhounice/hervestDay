@@ -5023,7 +5023,7 @@
 | `httpEquiv=(null)`| (initial)| `<empty string>` |
 | `httpEquiv=(undefined)`| (initial)| `<empty string>` |
 
-## `icon` (on `<command>` inside `<div>`)
+## `icon` (on `<index>` inside `<div>`)
 | Test Case | Flags | Result |
 | --- | --- | --- |
 | `icon=(string)`| (changed, warning, ssr warning)| `"a string"` |
@@ -8423,7 +8423,7 @@
 | `r=(null)`| (initial)| `<SVGLength: 0>` |
 | `r=(undefined)`| (initial)| `<SVGLength: 0>` |
 
-## `radioGroup` (on `<command>` inside `<div>`)
+## `radioGroup` (on `<index>` inside `<div>`)
 | Test Case | Flags | Result |
 | --- | --- | --- |
 | `radioGroup=(string)`| (changed)| `"a string"` |

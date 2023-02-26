@@ -1,36 +1,26 @@
 {
-  "name": "@anne.cn/cli",
+  "name": "@anne.cn/command",
   "version": "0.0.0",
-  "description": "anne cli",
+  "description": "common command class",
   "author": "zhouzhounice <894425013@qq.com>",
   "homepage": "https://github.com/zhouzhounice/hervestDay#readme",
   "license": "ISC",
   "main": "lib/index.js",
-  "bin": {
-    "anne-cli": "bin/cli.js"
-  },
   "directories": {
     "lib": "lib",
     "test": "__tests__"
   },
   "files": [
-    "lib",
-    "bin"
+    "lib"
   ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zhouzhounice/hervestDay.git"
   },
   "scripts": {
-    "test": "node ./__tests__/cli.test.js"
+    "test": "node ./__tests__/command.test.js"
   },
   "bugs": {
     "url": "https://github.com/zhouzhounice/hervestDay/issues"
-  },
-  "dependencies": {
-    "@anne.cn/init": "^0.0.0",
-    "commander": "^10.0.0",
-    "import-local": "^3.1.0",
-    "npmlog": "^7.0.1"
   }
 }

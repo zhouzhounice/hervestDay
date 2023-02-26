@@ -14,7 +14,7 @@ program
   .version(pkg.version)
   .option('-d, --debug','是否开启调试模式',false)
   .option('-e, --env <envName>','获取环境变量名称')
-  .parse(process.argv)
+  
 
 // console.log(program.opts().debug)
 // console.log(program.opts().env)
@@ -36,4 +36,6 @@ service
     console.log('do service start',port)
   })
 
+program
+    .parse(process.argv)
 require('./inquirer')

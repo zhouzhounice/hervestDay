@@ -5,7 +5,7 @@ Lightweight bindings to Linux perf event counters.
 ```
 $ node
 > var PerfCounters = require('perf-counters');
-> PerfCounters.init();
+> PerfCounters.index();
 > var start = PerfCounters.getCounters(); console.log('test'); var end = PerfCounters.getCounters();
 test
 > start
