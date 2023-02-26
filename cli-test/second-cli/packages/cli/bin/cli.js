@@ -9,7 +9,8 @@ if(importLocal(__filename)){
 }else {
 	entry(process.argv.slice(2))
 }
-console.log("Hello from cli")
+// console.log(importLocal(__filename))
+// console.log(process.argv.slice(2))
 // module.exports = cli;
 //
 // function cli() {
