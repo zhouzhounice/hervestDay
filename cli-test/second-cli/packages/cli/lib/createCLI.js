@@ -31,7 +31,7 @@ export default function createCLI (){
 		.hook('preAction',preActions)
 	program.on('option:debug',function (){
 		if(program.opts().debug){
-			log.verbose('debug','调试模式已开启')
+			log.verbose('launch debug mode')
 		}
 	})
 	program.on('command:*',function (obj){
