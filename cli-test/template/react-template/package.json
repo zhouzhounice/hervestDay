@@ -1,0 +1,14 @@
+{
+  "name": "@anne.cn/template-react18",
+  "version": "1.0.0",
+  "description": "anne-cli template react18",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "anne",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  }
+}

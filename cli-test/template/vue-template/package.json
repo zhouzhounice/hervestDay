@@ -1,0 +1,14 @@
+{
+  "name": "@anne.cn/template-vue3",
+  "version": "1.0.1",
+  "description": "anne-cli template vue3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "anne",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  }
+}
