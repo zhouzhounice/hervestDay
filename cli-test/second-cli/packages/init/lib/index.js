@@ -19,7 +19,12 @@ class InitCommand extends Command {
   
   action([name,opts]){
     log.success('init',name,opts)
-    // console.log(name,opts)
+    // new Promise(resolve => {
+    //   resolve();
+    // }).then(()=>{
+    //   throw new Error('error from promise')
+    // })
+    // throw new Error('error from error')
   }
   
   preAction(){
