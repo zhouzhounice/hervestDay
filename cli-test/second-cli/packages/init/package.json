@@ -26,5 +26,6 @@
   "dependencies": {
     "@anne.cn/command": "^0.0.0",
     "@anne.cn/utils": "^0.0.0"
-  }
+  },
+  "type": "module"
 }

@@ -1,8 +1,11 @@
 #!/usr/bin/env node
 
-const importLocal = require('import-local');
-const {log} = require("@anne.cn/utils");
-const entry = require("../lib/index")
+import importLocal from 'import-local';
+import {log} from "@anne.cn/utils";
+import {filename} from 'dirname-filename-esm';
+import entry from "../lib/index.js";
+
+const __filename = filename(import.meta)
 
 if(importLocal(__filename)){
 	log.info('cli','使用本次  anne-cli  版本')

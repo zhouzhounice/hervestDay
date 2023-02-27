@@ -41,4 +41,4 @@ class Command {
       // console.log("post")
     }
 }
-module.exports = Command;
+export default Command;

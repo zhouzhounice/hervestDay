@@ -6,5 +6,6 @@
   ],
   "devDependencies": {
     "lerna": "^6.5.1"
-  }
+  },
+  "type": "module"
 }
