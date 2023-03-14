@@ -44,8 +44,13 @@ function animate() {
 	// 将相机与立方体渲染在渲染器中
 	
 	// 获取两次时间的时间间隔
-	let delateTime = clock.getDelta();
+	// let delateTime = clock.getDelta();
 	// console.log(delateTime)
+	
+	// 设置时钟
+	let time = clock.getElapsedTime();
+	cube.position.x = time % 5
+	
 	renderer.render( scene, camera );
 	// 下一帧重新调用渲染函数
 	requestAnimationFrame(animate)
