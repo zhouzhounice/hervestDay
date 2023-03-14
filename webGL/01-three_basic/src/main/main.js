@@ -23,6 +23,14 @@ const geometry = new THREE.BoxGeometry( 1, 1, 1 );
 const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
 // 生成立方体
 const cube = new THREE.Mesh( geometry, material );
+// 设置立方体的位置
+// cube.position.set(5,0,0)
+cube.position.x = 5
+// 设置立方体的缩放
+cube.scale.set(1,2,3)
+// 设置立方体的旋转
+cube.rotation.set(Math.PI / 4,0,0,'XYZ')
+
 // 将立方体添加到场景中
 scene.add( cube );
 
