@@ -9,7 +9,8 @@ const camera = new THREE.PerspectiveCamera(
 	window.innerWidth / window.innerHeight,
 	0.1,
 	1000 );
-
+// 创建一个时钟
+const clock = new THREE.Clock()
 // 创建渲染器
 const renderer = new THREE.WebGLRenderer();
 // 设置渲染器大小为屏幕长宽
@@ -41,6 +42,10 @@ function animate() {
 	// cube.rotation.x += 0.01;
 	// cube.rotation.y += 0.01;
 	// 将相机与立方体渲染在渲染器中
+	
+	// 获取两次时间的时间间隔
+	let delateTime = clock.getDelta();
+	// console.log(delateTime)
 	renderer.render( scene, camera );
 	// 下一帧重新调用渲染函数
 	requestAnimationFrame(animate)

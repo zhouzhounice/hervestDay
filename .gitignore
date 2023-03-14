@@ -11,12 +11,13 @@ tmp/
 # lib/
 
 # misc
-.idea/
 .happypack
 .DS_Store
 *.swp
 *.dia~
 .ice
+
+.parcel-cache/
 
 npm-debug.log*
 yarn-debug.log*
