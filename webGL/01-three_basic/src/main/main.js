@@ -25,7 +25,7 @@ const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
 const cube = new THREE.Mesh( geometry, material );
 // 设置立方体的位置
 // cube.position.set(5,0,0)
-cube.position.x = 5
+// cube.position.x = 5
 // 设置立方体的缩放
 cube.scale.set(1,2,3)
 // 设置立方体的旋转
@@ -42,13 +42,18 @@ const controls = new OrbitControls(camera, renderer.domElement)
 const axesHelper = new THREE.AxesHelper(5);
 scene.add(axesHelper)
 
-function animate() {
+function animate(time) {
 	// 设置旋转动画
 	// requestAnimationFrame( animate );
 	//
 	// cube.rotation.x += 0.01;
 	// cube.rotation.y += 0.01;
 	// 将相机与立方体渲染在渲染器中
+	
+	// 让物体匀速运动
+	const t = time / 1000 % 5;
+	cube.position.x = t;
+	
 	renderer.render( scene, camera );
 	// 下一帧重新调用渲染函数
 	requestAnimationFrame(animate)
