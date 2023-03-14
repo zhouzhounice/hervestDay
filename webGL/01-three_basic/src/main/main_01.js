@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import gsap from 'gsap';
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 
 // 创建场景
@@ -10,12 +9,10 @@ const camera = new THREE.PerspectiveCamera(
 	window.innerWidth / window.innerHeight,
 	0.1,
 	1000 );
-
-
+// 创建一个时钟
+const clock = new THREE.Clock()
 // 创建渲染器
-let renderer;
-renderer = new THREE.WebGLRenderer();
-
+const renderer = new THREE.WebGLRenderer();
 // 设置渲染器大小为屏幕长宽
 renderer.setSize( window.innerWidth, window.innerHeight );
 // 将内容添加到html页面中
@@ -38,11 +35,21 @@ const controls = new OrbitControls(camera, renderer.domElement)
 const axesHelper = new THREE.AxesHelper(5);
 scene.add(axesHelper)
 
-gsap.to(cube.position,{ x: 5, duration: 5, ease:'power1.inout'})
-gsap.to(cube.rotation,{ x: 2*Math.PI, duration: 5, ease:'power1.inout'})
-
 function animate() {
-
+	// 设置旋转动画
+	// requestAnimationFrame( animate );
+	//
+	// cube.rotation.x += 0.01;
+	// cube.rotation.y += 0.01;
+	// 将相机与立方体渲染在渲染器中
+	
+	// 获取两次时间的时间间隔
+	// let delateTime = clock.getDelta();
+	// console.log(delateTime)
+	
+	// 设置时钟
+	let time = clock.getElapsedTime();
+	cube.position.x = time % 5
 	
 	renderer.render( scene, camera );
 	// 下一帧重新调用渲染函数
