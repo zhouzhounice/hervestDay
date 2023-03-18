@@ -1,0 +1,16 @@
+﻿  hello.c
+D:\03_gitHub\hervestDay\数据结构与算法\proj_01\hello.c(5,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\03_gitHub\hervestDay\数据结构与算法\proj_01\hello.c(5,9): message : 请考虑在格式字符串中使用“%zd”
+D:\03_gitHub\hervestDay\数据结构与算法\proj_01\hello.c(6,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\03_gitHub\hervestDay\数据结构与算法\proj_01\hello.c(6,9): message : 请考虑在格式字符串中使用“%zd”
+D:\03_gitHub\hervestDay\数据结构与算法\proj_01\hello.c(7,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\03_gitHub\hervestDay\数据结构与算法\proj_01\hello.c(7,9): message : 请考虑在格式字符串中使用“%zd”
+D:\03_gitHub\hervestDay\数据结构与算法\proj_01\hello.c(8,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\03_gitHub\hervestDay\数据结构与算法\proj_01\hello.c(8,9): message : 请考虑在格式字符串中使用“%zd”
+D:\03_gitHub\hervestDay\数据结构与算法\proj_01\hello.c(9,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\03_gitHub\hervestDay\数据结构与算法\proj_01\hello.c(9,9): message : 请考虑在格式字符串中使用“%zd”
+D:\03_gitHub\hervestDay\数据结构与算法\proj_01\hello.c(10,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\03_gitHub\hervestDay\数据结构与算法\proj_01\hello.c(10,9): message : 请考虑在格式字符串中使用“%zd”
+D:\03_gitHub\hervestDay\数据结构与算法\proj_01\hello.c(11,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\03_gitHub\hervestDay\数据结构与算法\proj_01\hello.c(11,9): message : 请考虑在格式字符串中使用“%zd”
+  proj_01.vcxproj -> D:\03_gitHub\hervestDay\数据结构与算法\proj_01\x64\Debug\proj_01.exe
