@@ -179,17 +179,12 @@ export default {
       return false
     }
   },
-  beforeCreate() {
-
-    console.log('router22==', this.appId = this.$router.currentRoute.value.params.appId)
-    console.log('router22==', this.pageId = this.$router.currentRoute.value.params.pageId)
-
-  },
 
 
 
   created() {
-    console.log('router==',this.appId = this.$router.currentRoute.value.params.appId)
+    console.log("路由参数",this.$route.params);
+    // console.log('router==',this.appId = this.$router.currentRoute.value.params.appId)
     //console.log('router==',this.pageId = this.$router.currentRoute.value.params.pageId)
     const form = {
       app_id: this.appId?this.appId:this.$router.currentRoute.value.params.appId,

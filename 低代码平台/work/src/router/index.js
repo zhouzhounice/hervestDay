@@ -28,6 +28,10 @@ const routes= [              //配置路由，这里是个数组
         path: '/APP_:appId(.*)/PAGE_:pageId(.*)/form-design',
         name: 'form233',
         component: () => import('@/views/form-design/formDesign.vue')
+    },{
+        path: '/form-design/:appId/:pageId',
+        name: 'form233_1',
+        component: () => import('@/views/form-design/formDesign.vue')
     },
     {
         path: '/APP_:appId(.*)/PAGE_:pageId(.*)/flow-design',
