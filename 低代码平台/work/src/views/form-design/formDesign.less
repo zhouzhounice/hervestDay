@@ -1,0 +1,241 @@
+//common less
+.padding0 { padding: 0!important;}
+.component_item {
+  padding: 8px 10px;
+  background: #f6f7ff;
+  font-size: 12px;
+  cursor: move;
+  border-radius: 3px;
+  display: inline-block;
+  border: 0px dashed #787be8;
+  color: #787be8;
+  box-sizing: border-box;
+  width: 105px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 4px 0 rgb(115 77 191 / 20%);
+}
+
+//left
+.page_left {
+
+
+  .side-left {
+    height: calc(100vh - 50px);
+    >ul>li {margin: 20px 0;cursor: pointer;}
+    >ul>li.active {color: #409EFF;}
+  }
+  .left_components {text-align: left;}
+
+  .component_item {
+    padding: 5px 10px 8px 10px;
+    background: #f6f7ff;
+    font-size: 13px;
+    cursor: move;
+    border-radius: 3px;
+    display: inline-block;
+    border: 0px dashed #787be8;
+    color: #787be8;
+    box-sizing: border-box;
+    width: 105px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 4px 0 rgb(115 77 191 / 20%);
+
+    >.el-icon {
+      position: relative;
+      top: 4px;
+      margin-right: 2px;
+    }
+  }
+  .left_components.tree {
+    .component_tree {padding: 20px 0 0 0px;}
+    .custom-tree-node {
+      width: 100%;line-height: 40px;
+    }
+
+  }
+}
+
+//====================================
+.page_main {
+
+  .page_main_tool {
+
+    .btn_groups.left {
+      .layout_type {background: #ffffff;padding: 4px}
+      .active .layout_type {background: #cccccc;color:#409EFF}
+      .el-button+.el-button {margin-left: -1px;}
+    }
+    .el-button+.el-button {margin-left: 8px;}
+  }
+
+  .center_components {
+
+
+      .center_component_item {
+          padding: 10px;
+          position: relative;
+          border: 1px dashed #fff;
+
+          .el-form-item {
+            margin-bottom: 0 !important;
+          }
+
+          .toolBar {
+            position: relative;
+            top: -22px;right: -1px;z-index: 9;
+            display: none;
+            >span {
+              width: 40px;
+              height: 40px;
+              background: #006CFF;margin-left: 5px;padding: 4px 6px;
+              cursor: pointer;color: #fff;font-size: 13px;
+            }
+            >span.move{cursor: move}
+          }
+      }
+
+      .center_component_item:hover ,
+      .center_component_item.active-item {
+        background: #f6f7ff;
+        border-radius: 0px;
+        border: 1px dashed #409EFF;
+        box-sizing: border-box;
+        .toolBar {
+          display: initial;
+        }
+      }
+
+    //右侧拖动的元素
+    .component_item.sortable-chosen.ghost{
+      border-top: 8px solid #409EFF;
+      margin-left: 0;
+      height: 60px;
+      line-height: 40px;
+      width: 100%;
+      display: block !important;
+      float: none !important;
+      clear: both;text-align: left;
+    }
+    .center_component_item.ghost{
+      border-top: 8px solid #409EFF;
+      margin-left: 0;
+      height: 60px;
+      line-height: 40px;
+      width: 100%;
+      display: block !important;
+      float: none !important;
+      clear: both;
+    }
+
+
+    //右侧拖动的元素
+    .drawing-row-item {
+      position: relative;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      border: 1px dashed #ccc;
+      border-radius: 3px;
+      padding: 0 2px;
+      margin-bottom: 0px;
+      &.active-from-item {
+        border: 1px dashed #409EFF;
+      }
+
+      .toolBar {
+        position: absolute;
+        top: -22px;right: -1px;
+        display: none;
+
+        >span {
+          width: 40px;
+          height: 40px;
+          background: #006CFF;margin-left: 5px;padding: 4px 6px;
+          cursor: pointer;color: #fff;font-size: 13px;
+        }
+        >span.move{cursor: move}
+      }
+
+      &.active-item {
+        background: #f6f7ff;
+        border-radius: 0px;
+        border: 1px dashed #409EFF;
+        box-sizing: border-box;
+        >.toolBar {
+          display: initial;
+        }
+      }
+
+    }
+
+
+
+
+  }
+
+
+
+
+
+  .center_components .center_component_item .toolBar {
+    position: absolute;
+    top: -22px;
+    right: -1px;
+    z-index: 9;
+  }
+
+
+  .empty-info {
+    position: absolute;
+    top: 46%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 18px;
+    color: #bbbabd;
+    letter-spacing: 4px;
+  }
+}
+//=====================================
+
+
+//==============右侧属性===================
+.page_right {
+
+  .el-tabs{
+    width: 100%;
+    .el-tabs__header{margin-bottom: 0;}
+    .el-tabs__nav-wrap::after{
+      height: 1px;
+    }
+
+    .el-tabs__content {
+      .el-breadcrumb {
+        line-height: 30px;
+        border-bottom: 1px solid #c5c5c5;
+        padding: 0 15px;
+      }
+      .el-tab-pane {padding: 15px}
+    }
+  }
+  .el-tabs__nav{
+    width: 100%;
+    .el-tabs__item{
+      width: 33.33%;
+      text-align: center;
+      height: 41px;line-height: 40px;
+    }
+  }
+
+  .el-form .el-form-item {
+    margin-right: 0 ;
+  }
+}
+//=================================
+
+//公共的
+.el-input-group--prepend>.el-input__wrapper {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0
+}
