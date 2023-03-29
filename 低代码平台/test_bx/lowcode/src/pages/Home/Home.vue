@@ -23,7 +23,6 @@ import { useRouter } from "vue-router";
 const router = useRouter()
 
   const login = ()=>{
-    console.log('login')
     router.push('/login')
   }
 </script>

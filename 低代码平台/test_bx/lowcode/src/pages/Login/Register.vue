@@ -4,7 +4,7 @@
       <el-aside width="75%" class="deepColor">Aside</el-aside>
       <el-main class="lightColor login-position">
         <div class="login-container">
-          <div class="login-text">login</div>
+          <div class="login-text">register</div>
           <div class="login-form">
             <el-form
                 class="form-style"
@@ -19,20 +19,25 @@
                     placeholder="possword"
                     :prefix-icon="Lock"
                     type="password"
-                    show-password/>
+                    show-password
+                />
               </el-form-item>
               <el-form-item label="">
-                <el-button type="primary" @click="Login" class="button-style">登录</el-button>
+                <el-input
+                    v-model="FormLabel.posswordAgain"
+                    placeholder="possword Again"
+                    :prefix-icon="Lock"
+                    type="password"
+                    show-password
+                />
               </el-form-item>
-              <el-form-item label="没有账号？">
-                <el-button
-                    link
-                    type="primary"
-                    @click="toLogin"
-                >去注册</el-button
-                >
+              <el-form-item label="">
+                <el-button type="primary" @click="Register" class="button-style">注册</el-button>
               </el-form-item>
             </el-form>
+            <div>
+
+            </div>
           </div>
           <div></div>
         </div>
@@ -51,12 +56,15 @@ const FormLabel = reactive({
   name: '',
   possword: '',
 })
-const Login = () =>{
+
+const Register = ()=>{
   console.log(FormLabel)
+
 }
-const toLogin = ()=>{
-  router.push('/register')
-}
+</script>
+
+<script>
+
 </script>
 
 <style scoped>
