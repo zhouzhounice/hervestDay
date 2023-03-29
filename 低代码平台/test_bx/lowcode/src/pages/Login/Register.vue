@@ -9,14 +9,15 @@
             <el-form
                 class="form-style"
                 :model="FormLabel"
+                :rules="FormRules"
             >
-              <el-form-item label="">
-                <el-input v-model="FormLabel.name"  placeholder="username" :prefix-icon="User"/>
+              <el-form-item prop="username">
+                <el-input v-model="FormLabel.username"  placeholder="username" :prefix-icon="User"/>
               </el-form-item>
-              <el-form-item label="">
+              <el-form-item prop="FormLabel.password">
                 <el-input
-                    v-model="FormLabel.possword"
-                    placeholder="possword"
+                    v-model="FormLabel.password"
+                    placeholder="password"
                     :prefix-icon="Lock"
                     type="password"
                     show-password
@@ -24,8 +25,8 @@
               </el-form-item>
               <el-form-item label="">
                 <el-input
-                    v-model="FormLabel.posswordAgain"
-                    placeholder="possword Again"
+                    v-model="FormLabel.passwordAgain"
+                    placeholder="password Again"
                     :prefix-icon="Lock"
                     type="password"
                     show-password
@@ -48,24 +49,60 @@
 
 <script setup>
 import { reactive, ref } from 'vue'
+import axios from "axios";
+import { ElMessage } from 'element-plus'
 import { User, Lock } from '@element-plus/icons-vue'
 import { useRouter } from "vue-router";
 const router = useRouter()
 
+// 表单字段
 const FormLabel = reactive({
-  name: '',
-  possword: '',
+  username: '',
+  password: '',
+  passwordAgain:''
 })
-
+const FormRules = reactive({
+  username: [
+    { required: true, message: '请输入用户名', trigger: 'blur' }
+  ],
+ password:[
+  {required: true, message: '请输入密码', trigger: 'blur'}
+  ],
+  passwordAgain:[
+  {required: true, message: '请再次输入密码', trigger: 'blur'}
+]
+})
 const Register = ()=>{
-  console.log(FormLabel)
+  const {username,password,passwordAgain} = FormLabel
+  if(password !== passwordAgain){
+    return   ElMessage({
+      message: '两次输入的密码不一致！',
+      type: 'warning',
+    })
+  }
 
+  axios.post("/api/user/register",{
+    username,
+    password
+  }).then(res =>{
+    const {data:{data,status}} = res
+    console.log(data,status)
+    if(status.code === 200){
+    return ElMessage({
+        message: '注册成功！',
+        type: 'success',
+      })
+    }
+    ElMessage({
+      message: status.message,
+      type: 'warning',
+    })
+  }).catch(err =>{
+    console.log(err)
+  })
 }
 </script>
 
-<script>
-
-</script>
 
 <style scoped>
 .deepColor{
