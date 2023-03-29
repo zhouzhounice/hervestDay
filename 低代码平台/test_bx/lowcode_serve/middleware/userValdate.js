@@ -50,24 +50,15 @@ module.exports.loginValidate =async (ctx,next) =>{
             }
         }
         return
-    }else if(usernameValidate){
+    }else if(!usernameValidate){
         ctx.body = {
             status: {
                 code: 400,
-                message: "用户名已存在，请重新输入！",
+                message: "用户名未注册，请先注册！",
             }
         }
         return
     }
-    const {value} = schema
-    ctx.body = {
-        data:{
-            ...value
-        },
-        status: {
-            code: 200,
-            message: "注册成功！",
-        }
-    }
+
     await next()
 }
