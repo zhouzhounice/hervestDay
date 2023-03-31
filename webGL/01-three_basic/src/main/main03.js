@@ -1,9 +1,6 @@
 // 利用集合体设置一个面
 import * as THREE from 'three';
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
-
-// 目标：打造酷炫的三角形
-
 // 创建场景
 const scene = new THREE.Scene();
 // 创建一个时钟
@@ -24,29 +21,26 @@ renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 // 将内容添加到html页面中
 document.body.appendChild( renderer.domElement );
-
-// 随机创建立方体
-for (let i=0;i<50;i++){
-    // 每个三角形需要三个顶点
-    const geometry = new THREE.BufferGeometry();
-    // 顶点数组
-    const vertices =new Float32Array(9);
-    for (let j=0;j<9;j++){
-        vertices[j] = Math.random()*10 - 5
-    }
-    // 设置随机颜色
-    let color = new THREE.Color(Math.random(),Math.random(),Math.random())
-    // 设置面的属性
-    geometry.setAttribute('position',new THREE.BufferAttribute(vertices,3))
+// 创建立方体并且设置长宽高比例
+const geometry = new THREE.BufferGeometry( 1, 1, 1 );
+// 顶点数组
+const vertices =new Float32Array([
+    -1.0,-1.0,1.0,
+    1.0,-1.0,1.0,
+    1.0,1.0,1.0,
+    1.0,1.0,1.0,
+    -1.0,1.0,1.0,
+    -1.0,-1.0,1.0
+])
+// 设置面的属性
+geometry.setAttribute('position',new THREE.BufferAttribute(vertices,3))
 // 设置材质及颜色
-    const material = new THREE.MeshBasicMaterial( { color,transparent:true,opacity:0.5 } );
+const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
 // 生成立方体
-    const cube = new THREE.Mesh( geometry, material );
+const cube = new THREE.Mesh( geometry, material );
 // 将立方体添加到场景中
-    scene.add( cube );
-    console.log(cube)
-}
-
+scene.add( cube );
+console.log(cube)
 
 // 设置相机的z轴
 camera.position.z = 5;
