@@ -26,6 +26,21 @@ scene.add(camera);
 // 导入纹理
 const textureLoader = new THREE.TextureLoader();
 const doorColorTexture = textureLoader.load("./textures/door/color.jpg");
+// 设置纹理偏移量
+// doorColorTexture.offset.x = 0.5
+// doorColorTexture.offset.Y = 0.5
+// 设置旋转
+
+// 设置旋转的中心点
+// doorColorTexture.center.set(0.5,0.5)
+// doorColorTexture.rotation = Math.PI / 4
+
+// 设置纹理是否重复
+doorColorTexture.repeat.set(2,3)
+
+// 设置纹理重复
+doorColorTexture.wrapS = THREE.RepeatWrapping;
+doorColorTexture.wrapT = THREE.MirroredRepeatWrapping;
 
 // console.log(doorColorTexture);
 // 
