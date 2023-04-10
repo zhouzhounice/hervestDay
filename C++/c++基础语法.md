@@ -301,6 +301,8 @@ int main()
 
 ### 循环结构
 
+#### while循环
+
 ```c++
 #include <iostream>
 using namespace std;
@@ -323,5 +325,44 @@ int main()
 
 注：循环结构中，程序必须提供退出循环的出口。否则会出现死循环
 
+#### do...while循环
 
+```c++
+#include <iostream>
+
+using namespace std;
+
+
+int main() {
+    // do...while语句
+    // 在屏幕中输出0到9这10个数字
+    int num = 0;
+    do{
+        cout << num << endl;
+        num++;
+    } while (num<10);
+    // 
+    system("pause");
+    return 0;
+};
+```
+
+注：do...while与while区别，do...while要比while先执行一次
+
+#### for循环语句
+
+```c++
+#include<iostream>
+using namespace std;
+
+int main() {
+
+	for (int i = 0; i < 10; i++) {
+		cout << i << endl;
+	}
+
+	system("pause");
+	return 0;
+}
+```
 
