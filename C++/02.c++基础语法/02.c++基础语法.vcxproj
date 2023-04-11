@@ -130,6 +130,8 @@
     <ClCompile Include="01_do...while循环语句.cpp" />
     <ClCompile Include="02.for循环语句.cpp" />
     <ClCompile Include="03.嵌套循环.cpp" />
+    <ClCompile Include="04.数组.cpp" />
+    <ClCompile Include="05.一维数组数组名.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
