@@ -21,5 +21,8 @@
     <ClCompile Include="02.for循环语句.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="03.嵌套循环.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
