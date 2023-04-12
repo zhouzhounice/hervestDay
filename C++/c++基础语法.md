@@ -429,3 +429,48 @@ int main() {
 注意：
 
 数组名是常量，不可以进行赋值操作
+
+#### 冒泡排序
+
+__作用：__
+
+对数组中的元素进行排序
+
+__步骤：__
+
+1. 比较相邻元素，如果第二个元素比第一个元素大，就交换它们。
+2. 对每一对元素做同样的工作，执行完毕后，找到一个最大值。
+3. 重复以上的步骤，每次确定一个最大数，每次比较次数-1，直到结束
+
+```c++
+#include<iostream>
+using namespace std;
+
+int main() {
+	int arr[] = { 5,2,4,7,8,4,3,2,6,9 };
+	cout << "排序前的结果：" << endl;
+	for (int i = 0; i < 9; i++) {
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+
+	// 开始冒泡排序
+	for (int i = 0; i < 9 - 1; i++) {
+		for (int j = 0; j < 9 - i - 1; j++) {
+			if (arr[j] > arr[j + 1]) {
+				int temp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
+			}
+		}
+	}
+	cout << "排序后的结果：" << endl;
+	for (int i = 0; i < 9; i++) {
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+	system("pause");
+	return 0;
+}
+```
+

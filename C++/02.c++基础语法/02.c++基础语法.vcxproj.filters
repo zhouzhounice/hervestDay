@@ -30,5 +30,8 @@
     <ClCompile Include="05.一维数组数组名.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="06.冒泡排序.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

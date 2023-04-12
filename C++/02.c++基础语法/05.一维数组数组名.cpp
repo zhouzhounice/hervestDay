@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-int main() {
+int main_05() {
 	//int arr[] = { 1,20,30,40,50 };
 	//cout << sizeof(arr[0]) << endl;
 	//cout << (int)arr << endl;
