@@ -133,6 +133,7 @@
     <ClCompile Include="04.数组.cpp" />
     <ClCompile Include="05.一维数组数组名.cpp" />
     <ClCompile Include="06.冒泡排序.cpp" />
+    <ClCompile Include="07.二维数组.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
