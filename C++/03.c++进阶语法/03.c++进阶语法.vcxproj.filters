@@ -21,6 +21,12 @@
     <ClCompile Include="swap.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="02.指针.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="03.实现冒泡排序的函数.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="swap.h">

@@ -9,7 +9,7 @@ int add(int num1, int num2)
 	return sum;
 }
 
-int main() {
+int main_01() {
 	int a = 10;
 	int b = 20;
 	int res = add(a, b);

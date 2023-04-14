@@ -128,6 +128,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="01.函数.cpp" />
+    <ClCompile Include="02.指针.cpp" />
+    <ClCompile Include="03.实现冒泡排序的函数.cpp" />
     <ClCompile Include="swap.cpp" />
   </ItemGroup>
   <ItemGroup>
