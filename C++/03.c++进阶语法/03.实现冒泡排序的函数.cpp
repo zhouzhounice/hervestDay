@@ -16,7 +16,7 @@ void x(int *arr,int len)
 	}
 }
 
-int main() {
+int main_03() {
 	// 创建数组
 	int arr[10] = { 4,3,6,9,1,2,10,8,7,5 };
 	int leng = sizeof(arr) / sizeof(arr[0]);
