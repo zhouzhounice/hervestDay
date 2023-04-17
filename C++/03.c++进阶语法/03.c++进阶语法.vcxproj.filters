@@ -30,6 +30,9 @@
     <ClCompile Include="04.结构体.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="05.通讯录管理系统.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="swap.h">

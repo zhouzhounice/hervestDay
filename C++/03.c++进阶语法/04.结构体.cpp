@@ -22,7 +22,7 @@ struct Teacher
 	struct Student stu;
 };
 
-int main() {
+int main_04() {
 
 
 	// 通过学生类型创建具体的学生

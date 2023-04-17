@@ -131,6 +131,7 @@
     <ClCompile Include="02.指针.cpp" />
     <ClCompile Include="03.实现冒泡排序的函数.cpp" />
     <ClCompile Include="04.结构体.cpp" />
+    <ClCompile Include="05.通讯录管理系统.cpp" />
     <ClCompile Include="swap.cpp" />
   </ItemGroup>
   <ItemGroup>
