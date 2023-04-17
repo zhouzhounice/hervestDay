@@ -1,5 +1,110 @@
 #include<iostream>
+#include<string>
+constexpr auto MAX = 1000;;
 using namespace std;
+
+// 设计联系人结构体
+struct Person
+{
+	// 姓名
+	string MyName;
+	// 性别
+	int MySex;
+	// 年龄
+	int MyAge;
+	// 电话
+	string MyPhone;
+	// 住址
+	string MyAddress;
+};
+// 设计通讯录结构体
+struct AddressBooks
+{
+	// 通讯录中保存联系人的数组
+	struct Person personArray[MAX];
+	// 通讯录中记录的人员个数
+	int mySize;
+};
+
+// 添加联系人
+
+void addPerson(AddressBooks* abs) {
+	// 判断通讯录是否满人
+	if (abs->mySize == MAX)
+	{
+		cout << "通讯录已满" << endl;
+		return;
+	}
+	else {
+		// 输入姓名
+		string name;
+		cout << "请输入姓名：" << endl;
+		cin >> name;
+		abs->personArray[abs->mySize].MyName = name;
+		// 输入性别
+		int sex;
+		cout << "请输入性别：" << endl;
+		cout << "1--男" << endl;
+		cout << "2--女" << endl;
+		
+		while (true)
+		{
+			cin >> sex;
+			if (sex == 1 || sex == 2) {
+				abs->personArray[abs->mySize].MySex = sex;
+				break;
+			}
+			cout << "请按提示输入！" << endl;
+		}
+		
+		
+		// 输入年龄
+		int age_;
+		cout << "请输入年龄：" << endl;
+		cin >> age_;
+		abs->personArray[abs->mySize].MyAge = age_;
+		// 输入电话
+		string phone;
+		cout << "请输入电话：" << endl;
+		cin >> phone;
+		abs->personArray[abs->mySize].MyPhone = phone;
+		// 输入地址
+		string address;
+		cout << "请输入地址：" << endl;
+		cin >> address;
+		abs->personArray[abs->mySize].MyAddress = address;
+
+		// 更新通讯录中人数
+		abs->mySize++;
+
+		cout << "联系人添加成功" << endl;
+		system("pause");
+		system("cls"); // 清屏
+	}
+}
+
+// 显示联系人
+void showPerson(AddressBooks* abs)
+{
+	if (abs->mySize == 0)
+	{
+		cout << "当前记录为空" << endl;
+	}
+	else
+	{
+		for (int i = 0; i < abs->mySize; i++)
+		{
+			cout << "姓名：" << abs->personArray[i].MyName << "\t";
+			cout << "性别：" << (abs->personArray[i].MySex == 1 ? "男" : "女") << "\t";
+			cout << "年龄：" << abs->personArray[i].MyAge << "\t";
+			cout << "电话：" << abs->personArray[i].MyPhone << "\t";
+			cout << "住址：" << abs->personArray[i].MyAddress << endl;
+		}
+	}
+
+	system("pause");
+	system("cls");
+}
 
 // 菜单界面
 void showMenu()
@@ -22,7 +127,10 @@ void showMenu()
 
 int main()
 {
-
+	// 创建通讯录结构体变量
+	AddressBooks abs;
+	abs.mySize = 0; // 创建用户选择输入的变量
+	
 
 	while (true) {
 		showMenu();
@@ -35,8 +143,10 @@ int main()
 		switch (select)
 		{
 		case 1:
+			addPerson(&abs);
 			break;
 		case 2:
+			showPerson(&abs);
 			break;
 		case 3:
 			break;
