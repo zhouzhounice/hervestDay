@@ -106,6 +106,19 @@ void showPerson(AddressBooks* abs)
 	system("cls");
 }
 
+// 检测联系人是否在通讯录中
+int isExist(AddressBooks* abs, string name)
+{
+	for (int i = 0; i < abs->mySize; i++) {
+		// 找到用户输入的姓名
+		if (abs->personArray[i].MyName == name)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
 // 菜单界面
 void showMenu()
 {
@@ -149,6 +162,19 @@ int main()
 			showPerson(&abs);
 			break;
 		case 3:
+		{
+			cout << "请输入删除联系人姓名：" << endl;
+			string name;
+			cin >> name;
+			if (isExist(&abs, name) == -1) {
+				cout << "查无此人" << endl;
+			}
+			else
+			{
+				int i = isExist(&abs, name);
+					cout << i << endl;
+			}
+		}
 			break;
 		case 4:
 			break;
