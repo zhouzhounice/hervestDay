@@ -3,11 +3,20 @@ import { Survey } from "./ListPageType";
 
 interface ListItemProps {
   listItem: Survey;
+  deleteItem?: (id: string) => void;
+  editItem?: (id: string) => void;
 }
 function ListItem(props: ListItemProps) {
-  const { id, title, isPublic } = props.listItem;
+  const {
+    listItem: { id, title, isPublic },
+    deleteItem,
+    editItem,
+  } = props;
   const edit = (id: string) => {
-    console.log("edit", id);
+    editItem && editItem(id);
+  };
+  const deleteI = (id: string) => {
+    deleteItem && deleteItem(id);
   };
   return (
     <li key={id}>
@@ -15,13 +24,8 @@ function ListItem(props: ListItemProps) {
       <span style={isPublic ? { color: "green" } : { color: "red" }}>
         {isPublic ? "已发布" : "未发布"}
       </span>
-      <button
-        onClick={() => {
-          edit(id);
-        }}
-      >
-        编辑
-      </button>
+      <button onClick={() => edit(id)}>编辑</button>
+      <button onClick={() => deleteI(id)}>删除</button>
     </li>
   );
 }
