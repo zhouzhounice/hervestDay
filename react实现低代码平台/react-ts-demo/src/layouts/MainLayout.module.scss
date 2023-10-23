@@ -1,0 +1,23 @@
+.headerStyle{
+  text-align: center;
+  color: #fff;
+  height: 65px;
+  padding-inline: 65px;
+  line-height: 65px;
+  background-color: #7dbcea;
+}
+
+.contentStyle{
+  text-align: center;
+  line-height: 120px;
+  min-height: calc(100vh - 65px - 65px);
+  color: #fff;
+  background-color: #108ee9;
+}
+
+.footerStyle{
+  height: 65px;
+  text-align: center;
+  color: #fff;
+  background-color: #7dbcea;
+}
