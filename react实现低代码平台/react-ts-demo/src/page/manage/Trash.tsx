@@ -3,6 +3,7 @@ import { Typography, Table, Button, Space, Modal } from "antd";
 import styles from "./common.module.scss";
 import { Survey } from "./List";
 import { DeleteOutlined } from "@ant-design/icons";
+import ListSearch from "../../components/ListSearch";
 
 const initState: Survey[] = [
   { id: "p2", title: "问卷调查2", isPublic: true, isStarState: true },
@@ -73,7 +74,9 @@ const Trash: FC = () => {
         <div className={styles.left}>
           <Title level={3}>回收站</Title>
         </div>
-        <div className={styles.right}>(搜索)</div>
+        <div className={styles.right}>
+          <ListSearch />
+        </div>
       </div>
       <div className={styles.content}>{list.length > 0 && TableElem}</div>
     </>

@@ -1,14 +1,28 @@
-import React, { ChangeEvent, FC, useState } from "react";
+import React, { ChangeEvent, FC, useEffect, useState } from "react";
+import { useNavigate, useLocation, useSearchParams } from "react-router-dom";
 import { Input } from "antd";
+import { LIST_SEARCH_PARAM_KEY } from "../constant";
 
 const { Search } = Input;
 const ListSearch: FC = () => {
   const [value, setValue] = useState("");
+  const nav = useNavigate();
+  const { pathname } = useLocation();
+  // 获取url参数设置到input中
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    const newVal = searchParams.get(LIST_SEARCH_PARAM_KEY) || "";
+    setValue(newVal);
+  }, [searchParams]);
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
   };
   const handleSearch = (val: string) => {
-    console.log(val);
+    nav({
+      pathname,
+      search: `${LIST_SEARCH_PARAM_KEY}=${val}`,
+    });
   };
   return (
     <Search
