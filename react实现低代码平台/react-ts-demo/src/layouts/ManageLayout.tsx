@@ -1,4 +1,5 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
+import { useRequest } from "ahooks";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { Space, Button, Divider, message } from "antd";
 import {
@@ -13,17 +14,17 @@ import { createQuestionService } from "../services/question";
 const ManageLayout: FC = () => {
   const nav = useNavigate();
   const { pathname } = useLocation();
-  const [loading, setLoading] = useState(false);
-  const handleCreateClick = async () => {
-    setLoading(true);
-    const data = await createQuestionService();
-    const { id } = data || {};
-    if (id) {
-      nav(`/question/edit/${id}`);
-      message.success("创建成功");
-    }
-    setLoading(false);
-  };
+
+  const { loading, run: handleCreateClick } = useRequest(
+    createQuestionService,
+    {
+      manual: true,
+      onSuccess(result) {
+        nav(`/question/edit/${result.id}`);
+        message.success("创建成功");
+      },
+    },
+  );
   return (
     <div className={Styles.containerStyle}>
       <div className={Styles.left}>

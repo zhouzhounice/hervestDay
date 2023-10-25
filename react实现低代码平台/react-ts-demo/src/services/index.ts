@@ -9,7 +9,6 @@ const instance = axios.create({
 instance.interceptors.response.use((res) => {
   const resData = (res.data || {}) as ResType;
   const { error, data, msg } = resData;
-  console.log(resData);
   if (error !== 0) {
     // 错误提示
     if (msg) {
