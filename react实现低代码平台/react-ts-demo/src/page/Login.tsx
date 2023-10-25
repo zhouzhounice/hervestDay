@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import styles from "./Form.module.scss";
 import { Button, Form, Input, Space, Typography, Checkbox } from "antd";
 import { UserOutlined } from "@ant-design/icons";
@@ -11,9 +11,41 @@ type UserInfo = {
 
 const { Title } = Typography;
 
+const USERNAME_KEY = "USERNAME";
+const PASSWORD_KEY = "PASSWORD";
+
+function rememberUser(username: string, password: string) {
+  localStorage.setItem(USERNAME_KEY, username);
+  localStorage.setItem(PASSWORD_KEY, password);
+}
+
+function deleteUserFromStorage() {
+  localStorage.removeItem(USERNAME_KEY);
+  localStorage.removeItem(PASSWORD_KEY);
+}
+
+function getUserInfoFromStorage() {
+  return {
+    username: localStorage.getItem(USERNAME_KEY),
+    password: localStorage.getItem(PASSWORD_KEY),
+  };
+}
+
 const Login: FC = () => {
-  const handleSubmit = (val: UserInfo) => {
-    console.log(val);
+  const [form] = Form.useForm();
+
+  useEffect(() => {
+    const { username, password } = getUserInfoFromStorage();
+    form.setFieldsValue({ username, password });
+  }, []);
+  const onFinish = (values: UserInfo) => {
+    const { username, password, remember } = values || {};
+
+    if (remember) {
+      rememberUser(username, password);
+    } else {
+      deleteUserFromStorage();
+    }
   };
   return (
     <>
@@ -30,8 +62,10 @@ const Login: FC = () => {
             labelCol={{ span: 8 }}
             wrapperCol={{ span: 16 }}
             style={{ maxWidth: 600 }}
-            onFinish={handleSubmit}
+            onFinish={onFinish}
+            initialValues={{ remember: true }}
             autoComplete="off"
+            form={form}
           >
             <Form.Item
               label="用户名"

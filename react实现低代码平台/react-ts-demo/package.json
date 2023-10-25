@@ -14,6 +14,7 @@
     "@types/react-dom": "^18.2.14",
     "@types/react-redux": "^7.1.28",
     "antd": "^5.10.2",
+    "axios": "^1.5.1",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
     "immer": "^10.0.3",
@@ -30,9 +31,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject",
     "lint": "eslint \"src/**/*.+(js|ts|jsx|tsx)\"",
     "format": "prettier --write \"src/**/*.+(js|ts|jsx|tsx)\""
@@ -56,6 +57,7 @@
     ]
   },
   "devDependencies": {
+    "@craco/craco": "^7.1.0",
     "@typescript-eslint/eslint-plugin": "^6.8.0",
     "@typescript-eslint/parser": "^6.8.0",
     "eslint": "^8.52.0",
