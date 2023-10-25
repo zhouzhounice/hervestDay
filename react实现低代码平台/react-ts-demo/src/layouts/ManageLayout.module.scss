@@ -1,13 +1,14 @@
 .containerStyle{
+  padding: 24px 0;
+  width: 1500px;
+  margin: 0 auto;
   display: flex;
-  min-height: calc(100vh - 65px - 65px);
-  color: #000;
-  background-color: #fff;
+
   .left{
-    flex: 1;
-    background-color: lightpink;
+    width: 120px;
   }
   .right{
-    flex: 3;
+    flex: 1;
+    margin-left: 60px;
   }
 }

@@ -1,19 +1,19 @@
-// import React from "react";
-// import { RouterProvider } from "react-router-dom";
-// import routerConfig from "./router";
-//
-// function App() {
-//   return <RouterProvider router={routerConfig}></RouterProvider>;
-// }
-//
-// export default App;
-
 import React from "react";
-// import CountDemo from "./demo/Reducer/CountDemo";
-import TodoDemo from "./demo/Reducer/TodoDemo";
+import { RouterProvider } from "react-router-dom";
+import routerConfig from "./router";
 
 function App() {
-  return <TodoDemo></TodoDemo>;
+  return <RouterProvider router={routerConfig}></RouterProvider>;
 }
 
 export default App;
+
+// import React from "react";
+// // import CountDemo from "./demo/Reducer/CountDemo";
+// import TodoDemo from "./demo/Reducer/TodoDemo";
+//
+// function App() {
+//   return <TodoDemo></TodoDemo>;
+// }
+//
+// export default App;

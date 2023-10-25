@@ -1,5 +1,5 @@
 import React from "react";
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 
 import MainLayout from "../layouts/MainLayout";
 import ManageLayout from "../layouts/ManageLayout";
@@ -8,7 +8,7 @@ import Home from "../page/Home";
 import Login from "../page/Login";
 import Register from "../page/Register";
 import NotFound from "../page/NotFound";
-import QuestionCard from "../page/manage/QuesitonCard";
+import QuestionCard from "../page/manage/List";
 import Star from "../page/manage/Star";
 import Trash from "../page/manage/Trash";
 import Edit from "../page/questions/Edit";
@@ -24,17 +24,22 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/login",
+        path: "login",
         element: <Login />,
       },
       {
-        path: "/register",
+        path: "register",
         element: <Register />,
       },
       {
         path: "manage",
         element: <ManageLayout />,
         children: [
+          {
+            index: true, // This will match /manage
+            // Redirect to /manage/list
+            element: <Navigate to="list" replace />,
+          },
           {
             path: "list",
             element: <QuestionCard />,
@@ -44,7 +49,7 @@ const router = createBrowserRouter([
             element: <Star />,
           },
           {
-            path: "Trash",
+            path: "trash",
             element: <Trash />,
           },
         ],
@@ -72,3 +77,10 @@ const router = createBrowserRouter([
 ]);
 
 export default router;
+
+// -------------------分割线--------------
+
+export const HOME_PATHNAME: string = "/home";
+export const LOGIN_PATHNAME: string = "/login";
+export const REGISTER_PATHNAME: string = "/register";
+export const MANAGE_PATHNAME: string = "/manage";

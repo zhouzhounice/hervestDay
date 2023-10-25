@@ -1,23 +1,24 @@
 .headerStyle{
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  padding: 0 24px;
   color: #fff;
-  height: 65px;
-  padding-inline: 65px;
-  line-height: 65px;
-  background-color: #7dbcea;
+  background-color: #011424;
+  .left{
+
+  }
+  .right{
+
+  }
 }
 
 .contentStyle{
-  text-align: center;
-  line-height: 120px;
-  min-height: calc(100vh - 65px - 65px);
-  color: #fff;
-  background-color: #108ee9;
+  min-height: calc(100vh - 64px - 71px);
 }
 
 .footerStyle{
-  height: 65px;
   text-align: center;
-  color: #fff;
-  background-color: #7dbcea;
+  background-color: #f7f7f7;
+  border-top:1px solid #E8E8E8;
 }
