@@ -8,8 +8,9 @@
 }
 
 .title {
+  height: 40px;
   display: flex;
-
+  align-items: center;
   .left {
     flex: 1;
   }
@@ -37,3 +38,4 @@
     }
   }
 }
+

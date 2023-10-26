@@ -1,5 +1,6 @@
 import axios from "axios";
 import { message } from "antd";
+import type { ResType } from "./common";
 
 const instance = axios.create({
   timeout: 10 * 1000,
@@ -22,13 +23,3 @@ instance.interceptors.response.use((res) => {
 });
 
 export default instance;
-
-export type ResType = {
-  error: number;
-  data?: ResDataType;
-  msg?: string;
-};
-
-export type ResDataType = {
-  [key: string]: unknown;
-};

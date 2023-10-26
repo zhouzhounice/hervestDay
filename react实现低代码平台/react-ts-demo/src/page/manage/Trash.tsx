@@ -1,14 +1,12 @@
 import React, { FC, useState } from "react";
-import { Typography, Table, Button, Space, Modal } from "antd";
+import { Typography, Table, Button, Space, Modal, Spin, Tag } from "antd";
 import styles from "./common.module.scss";
-import { Survey } from "./List";
 import { DeleteOutlined } from "@ant-design/icons";
 import ListSearch from "../../components/ListSearch";
+import type { ItemType } from "../../components/ListItem";
+import useLoadQuesList from "../../hooks/useLoadQuesList";
+import CommonPagination from "../../components/CommonPagination";
 
-const initState: Survey[] = [
-  { id: "p2", title: "问卷调查2", isPublic: true, isStarState: true },
-  { id: "p4", title: "问卷调查4", isPublic: true, isStarState: true },
-];
 const columns = [
   {
     title: "标题",
@@ -17,10 +15,17 @@ const columns = [
   {
     title: "是否发布",
     dataIndex: "isPublic",
+    render: (isPublished: boolean) => {
+      return isPublished ? (
+        <Tag color="processing">已发布</Tag>
+      ) : (
+        <Tag>未发布</Tag>
+      );
+    },
   },
   {
     title: "答卷",
-    dataIndex: "isStarState",
+    dataIndex: "answerCount",
   },
   {
     title: "创建时间",
@@ -31,7 +36,11 @@ const columns = [
 const { Title } = Typography;
 const { confirm } = Modal;
 const Trash: FC = () => {
-  const [list] = useState<Survey[]>(initState);
+  const { data = {}, loading } = useLoadQuesList({ isDelete: true });
+  const { list, total }: { list: ItemType[]; total: number } = data as {
+    list: ItemType[];
+    total: number;
+  };
   const [selectIds, setSelectIds] = useState<string[]>([]);
   const del = () => {
     confirm({
@@ -54,8 +63,12 @@ const Trash: FC = () => {
         </Space>
       </div>
       <Table
-        dataSource={initState}
+        dataSource={list || []}
         columns={columns}
+        loading={loading}
+        locale={{
+          emptyText: "暂无数据",
+        }}
         pagination={false}
         rowSelection={{
           type: "checkbox",
@@ -64,7 +77,7 @@ const Trash: FC = () => {
             console.log(selectIds);
           },
         }}
-        rowKey={(q) => q.id}
+        rowKey={(q: ItemType) => q._id as string}
       />
     </>
   );
@@ -78,7 +91,17 @@ const Trash: FC = () => {
           <ListSearch />
         </div>
       </div>
-      <div className={styles.content}>{list.length > 0 && TableElem}</div>
+      <div className={styles.content}>
+        {loading && (
+          <div className={styles.example}>
+            <Spin />
+          </div>
+        )}
+        {!loading && (list || []).length > 0 && TableElem}
+      </div>
+      <div className={styles.footer}>
+        <CommonPagination total={total} />
+      </div>
     </>
   );
 };

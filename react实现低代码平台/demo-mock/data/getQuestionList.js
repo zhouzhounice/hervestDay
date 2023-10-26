@@ -1,17 +1,18 @@
 const Mock = require('mockjs');
 const Random = Mock.Random
 
-function getQuestionList(len = 50,isDelete=false)
+function getQuestionList(opt)
 {
+    const {len=10,isDelete=false,isStar=false} = opt
     const list = []
     for (let i =0;i<len;i++){
         list.push({
             _id:Random.id(),
             title:Random.ctitle(),
             isPublished:Random.boolean(),
-            isStar:Random.boolean(),
-            answerCount:Random.natural(),
-            createdAt:Random.datetime(),
+            isStar,
+            answerCount:Random.natural(1,100),
+            createdAt:Random.date('yyyy-MM-dd'),
             isDelete
         })
     }

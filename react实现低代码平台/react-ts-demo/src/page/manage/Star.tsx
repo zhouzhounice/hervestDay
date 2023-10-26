@@ -1,17 +1,19 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import styles from "./common.module.scss";
-import { Empty, Typography } from "antd";
+import { Spin, Typography } from "antd";
 import ListItem from "../../components/ListItem";
-import { Survey } from "./List";
+import type { ItemType } from "../../components/ListItem";
 import ListSearch from "../../components/ListSearch";
+import useLoadQuesList from "../../hooks/useLoadQuesList";
+import CommonPagination from "../../components/CommonPagination";
 
-const initState: Survey[] = [
-  { id: "p2", title: "问卷调查2", isPublic: true, isStarState: true },
-  { id: "p4", title: "问卷调查4", isPublic: true, isStarState: true },
-];
 const { Title } = Typography;
 const Star: FC = () => {
-  const [list] = useState<Survey[]>(initState);
+  const { data = {}, loading } = useLoadQuesList({ isStar: true });
+  const { list, total }: { list: ItemType[]; total: number } = data as {
+    list: ItemType[];
+    total: number;
+  };
   return (
     <>
       <div className={styles.header}>
@@ -23,13 +25,20 @@ const Star: FC = () => {
         </div>
       </div>
       <div className={styles.content}>
-        {list.length === 0 && <Empty description="暂无数据" />}
-        {list.length > 0 &&
-          list.map((item: Survey) => (
-            <ListItem listItem={item} key={item.id} />
+        {loading && (
+          <div className={styles.example}>
+            <Spin />
+          </div>
+        )}
+        {!loading &&
+          (list || []).length > 0 &&
+          list.map((item: ItemType) => (
+            <ListItem listItem={item} key={item._id} />
           ))}
       </div>
-      <div className={styles.footer}>list page footer</div>
+      <div className={styles.footer}>
+        <CommonPagination total={total} />
+      </div>
     </>
   );
 };

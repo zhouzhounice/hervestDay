@@ -36,11 +36,15 @@ module.exports = [
         // 获取问卷列表
         url:'/api/question',
         method: 'get',
-        response() {
+        response(ctx) {
+            const {url='',query={}} =ctx
+            const isDelete = url.indexOf('isDelete=true')>=0
+            const isStar = url.indexOf('isStar=true')>=0
+            const pageSize = parseInt(query.pageSize)||10
             return {
                 error:0,
                 data:{
-                    list:getQuestionList(),
+                    list:getQuestionList({isDelete, isStar,len:pageSize}),
                     total:100
                 }
             };
