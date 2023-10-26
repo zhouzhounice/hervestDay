@@ -16,7 +16,7 @@ export type OptionType = {
 export const useLoadQuesList = (opt: Partial<OptionType> = {}) => {
   const { isStar, isDelete } = opt;
   const [searchParam] = useSearchParams();
-  const { data, loading } = useRequest(
+  const { data, loading, refresh } = useRequest(
     async () => {
       const keyword = searchParam.get(LIST_SEARCH_PARAM_KEY) || "";
       const page = parseInt(searchParam.get(LIST_PAGE_PARAM_KEY) || "") || 1;
@@ -35,7 +35,7 @@ export const useLoadQuesList = (opt: Partial<OptionType> = {}) => {
       refreshDeps: [searchParam],
     },
   );
-  return { data, loading };
+  return { data, loading, refresh };
 };
 
 export default useLoadQuesList;

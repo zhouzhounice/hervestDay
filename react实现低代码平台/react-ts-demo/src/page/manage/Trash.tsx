@@ -1,11 +1,22 @@
 import React, { FC, useState } from "react";
-import { Typography, Table, Button, Space, Modal, Spin, Tag } from "antd";
+import {
+  Typography,
+  Table,
+  Button,
+  Space,
+  Modal,
+  Spin,
+  Tag,
+  message,
+} from "antd";
 import styles from "./common.module.scss";
 import { DeleteOutlined } from "@ant-design/icons";
 import ListSearch from "../../components/ListSearch";
 import type { ItemType } from "../../components/ListItem";
 import useLoadQuesList from "../../hooks/useLoadQuesList";
 import CommonPagination from "../../components/CommonPagination";
+import { useRequest } from "ahooks";
+import { updateQuestionService } from "../../services/question";
 
 const columns = [
   {
@@ -36,12 +47,29 @@ const columns = [
 const { Title } = Typography;
 const { confirm } = Modal;
 const Trash: FC = () => {
-  const { data = {}, loading } = useLoadQuesList({ isDelete: true });
+  const { data = {}, loading, refresh } = useLoadQuesList({ isDelete: true });
   const { list, total }: { list: ItemType[]; total: number } = data as {
     list: ItemType[];
     total: number;
   };
   const [selectIds, setSelectIds] = useState<string[]>([]);
+  // 恢复
+  const { run: recover } = useRequest(
+    async () => {
+      for await (const id of selectIds) {
+        await updateQuestionService(id, { isDelete: false });
+      }
+    },
+    {
+      manual: true,
+      debounceWait: 500,
+      onSuccess() {
+        message.success("恢复成功");
+        refresh();
+        setSelectIds([]);
+      },
+    },
+  );
   const del = () => {
     confirm({
       title: "确认彻底删除该问卷？",
@@ -54,7 +82,11 @@ const Trash: FC = () => {
     <>
       <div style={{ marginBottom: "16px" }}>
         <Space>
-          <Button type="primary" disabled={selectIds.length === 0}>
+          <Button
+            type="primary"
+            disabled={selectIds.length === 0}
+            onClick={recover}
+          >
             恢复
           </Button>
           <Button danger disabled={selectIds.length === 0} onClick={del}>
