@@ -17,3 +17,18 @@ export async function getQuestionListService(
   const url = "/api/question";
   return (await axios.get(url, { params: opt })) as ResDataType;
 }
+
+export async function updateQuestionService(
+  id: string,
+  opt: { [key: string]: unknown },
+): Promise<ResDataType> {
+  const url = `/api/question/${id}`;
+  return (await axios.patch(url, opt)) as ResDataType;
+}
+
+export async function duplicateQuestionService(
+  id: string,
+): Promise<ResDataType> {
+  const url = `/api/question/duplicate/${id}`;
+  return (await axios.post(url)) as ResDataType;
+}
