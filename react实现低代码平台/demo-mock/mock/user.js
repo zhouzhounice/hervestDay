@@ -11,7 +11,7 @@ module.exports = [
             return {
                 error:0,
                 data:{
-                    username:Random.title(),
+                    username:Random.title(1),
                     nickname:Random.cname()
                 }
             }

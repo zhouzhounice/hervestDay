@@ -1,8 +1,9 @@
 import React, { FC } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { Layout } from "antd";
 import Logo from "../components/Logo";
 import Styles from "./MainLayout.module.scss";
+import UserInfo from "../components/UserInfo";
 
 const { Header, Footer, Content } = Layout;
 
@@ -14,7 +15,7 @@ const MainLayout: FC = () => {
           <Logo />
         </div>
         <div className={Styles.right}>
-          <Link to={"login"}>登录</Link>
+          <UserInfo />
         </div>
       </Header>
       <Content className={Styles.contentStyle}>

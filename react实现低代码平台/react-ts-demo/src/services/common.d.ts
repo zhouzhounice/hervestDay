@@ -17,6 +17,9 @@ export type RegisterInfoType = {
   password: string;
 } & UserInfoType;
 
+export type LoginResultType = {
+  token: string;
+};
 export type SearchOption = {
   keyword: string;
   isStar: boolean;

@@ -15,6 +15,7 @@ import { useRequest } from "ahooks";
 import { setToken } from "../utils/user-token";
 import { loginService } from "../services/user";
 import { MANAGE_PATHNAME, REGISTER_PATHNAME } from "../router";
+import type { ResDataType } from "../services/common";
 
 type UserInfo = {
   [key: string]: string;
@@ -47,13 +48,13 @@ const Login: FC = () => {
   const [form] = Form.useForm();
 
   const { run } = useRequest(
-    async (username, password): Promise<any> => {
-      await loginService(username, password);
+    async (username, password): Promise<ResDataType> => {
+      return await loginService(username, password);
     },
     {
       manual: true,
       onSuccess(result) {
-        const { token = "" } = result;
+        const { token = "" } = result as { token: string };
         setToken(token);
         message.success("登录成功");
         nav(MANAGE_PATHNAME);
