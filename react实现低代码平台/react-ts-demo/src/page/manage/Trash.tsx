@@ -1,14 +1,5 @@
 import React, { FC, useState } from "react";
-import {
-  Typography,
-  Table,
-  Button,
-  Space,
-  Modal,
-  Spin,
-  Tag,
-  message,
-} from "antd";
+import { Typography, Table, Button, Space, Modal, Tag, message } from "antd";
 import styles from "./common.module.scss";
 import { DeleteOutlined } from "@ant-design/icons";
 import ListSearch from "../../components/ListSearch";
@@ -16,7 +7,10 @@ import type { ItemType } from "../../components/ListItem";
 import useLoadQuesList from "../../hooks/useLoadQuesList";
 import CommonPagination from "../../components/CommonPagination";
 import { useRequest } from "ahooks";
-import { updateQuestionService } from "../../services/question";
+import {
+  updateQuestionService,
+  deleteQuestionService,
+} from "../../services/question";
 
 const columns = [
   {
@@ -70,14 +64,28 @@ const Trash: FC = () => {
       },
     },
   );
+
+  const { run: deleteQuestion } = useRequest(
+    async () => await deleteQuestionService(selectIds),
+    {
+      manual: true,
+      onSuccess() {
+        message.success("删除成功");
+        refresh();
+        setSelectIds([]);
+      },
+    },
+  );
+
   const del = () => {
     confirm({
       title: "确认彻底删除该问卷？",
       icon: <DeleteOutlined />,
       content: "删除之后不可以找回",
-      onOk: () => alert(JSON.stringify(selectIds)),
+      onOk: deleteQuestion,
     });
   };
+
   const TableElem = (
     <>
       <div style={{ marginBottom: "16px" }}>
@@ -124,12 +132,7 @@ const Trash: FC = () => {
         </div>
       </div>
       <div className={styles.content}>
-        {loading && (
-          <div className={styles.example}>
-            <Spin />
-          </div>
-        )}
-        {!loading && (list || []).length > 0 && TableElem}
+        {(list || []).length > 0 && TableElem}
       </div>
       <div className={styles.footer}>
         <CommonPagination total={total} />
