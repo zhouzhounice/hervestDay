@@ -4,12 +4,12 @@ import { Spin, Typography } from "antd";
 import ListItem from "../../components/ListItem";
 import type { ItemType } from "../../components/ListItem";
 import ListSearch from "../../components/ListSearch";
-import useLoadQuesList from "../../hooks/useLoadQuesList";
+import useLoadQuesListData from "../../hooks/useLoadQuesListData";
 import CommonPagination from "../../components/CommonPagination";
 
 const { Title } = Typography;
 const Star: FC = () => {
-  const { data = {}, loading } = useLoadQuesList({ isStar: true });
+  const { data = {}, loading } = useLoadQuesListData({ isStar: true });
   const { list, total }: { list: ItemType[]; total: number } = data as {
     list: ItemType[];
     total: number;

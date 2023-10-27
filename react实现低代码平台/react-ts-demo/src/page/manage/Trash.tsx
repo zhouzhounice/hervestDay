@@ -4,7 +4,7 @@ import styles from "./common.module.scss";
 import { DeleteOutlined } from "@ant-design/icons";
 import ListSearch from "../../components/ListSearch";
 import type { ItemType } from "../../components/ListItem";
-import useLoadQuesList from "../../hooks/useLoadQuesList";
+import useLoadQuesListData from "../../hooks/useLoadQuesListData";
 import CommonPagination from "../../components/CommonPagination";
 import { useRequest } from "ahooks";
 import {
@@ -41,7 +41,11 @@ const columns = [
 const { Title } = Typography;
 const { confirm } = Modal;
 const Trash: FC = () => {
-  const { data = {}, loading, refresh } = useLoadQuesList({ isDelete: true });
+  const {
+    data = {},
+    loading,
+    refresh,
+  } = useLoadQuesListData({ isDelete: true });
   const { list, total }: { list: ItemType[]; total: number } = data as {
     list: ItemType[];
     total: number;

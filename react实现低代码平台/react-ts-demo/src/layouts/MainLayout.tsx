@@ -4,10 +4,12 @@ import { Layout } from "antd";
 import Logo from "../components/Logo";
 import Styles from "./MainLayout.module.scss";
 import UserInfo from "../components/UserInfo";
+import userLoadUserData from "../hooks/userLoadUserData";
 
 const { Header, Footer, Content } = Layout;
 
 const MainLayout: FC = () => {
+  const { waitingUserData } = userLoadUserData();
   return (
     <Layout>
       <Header className={Styles.headerStyle}>
@@ -19,7 +21,7 @@ const MainLayout: FC = () => {
         </div>
       </Header>
       <Content className={Styles.contentStyle}>
-        <Outlet />
+        {!waitingUserData && <Outlet />}
       </Content>
       <Footer className={Styles.footerStyle}>
         低代码平台demo©2023 - Anne.Created by 周俐君

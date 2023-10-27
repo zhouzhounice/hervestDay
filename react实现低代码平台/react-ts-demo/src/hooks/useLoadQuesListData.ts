@@ -13,7 +13,7 @@ export type OptionType = {
   isDelete: boolean;
 };
 
-export const useLoadQuesList = (opt: Partial<OptionType> = {}) => {
+export const useLoadQuesListData = (opt: Partial<OptionType> = {}) => {
   const { isStar, isDelete } = opt;
   const [searchParam] = useSearchParams();
   const { data, loading, refresh } = useRequest(
@@ -38,4 +38,4 @@ export const useLoadQuesList = (opt: Partial<OptionType> = {}) => {
   return { data, loading, refresh };
 };
 
-export default useLoadQuesList;
+export default useLoadQuesListData;
