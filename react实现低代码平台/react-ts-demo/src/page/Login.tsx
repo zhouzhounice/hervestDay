@@ -1,9 +1,20 @@
 import React, { FC, useEffect } from "react";
 import styles from "./Form.module.scss";
-import { Button, Form, Input, Space, Typography, Checkbox } from "antd";
+import {
+  Button,
+  Form,
+  Input,
+  Space,
+  Typography,
+  Checkbox,
+  message,
+} from "antd";
 import { UserOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
-import { REGISTER_PATHNAME } from "../router";
+import { Link, useNavigate } from "react-router-dom";
+import { useRequest } from "ahooks";
+import { setToken } from "../utils/user-token";
+import { loginService } from "../services/user";
+import { MANAGE_PATHNAME, REGISTER_PATHNAME } from "../router";
 
 type UserInfo = {
   [key: string]: string;
@@ -32,7 +43,23 @@ function getUserInfoFromStorage() {
 }
 
 const Login: FC = () => {
+  const nav = useNavigate();
   const [form] = Form.useForm();
+
+  const { run } = useRequest(
+    async (username, password): Promise<any> => {
+      await loginService(username, password);
+    },
+    {
+      manual: true,
+      onSuccess(result) {
+        const { token = "" } = result;
+        setToken(token);
+        message.success("登录成功");
+        nav(MANAGE_PATHNAME);
+      },
+    },
+  );
 
   useEffect(() => {
     const { username, password } = getUserInfoFromStorage();
@@ -40,7 +67,7 @@ const Login: FC = () => {
   }, []);
   const onFinish = (values: UserInfo) => {
     const { username, password, remember } = values || {};
-
+    run(username, password);
     if (remember) {
       rememberUser(username, password);
     } else {

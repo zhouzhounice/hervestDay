@@ -8,6 +8,15 @@ export type ResDataType = {
   [key: string]: unknown;
 };
 
+export type UserInfoType = {
+  username: string;
+  nickname: string;
+};
+
+export type RegisterInfoType = {
+  password: string;
+} & UserInfoType;
+
 export type SearchOption = {
   keyword: string;
   isStar: boolean;

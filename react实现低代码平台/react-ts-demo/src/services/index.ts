@@ -1,9 +1,15 @@
 import axios from "axios";
 import { message } from "antd";
 import type { ResType } from "./common";
+import { getToken } from "../utils/user-token";
 
 const instance = axios.create({
   timeout: 10 * 1000,
+});
+
+instance.interceptors.request.use((config) => {
+  config.headers["Authorization"] = `Bearer ${getToken()}`;
+  return config;
 });
 
 // response 拦截：统一处理 errno 和 msg
