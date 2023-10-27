@@ -137,10 +137,21 @@ function ListItem(props: ListItemProps) {
         <div className={styles["button-container"]}>
           <div className={styles.left}>
             <Space>
-              <Button icon={<EditOutlined />} type="text" size="small">
+              <Button
+                icon={<EditOutlined />}
+                type="text"
+                size="small"
+                onClick={() => nav(`/question/edit/${id}`)}
+              >
                 编辑问卷
               </Button>
-              <Button icon={<LineChartOutlined />} type="text" size="small">
+              <Button
+                icon={<LineChartOutlined />}
+                type="text"
+                size="small"
+                onClick={() => nav(`/question/stat/${id}`)}
+                disabled={!isPublished}
+              >
                 问卷统计
               </Button>
             </Space>

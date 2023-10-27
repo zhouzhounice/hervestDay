@@ -6,7 +6,6 @@ const QuestionLayout: FC = () => {
   const { waitingUserData } = userLoadUserData();
   return (
     <>
-      <p>QuestionLayout header</p>
       <div>{!waitingUserData && <Outlet />}</div>
     </>
   );
