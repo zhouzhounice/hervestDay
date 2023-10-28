@@ -1,10 +1,10 @@
 import React, { FC } from "react";
-import { useLoadQuestionData } from "../../../hooks/useLoadQuestionData";
+import useLoadQuestionData from "../../../hooks/useLoadQuestionData";
 import styles from "./index.module.scss";
 import EditCanvas from "./EditCanvas";
 
 const Edit: FC = () => {
-  const { loading, questionData } = useLoadQuestionData();
+  const { loading } = useLoadQuestionData();
   return (
     <div className={styles.container}>
       <div className={styles.header}>Header</div>
@@ -13,19 +13,12 @@ const Edit: FC = () => {
           <div className={styles.left}>Left</div>
           <div className={styles.main}>
             <div className={styles["canvas-wrapper"]}>
-              <EditCanvas />
+              <EditCanvas loading={loading} />
             </div>
           </div>
           <div className={styles.right}>Right</div>
         </div>
       </div>
-      <p>
-        {loading ? (
-          <span>loading...</span>
-        ) : (
-          <span>{JSON.stringify(questionData)}</span>
-        )}
-      </p>
     </div>
   );
 };

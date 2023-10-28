@@ -35,7 +35,7 @@ export type ItemType = {
   title?: string;
   isPublished: boolean;
   isStar: boolean;
-  isDelete: boolean;
+  isDeleted: boolean;
   answerCount: number;
   createdAt: string;
 };

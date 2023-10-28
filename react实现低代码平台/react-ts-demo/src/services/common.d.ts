@@ -23,7 +23,7 @@ export type LoginResultType = {
 export type SearchOption = {
   keyword: string;
   isStar: boolean;
-  isDelete: boolean;
+  isDeleted: boolean;
   page: number;
   pageSize: number;
 };

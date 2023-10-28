@@ -14,9 +14,10 @@ module.exports = [
                 data:{
                     id:Random.id(),
                     name:Random.ctitle(),
+
                     componentList:[
                         {
-                            id:Random.id(),
+                            fe_id:Random.id(),
                             type:'questionTitle',
                             title:'标题',
                             props:{
@@ -26,7 +27,7 @@ module.exports = [
                             }
                         },
                         {
-                            id: Random.id(),
+                            fe_id: Random.id(),
                             type: 'questionInput',
                             title: '输入框',
                             props: {
@@ -35,7 +36,7 @@ module.exports = [
                             }
                         },
                         {
-                            id: Random.id(),
+                            fe_id: Random.id(),
                             type: 'questionInput',
                             title: '输入框',
                             props: {
@@ -68,13 +69,13 @@ module.exports = [
         method: 'get',
         response(ctx) {
             const {url='',query={}} =ctx
-            const isDelete = url.indexOf('isDelete=true')>=0
+            const isDeleted = url.indexOf('isDeleted=true')>=0
             const isStar = url.indexOf('isStar=true')>=0
             const pageSize = parseInt(query.pageSize)||10
             return {
                 error:0,
                 data:{
-                    list:getQuestionList({isDelete, isStar,len:pageSize}),
+                    list:getQuestionList({isDeleted, isStar,len:pageSize}),
                     total:100
                 }
             };

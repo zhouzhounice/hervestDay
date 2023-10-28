@@ -41,11 +41,20 @@ const columns = [
 const { Title } = Typography;
 const { confirm } = Modal;
 const Trash: FC = () => {
-  const {
-    data = {},
-    loading,
-    refresh,
-  } = useLoadQuesListData({ isDelete: true });
+  const data = {
+    list: [
+      {
+        _id: "1",
+        title: "标题",
+        isPublished: false,
+        isStar: true,
+        isDeleted: false,
+        answerCount: 35,
+        createdAt: "2023-10-23",
+      },
+    ],
+  };
+  const { loading } = useLoadQuesListData({ isDeleted: true });
   const { list, total }: { list: ItemType[]; total: number } = data as {
     list: ItemType[];
     total: number;
@@ -55,7 +64,7 @@ const Trash: FC = () => {
   const { run: recover } = useRequest(
     async () => {
       for await (const id of selectIds) {
-        await updateQuestionService(id, { isDelete: false });
+        await updateQuestionService(id, { isDeleted: false });
       }
     },
     {
@@ -63,7 +72,6 @@ const Trash: FC = () => {
       debounceWait: 500,
       onSuccess() {
         message.success("恢复成功");
-        refresh();
         setSelectIds([]);
       },
     },
@@ -75,7 +83,6 @@ const Trash: FC = () => {
       manual: true,
       onSuccess() {
         message.success("删除成功");
-        refresh();
         setSelectIds([]);
       },
     },
