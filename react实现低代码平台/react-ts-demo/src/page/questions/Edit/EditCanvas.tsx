@@ -1,10 +1,14 @@
-import React, { FC } from "react";
+import React, { FC, MouseEvent } from "react";
 import styles from "./canvas.module.scss";
 import { Spin } from "antd";
-
+import classNames from "classnames";
+import { useDispatch } from "react-redux";
 import useGetComponentInfo from "../../../hooks/useGetComponentInfo";
 import { genComponentConfByType } from "../../../components/QuestionComponents";
-import { ComponentsInfoType } from "../../../store/componentsReducer";
+import {
+  ComponentsInfoType,
+  changeSelectedId,
+} from "../../../store/componentsReducer";
 
 type PropsType = {
   loading: boolean;
@@ -18,9 +22,12 @@ function genComponent(componentInfo: ComponentsInfoType) {
   return <Component {...props} />;
 }
 const EditCanvas: FC<PropsType> = ({ loading }) => {
-  const { componentList } = useGetComponentInfo();
-
-  console.log(componentList);
+  const { componentList, selectedId } = useGetComponentInfo();
+  const dispatch = useDispatch();
+  const handleClick = (event: MouseEvent, id: string) => {
+    event.stopPropagation();
+    dispatch(changeSelectedId(id));
+  };
   if (loading) {
     return (
       <div style={{ textAlign: "center", marginTop: "24px" }}>
@@ -32,8 +39,19 @@ const EditCanvas: FC<PropsType> = ({ loading }) => {
     <div className={styles.canvas}>
       {componentList.map((item) => {
         const { fe_id } = item;
+
+        const wrapperDefaultClassName = styles["component-wrapper"];
+        const selectedClassName = styles.selected;
+        const wrapperClassName = classNames({
+          [wrapperDefaultClassName]: true,
+          [selectedClassName]: fe_id === selectedId,
+        });
         return (
-          <div key={fe_id} className={styles["component-wrapper"]}>
+          <div
+            key={fe_id}
+            className={wrapperClassName}
+            onClick={(e) => handleClick(e, fe_id)}
+          >
             <div className={styles.component}>{genComponent(item)}</div>
           </div>
         );

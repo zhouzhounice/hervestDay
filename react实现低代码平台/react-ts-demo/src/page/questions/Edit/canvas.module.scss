@@ -13,10 +13,13 @@
 
 
   &:hover{
-    box-shadow: 0 0 5px rgba(100, 149, 237, 0.8); /* 鼠标悬停时的阴影效果 */
+    border-color: #1890ff!important;
+
   }
 }
-
+.selected{
+  box-shadow: 0 0 5px rgba(100, 149, 237, 0.8); /* 鼠标悬停时的阴影效果 */
+}
 .component {
   pointer-events: none; // 屏蔽鼠标行为
 }
