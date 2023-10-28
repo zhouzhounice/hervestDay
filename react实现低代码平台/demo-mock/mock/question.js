@@ -13,7 +13,37 @@ module.exports = [
                 error:0,
                 data:{
                     id:Random.id(),
-                    name:Random.ctitle()
+                    name:Random.ctitle(),
+                    componentList:[
+                        {
+                            id:Random.id(),
+                            type:'questionTitle',
+                            title:'标题',
+                            props:{
+                                text:'个人信息调研',
+                                level:1,
+                                isCenter: false
+                            }
+                        },
+                        {
+                            id: Random.id(),
+                            type: 'questionInput',
+                            title: '输入框',
+                            props: {
+                                title: '你的姓名',
+                                placeholder:'请输入...'
+                            }
+                        },
+                        {
+                            id: Random.id(),
+                            type: 'questionInput',
+                            title: '输入框',
+                            props: {
+                                title: '你的年龄',
+                                placeholder:'请输入...'
+                            }
+                        }
+                    ]
                 }
             }
         }
