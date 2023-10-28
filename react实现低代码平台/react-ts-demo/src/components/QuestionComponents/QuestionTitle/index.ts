@@ -6,6 +6,6 @@ export * from "./Interface";
 export default {
   title: "标题",
   type: "questionTitle",
-  QuestionTitle,
+  Component: QuestionTitle,
   defaultProps: QuestionTitleDefaultProps,
 };

@@ -2,17 +2,23 @@ import React, { FC } from "react";
 import styles from "./canvas.module.scss";
 import { Spin } from "antd";
 
-import QuestionTitle from "../../../components/QuestionComponents/QuestionTitle/QuestionTitle";
-import QuestionInput from "../../../components/QuestionComponents/QuestionInput/QuestionInput";
-
 import useGetComponentInfo from "../../../hooks/useGetComponentInfo";
-// import { ComponentsInfoType } from "../../../store/componentsReducer";
+import { genComponentConfByType } from "../../../components/QuestionComponents";
+import { ComponentsInfoType } from "../../../store/componentsReducer";
 
 type PropsType = {
   loading: boolean;
 };
+
+function genComponent(componentInfo: ComponentsInfoType) {
+  const { type, props } = componentInfo;
+  const componentConf = genComponentConfByType(type);
+  if (componentConf == null) return null;
+  const { Component } = componentConf;
+  return <Component {...props} />;
+}
 const EditCanvas: FC<PropsType> = ({ loading }) => {
-  const componentList = useGetComponentInfo();
+  const { componentList } = useGetComponentInfo();
 
   console.log(componentList);
   if (loading) {
@@ -24,16 +30,14 @@ const EditCanvas: FC<PropsType> = ({ loading }) => {
   }
   return (
     <div className={styles.canvas}>
-      <div className={styles["component-wrapper"]}>
-        <div className={styles.component}>
-          <QuestionTitle isCenter={false} text={"标题"} level={2} />
-        </div>
-      </div>
-      <div className={styles["component-wrapper"]}>
-        <div className={styles.component}>
-          <QuestionInput />
-        </div>
-      </div>
+      {componentList.map((item) => {
+        const { fe_id } = item;
+        return (
+          <div key={fe_id} className={styles["component-wrapper"]}>
+            <div className={styles.component}>{genComponent(item)}</div>
+          </div>
+        );
+      })}
     </div>
   );
 };

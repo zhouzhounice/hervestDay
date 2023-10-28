@@ -1,13 +1,13 @@
 import { useSelector } from "react-redux";
 import { StateType } from "../store";
-import { ComponentPropsType } from "../components/QuestionComponents";
+import { ComponentsInfoType } from "../store/componentsReducer";
 
-function useGetComponentInfo(): ComponentPropsType[] {
+function useGetComponentInfo(): { componentList: ComponentsInfoType[] } {
   const components = useSelector<StateType>((state) => state.components);
   const { componentList = [] } = components as {
-    componentList: ComponentPropsType[];
+    componentList: ComponentsInfoType[];
   };
 
-  return componentList;
+  return { componentList };
 }
 export default useGetComponentInfo;
