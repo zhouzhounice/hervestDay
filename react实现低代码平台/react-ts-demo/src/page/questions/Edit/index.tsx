@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { useLoadQuestionData } from "../../../hooks/useLoadQuestionData";
 import styles from "./index.module.scss";
+import EditCanvas from "./EditCanvas";
 
 const Edit: FC = () => {
   const { loading, questionData } = useLoadQuestionData();
@@ -12,7 +13,7 @@ const Edit: FC = () => {
           <div className={styles.left}>Left</div>
           <div className={styles.main}>
             <div className={styles["canvas-wrapper"]}>
-              <div style={{ height: "2000px" }}>画布。测试滚动</div>
+              <EditCanvas />
             </div>
           </div>
           <div className={styles.right}>Right</div>

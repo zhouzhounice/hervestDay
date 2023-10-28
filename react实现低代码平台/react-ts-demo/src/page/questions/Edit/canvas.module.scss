@@ -1,0 +1,22 @@
+.canvas{
+  min-height: 100%;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.component-wrapper{
+  margin: 12px;
+  border: 1px solid #fff;
+  padding: 12px;
+  border-radius: 3px;
+  transition: border-color 0.3s; /* 添加过渡效果 */
+
+
+  &:hover{
+    box-shadow: 0 0 5px rgba(100, 149, 237, 0.8); /* 鼠标悬停时的阴影效果 */
+  }
+}
+
+.component {
+  pointer-events: none; // 屏蔽鼠标行为
+}
