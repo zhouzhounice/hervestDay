@@ -1,5 +1,6 @@
 import QuestionTitle from "./QuestionTitle";
 import { QuestionTitleDefaultProps } from "./Interface";
+import PropsComponent from "./PropComponent";
 
 export * from "./Interface";
 
@@ -8,4 +9,5 @@ export default {
   type: "questionTitle",
   Component: QuestionTitle,
   defaultProps: QuestionTitleDefaultProps,
+  PropsComponent,
 };
