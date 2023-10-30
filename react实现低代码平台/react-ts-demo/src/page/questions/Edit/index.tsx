@@ -5,6 +5,7 @@ import styles from "./index.module.scss";
 import EditCanvas from "./EditCanvas";
 import { changeSelectedId } from "../../../store/componentsReducer";
 import LeftPanel from "./LeftPanel";
+import RightPanel from "./RightPanel";
 
 const Edit: FC = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,9 @@ const Edit: FC = () => {
               <EditCanvas loading={loading} />
             </div>
           </div>
-          <div className={styles.right}>Right</div>
+          <div className={styles.right}>
+            <RightPanel />
+          </div>
         </div>
       </div>
     </div>

@@ -10,11 +10,10 @@ export type ComponentConfType = {
   type: string;
   Component: FC<ComponentPropsType>;
   defaultProps: ComponentPropsType;
+  PropComponent: FC<ComponentPropsType>;
 };
 
 const componentConfList: ComponentConfType[] = [
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   QuestionInputConf,
   QuestionTitleConf,
 ];

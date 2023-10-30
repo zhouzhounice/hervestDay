@@ -5,8 +5,8 @@ import { nanoid } from "nanoid";
 import {
   componentConfGroup,
   ComponentConfType,
-} from "../../../components/QuestionComponents";
-import { addComponent } from "../../../store/componentsReducer";
+} from "../../../../components/QuestionComponents";
+import { addComponent } from "../../../../store/componentsReducer";
 import styles from "./ComponentLib.module.scss";
 
 const { Title } = Typography;
