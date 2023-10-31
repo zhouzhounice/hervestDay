@@ -5,17 +5,22 @@ import { QuestionTitlePropsType } from "./index";
 const PropsComponent: FC<QuestionTitlePropsType> = (
   props: QuestionTitlePropsType,
 ) => {
-  const { text, level, isCenter } = props;
+  const { text, level, isCenter, onChange } = props;
   const [form] = Form.useForm();
   useEffect(() => {
     form.setFieldsValue({ text, level, isCenter });
   }, [text, level, isCenter]);
-
+  const handleValueChange = () => {
+    if (onChange) {
+      onChange(form.getFieldsValue());
+    }
+  };
   return (
     <Form
       layout="vertical"
       form={form}
       initialValues={{ text, level, isCenter }}
+      onValuesChange={handleValueChange}
     >
       <Form.Item
         label="标题内容"

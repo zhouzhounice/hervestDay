@@ -1,6 +1,9 @@
 import React, { FC } from "react";
 import useGetComponentInfo from "../../../../hooks/useGetComponentInfo";
-import { genComponentConfByType } from "../../../../components/QuestionComponents";
+import {
+  ComponentPropsType,
+  genComponentConfByType,
+} from "../../../../components/QuestionComponents";
 
 const NoProp: FC = () => {
   return <div style={{ textAlign: "center" }}>未选择组件</div>;
@@ -15,7 +18,11 @@ const ComponentProp: FC = () => {
   const componentConf = genComponentConfByType(type);
   if (componentConf == null) return <NoProp />;
   const { PropComponent } = componentConf;
-  return <PropComponent {...props} />;
+
+  const changeProps = (newProps: ComponentPropsType) => {
+    console.log(newProps);
+  };
+  return <PropComponent {...props} onChange={changeProps} />;
 };
 
 export default ComponentProp;
