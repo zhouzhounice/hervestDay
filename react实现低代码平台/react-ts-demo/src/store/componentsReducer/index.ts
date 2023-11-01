@@ -58,10 +58,46 @@ export const componentsSlice = createSlice({
 
       // 注意：不要返回一个新的状态对象，而是直接在传入的状态对象上进行修改
     },
+    changeComponentProps: (
+      state,
+      action: PayloadAction<{ fe_id: string; newProps: ComponentPropsType }>,
+    ) => {
+      const { fe_id, newProps } = action.payload;
+
+      // 查找要修改属性的组件索引
+      const compIndex = state.componentList.findIndex((c) => c.fe_id === fe_id);
+
+      if (compIndex !== -1) {
+        // 创建一个新的组件对象，将属性更新
+        const updatedComponent = {
+          ...state.componentList[compIndex],
+          props: {
+            ...state.componentList[compIndex].props,
+            ...newProps,
+          },
+        };
+
+        // 创建新的组件列表副本，并替换修改后的组件
+        const newComponentList = [...state.componentList];
+        newComponentList[compIndex] = updatedComponent;
+
+        // 返回新的状态对象
+        return {
+          ...state,
+          componentList: newComponentList,
+        };
+      }
+
+      return state;
+    },
   },
 });
 
-export const { resetComponents, changeSelectedId, addComponent } =
-  componentsSlice.actions;
+export const {
+  resetComponents,
+  changeSelectedId,
+  addComponent,
+  changeComponentProps,
+} = componentsSlice.actions;
 
 export default componentsSlice.reducer;
