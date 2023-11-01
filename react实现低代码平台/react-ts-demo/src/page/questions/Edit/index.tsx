@@ -6,6 +6,7 @@ import EditCanvas from "./EditCanvas";
 import { changeSelectedId } from "../../../store/componentsReducer";
 import LeftPanel from "./LeftPanel";
 import RightPanel from "./RightPanel";
+import EditHeader from "./components/EidtHeader";
 
 const Edit: FC = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,8 @@ const Edit: FC = () => {
   };
   return (
     <div className={styles.container}>
-      <div className={styles.header}>Header</div>
+      <EditHeader />
+
       <div className={styles["content-wrapper"]}>
         <div className={styles.content}>
           <div className={styles.left}>
