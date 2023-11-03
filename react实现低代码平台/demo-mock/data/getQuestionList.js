@@ -13,7 +13,7 @@ function getQuestionList(opt)
             isStar,
             answerCount:Random.natural(1,100),
             createdAt:Random.date('yyyy-MM-dd'),
-            isDeleted
+            isDeleted,
         })
     }
     return list

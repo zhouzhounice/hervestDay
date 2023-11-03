@@ -20,6 +20,7 @@ module.exports = [
                             fe_id:Random.id(),
                             type:'questionTitle',
                             title:'标题',
+                            isHidden:false,
                             props:{
                                 text:'个人信息调研',
                                 level:1,
@@ -30,6 +31,7 @@ module.exports = [
                             fe_id: Random.id(),
                             type: 'questionInput',
                             title: '输入框',
+                            isHidden:false,
                             props: {
                                 title: '你的姓名',
                                 placeholder:'请输入...'
@@ -39,6 +41,7 @@ module.exports = [
                             fe_id: Random.id(),
                             type: 'questionInput',
                             title: '输入框',
+                            isHidden:false,
                             props: {
                                 title: '你的年龄',
                                 placeholder:'请输入...'

@@ -37,25 +37,27 @@ const EditCanvas: FC<PropsType> = ({ loading }) => {
   }
   return (
     <div className={styles.canvas}>
-      {componentList.map((item) => {
-        const { fe_id } = item;
+      {componentList
+        .filter((i) => !i.isHidden)
+        .map((item) => {
+          const { fe_id } = item;
 
-        const wrapperDefaultClassName = styles["component-wrapper"];
-        const selectedClassName = styles.selected;
-        const wrapperClassName = classNames({
-          [wrapperDefaultClassName]: true,
-          [selectedClassName]: fe_id === selectedId,
-        });
-        return (
-          <div
-            key={fe_id}
-            className={wrapperClassName}
-            onClick={(e) => handleClick(e, fe_id)}
-          >
-            <div className={styles.component}>{genComponent(item)}</div>
-          </div>
-        );
-      })}
+          const wrapperDefaultClassName = styles["component-wrapper"];
+          const selectedClassName = styles.selected;
+          const wrapperClassName = classNames({
+            [wrapperDefaultClassName]: true,
+            [selectedClassName]: fe_id === selectedId,
+          });
+          return (
+            <div
+              key={fe_id}
+              className={wrapperClassName}
+              onClick={(e) => handleClick(e, fe_id)}
+            >
+              <div className={styles.component}>{genComponent(item)}</div>
+            </div>
+          );
+        })}
     </div>
   );
 };
