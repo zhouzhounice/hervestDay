@@ -3,7 +3,7 @@ import { Button, Space } from "antd";
 import { LeftOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import styles from "./EditHeader.module.scss";
-
+import EditToolbar from "./EditToolbar";
 const EditHeader: FC = () => {
   const nav = useNavigate();
   return (
@@ -17,7 +17,9 @@ const EditHeader: FC = () => {
             {/*<TitleElem />*/}
           </Space>
         </div>
-        <div className={styles.main}>中</div>
+        <div className={styles.main}>
+          <EditToolbar></EditToolbar>
+        </div>
         <div className={styles.right}>
           <Space>
             <Button>保存</Button>
