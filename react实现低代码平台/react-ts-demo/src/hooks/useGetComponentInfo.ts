@@ -6,15 +6,21 @@ function useGetComponentInfo(): {
   componentList: ComponentsInfoType[];
   selectedId: string;
   selectedComponent: ComponentsInfoType | undefined;
+  copiesComponent: ComponentsInfoType | undefined;
 } {
   const components = useSelector<StateType>((state) => state.components);
-  const { componentList = [], selectedId = "" } = components as {
+  const {
+    componentList = [],
+    selectedId = "",
+    copiesComponent = undefined,
+  } = components as {
     componentList: ComponentsInfoType[];
     selectedId: string;
+    copiesComponent: ComponentsInfoType | undefined;
   };
   const selectedComponent = componentList.find(
     (item) => item.fe_id === selectedId,
   );
-  return { componentList, selectedId, selectedComponent };
+  return { componentList, selectedId, selectedComponent, copiesComponent };
 }
 export default useGetComponentInfo;

@@ -1,4 +1,4 @@
-import { ComponentsInfoType } from "./index";
+import { ComponentsInfoType, ComponentStateType } from "./index";
 
 export const getNextSelectedId = (
   fe_id: string,
@@ -21,4 +21,19 @@ export const getNextSelectedId = (
     }
   }
   return newSelectedId;
+};
+
+export const insertNewComponent = (
+  state: ComponentStateType,
+  newComponent: ComponentsInfoType,
+) => {
+  const { selectedId, componentList } = state;
+  const index = componentList.findIndex((i) => i.fe_id === selectedId);
+
+  if (index < 0) {
+    state.componentList.push(newComponent);
+  } else {
+    state.componentList.splice(index + 1, 0, newComponent);
+  }
+  state.selectedId = newComponent.fe_id;
 };
