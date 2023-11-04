@@ -10,8 +10,7 @@ import {
 
 const isActiveElementValid = () => {
   const activeElem = document.activeElement;
-  if (activeElem === document.body) return true;
-  return false;
+  return activeElem === document.body;
 };
 
 const useBindCanvasKeyPress = () => {
