@@ -1,5 +1,8 @@
 import type { FC } from "react";
 import QuestionInputConf, { QuestionInputPropsType } from "./QuestionInput";
+import QuestionTextareaConf, {
+  QuestionTextareaPropsType,
+} from "./QuestionTextarea";
 import QuestionTitleConf, { QuestionTitlePropsType } from "./QuestionTitle";
 import QuestionParagraphConf, {
   QuestionParagraphPropsType,
@@ -9,7 +12,8 @@ import QuestionInfoConf, { QuestionInfoPropsType } from "./QuestionInfo";
 export type ComponentPropsType = QuestionInputPropsType &
   QuestionTitlePropsType &
   QuestionParagraphPropsType &
-  QuestionInfoPropsType;
+  QuestionInfoPropsType &
+  QuestionTextareaPropsType;
 
 export type ComponentConfType = {
   title: string;
@@ -24,6 +28,7 @@ const componentConfList: ComponentConfType[] = [
   QuestionTitleConf,
   QuestionParagraphConf,
   QuestionInfoConf,
+  QuestionTextareaConf,
 ];
 
 export const componentConfGroup = [
@@ -34,7 +39,7 @@ export const componentConfGroup = [
   },
   {
     groupName: "用户输入",
-    components: [QuestionInputConf],
+    components: [QuestionInputConf, QuestionTextareaConf],
     groupId: "input",
   },
 ];

@@ -52,12 +52,23 @@ module.exports = [
                         },
                         {
                             fe_id: Random.id(),
+                            type: 'questionTextarea',
+                            title: '输入框',
+                            isHidden:false,
+                            isLocked:false,
+                            props: {
+                                title: '你的描述',
+                                placeholder:'请输入...'
+                            }
+                        },
+                        {
+                            fe_id: Random.id(),
                             type: 'questionParagraph',
                             title: '段落',
                             isHidden:false,
                             isLocked:false,
                             props: {
-                                text: '你的爱好',
+                                text: '这是一份有意义的问卷调查',
                                 isCenter:false
                             }
                         }
