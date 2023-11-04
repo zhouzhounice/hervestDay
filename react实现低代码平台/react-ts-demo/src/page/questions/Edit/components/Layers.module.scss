@@ -1,0 +1,27 @@
+.wrapper{
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  display: flex;
+  cursor: pointer;
+  .selected{
+    color: #1890ff;
+  }
+  .title{
+    flex: auto;
+    line-height: 2;
+  }
+  .handler{
+    width: 50px;
+    text-align: end;
+    .btn{
+      opacity: .3;
+    }
+  }
+  &:hover{
+    .handler{
+      .btn{
+        opacity: 1;
+      }
+    }
+  }
+}
