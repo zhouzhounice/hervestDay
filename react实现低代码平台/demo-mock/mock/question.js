@@ -18,6 +18,17 @@ module.exports = [
                     componentList:[
                         {
                             fe_id:Random.id(),
+                            type:'questionInfo',
+                            title:'问卷信息',
+                            isHidden:false,
+                            isLocked:false,
+                            props:{
+                                title:'问卷标题',
+                                desc:'问卷描述'
+                            }
+                        },
+                        {
+                            fe_id:Random.id(),
                             type:'questionTitle',
                             title:'标题',
                             isHidden:false,
@@ -41,13 +52,13 @@ module.exports = [
                         },
                         {
                             fe_id: Random.id(),
-                            type: 'questionInput',
-                            title: '输入框',
+                            type: 'questionParagraph',
+                            title: '段落',
                             isHidden:false,
                             isLocked:false,
                             props: {
-                                title: '你的年龄',
-                                placeholder:'请输入...'
+                                text: '你的爱好',
+                                isCenter:false
                             }
                         }
                     ]
