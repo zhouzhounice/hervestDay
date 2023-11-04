@@ -20,6 +20,11 @@
 .selected{
   box-shadow: 0 0 5px rgba(100, 149, 237, 0.8); /* 鼠标悬停时的阴影效果 */
 }
+
+.locked{
+  opacity: .5;
+  cursor: not-allowed;
+}
 .component {
   pointer-events: none; // 屏蔽鼠标行为
 }

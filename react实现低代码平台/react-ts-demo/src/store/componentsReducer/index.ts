@@ -7,6 +7,7 @@ export type ComponentsInfoType = {
   type: string;
   title: string;
   isHidden?: boolean;
+  isLocked?: boolean;
   props: ComponentPropsType;
 };
 
@@ -121,6 +122,17 @@ export const componentsSlice = createSlice({
         return i;
       });
     },
+    toggleComponentLocked: (
+      state: ComponentStateType,
+      action: PayloadAction<{ fe_id: string }>,
+    ) => {
+      const { fe_id } = action.payload;
+      state.componentList.forEach((i) => {
+        if (i.fe_id === fe_id) {
+          i.isLocked = !i.isLocked;
+        }
+      });
+    },
   },
 });
 
@@ -131,6 +143,7 @@ export const {
   changeComponentProps,
   removeSelectedComponent,
   changeComponentHidden,
+  toggleComponentLocked,
 } = componentsSlice.actions;
 
 export default componentsSlice.reducer;
