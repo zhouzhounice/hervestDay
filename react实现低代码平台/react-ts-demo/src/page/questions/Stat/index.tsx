@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import useLoadQuestionData from "../../../hooks/useLoadQuestionData";
 import useGetPageInfo from "../../../hooks/useGetPageInfo";
 import styles from "./index.module.scss";
+import StatHeader from "./StatHeader";
 
 const Stat: FC = () => {
   const { loading } = useLoadQuestionData();
@@ -36,7 +37,7 @@ const Stat: FC = () => {
   };
   return (
     <div className={styles.container}>
-      <div>Header</div>
+      <StatHeader />
       <div className={styles["content-wrapper"]}>
         {loading && <Spin />}
         {!loading && <div className={styles.content}>{genContentElem()}</div>}
