@@ -10,7 +10,9 @@ import {
 
 const isActiveElementValid = () => {
   const activeElem = document.activeElement;
-  return activeElem === document.body;
+  // 增加了 dnd-kit 以后
+  if (activeElem === document.body) return true;
+  if (activeElem?.matches('div[role="button"]')) return true;
 };
 
 const useBindCanvasKeyPress = () => {
