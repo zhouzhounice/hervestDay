@@ -13,8 +13,10 @@ module.exports = [
                 error:0,
                 data:{
                     id:Random.id(),
-                    name:Random.ctitle(),
-
+                    title:Random.ctitle(),
+                    desc: "问卷描述",
+                    js:"",
+                    css:"",
                     componentList:[
                         {
                             fe_id:Random.id(),

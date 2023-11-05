@@ -4,9 +4,10 @@ import { useRequest } from "ahooks";
 import { useDispatch } from "react-redux";
 import { getQuestionService } from "../services/question";
 import {
-  ComponentStateType,
+  ComponentsInfoType,
   resetComponents,
 } from "../store/componentsReducer";
+import { resetPageInfo } from "../store/pageInfoReducer";
 
 function useLoadQuestionData() {
   const { id = "" } = useParams();
@@ -26,7 +27,21 @@ function useLoadQuestionData() {
   // 根据获取的 data 设置 redux store
   useEffect(() => {
     if (!data) return;
-    const { componentList = [], copiesComponent } = data as ComponentStateType;
+    const {
+      componentList = [],
+      copiesComponent,
+      title,
+      desc,
+      js,
+      css,
+    } = data as {
+      componentList: ComponentsInfoType[];
+      copiesComponent: ComponentsInfoType;
+      title: string;
+      desc: string;
+      js: string;
+      css: string;
+    };
 
     let selectedId = "";
     if (componentList.length > 0) {
@@ -34,6 +49,7 @@ function useLoadQuestionData() {
     }
     // 把 componentList 存储到 Redux store 中
     dispatch(resetComponents({ componentList, selectedId, copiesComponent }));
+    dispatch(resetPageInfo({ title, desc, js, css }));
   }, [data]);
 
   // 判断 id 变化，执行 ajax 加载问卷数据

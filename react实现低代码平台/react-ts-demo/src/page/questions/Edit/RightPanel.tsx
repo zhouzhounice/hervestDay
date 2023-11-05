@@ -11,13 +11,15 @@ enum TAB_KEYS {
 }
 
 const RightPanel: FC = () => {
-  const [activeKey, setActiveKey] = useState(TAB_KEYS.PROP_KEY);
+  const [activeKey, setActiveKey] = useState<string>(TAB_KEYS.PROP_KEY);
   const { selectedId } = useGetComponentInfo();
   useEffect(() => {
     if (selectedId) setActiveKey(TAB_KEYS.PROP_KEY);
     else setActiveKey(TAB_KEYS.SETTING_KEY);
   }, [selectedId]);
-
+  const handleClick = (key: string) => {
+    setActiveKey(key);
+  };
   const tabsItems = [
     {
       key: TAB_KEYS.PROP_KEY,
@@ -40,7 +42,13 @@ const RightPanel: FC = () => {
       children: <PageSetting />,
     },
   ];
-  return <Tabs items={tabsItems} activeKey={activeKey}></Tabs>;
+  return (
+    <Tabs
+      items={tabsItems}
+      activeKey={activeKey}
+      onTabClick={handleClick}
+    ></Tabs>
+  );
 };
 
 export default RightPanel;
