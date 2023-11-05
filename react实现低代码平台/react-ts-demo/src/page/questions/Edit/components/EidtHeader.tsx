@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Button, Space } from "antd";
+import { Button, message, Space } from "antd";
 import { LeftOutlined, LoadingOutlined } from "@ant-design/icons";
 import { useNavigate, useParams } from "react-router-dom";
 import styles from "./EditHeader.module.scss";
@@ -36,6 +36,36 @@ const SaveButton: FC = () => {
     </Button>
   );
 };
+const PublishButton: FC = () => {
+  const nav = useNavigate();
+  const { id } = useParams();
+  const { componentList = [] } = useGetComponentInfo();
+  const pageInfo = useGetPageInfo();
+
+  const { loading, run: pub } = useRequest(
+    async () => {
+      if (!id) return;
+      await updateQuestionService(id, {
+        ...pageInfo,
+        componentList,
+        isPublished: true, // 标志着问卷已经被发布
+      });
+    },
+    {
+      manual: true,
+      onSuccess() {
+        message.success("发布成功");
+        nav("/question/stat/" + id); // 发布成功，跳转到统计页面
+      },
+    },
+  );
+
+  return (
+    <Button type="primary" onClick={pub} disabled={loading}>
+      发布
+    </Button>
+  );
+};
 const EditHeader: FC = () => {
   const nav = useNavigate();
   return (
@@ -53,7 +83,7 @@ const EditHeader: FC = () => {
         <div className={styles.right}>
           <Space>
             <SaveButton />
-            <Button>发布</Button>
+            <PublishButton />
           </Space>
         </div>
       </div>
