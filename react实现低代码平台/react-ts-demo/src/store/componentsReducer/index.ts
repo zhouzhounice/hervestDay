@@ -3,6 +3,7 @@ import cloneDeep from "lodash.clonedeep";
 import { nanoid } from "nanoid";
 import { ComponentPropsType } from "../../components/QuestionComponents";
 import { getNextSelectedId, insertNewComponent } from "./utils";
+import { arrayMove } from "@dnd-kit/sortable";
 
 export type ComponentsInfoType = {
   fe_id: string;
@@ -166,6 +167,14 @@ export const componentsSlice = createSlice({
         }
       });
     },
+    moveComponent: (
+      state: ComponentStateType,
+      action: PayloadAction<{ oldIndex: number; newIndex: number }>,
+    ) => {
+      const { componentList } = state;
+      const { oldIndex, newIndex } = action.payload;
+      state.componentList = arrayMove(componentList, oldIndex, newIndex);
+    },
   },
 });
 
@@ -182,6 +191,7 @@ export const {
   selectPrevComponent,
   selectNextComponent,
   changeComponentTitle,
+  moveComponent,
 } = componentsSlice.actions;
 
 export default componentsSlice.reducer;
