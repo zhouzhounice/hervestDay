@@ -8,7 +8,9 @@ function useGetComponentInfo(): {
   selectedComponent: ComponentsInfoType | undefined;
   copiesComponent: ComponentsInfoType | undefined;
 } {
-  const components = useSelector<StateType>((state) => state.components);
+  const components = useSelector<StateType>(
+    (state) => state.components.present,
+  );
   const {
     componentList = [],
     selectedId = "",
