@@ -4,18 +4,17 @@ import { LeftOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import styles from "./EditHeader.module.scss";
 import EditToolbar from "./EditToolbar";
+import HeaderTitle from "./HeaderTitle";
 const EditHeader: FC = () => {
   const nav = useNavigate();
   return (
     <div className={styles["header-wrapper"]}>
       <div className={styles.header}>
         <div className={styles.left}>
-          <Space>
-            <Button type="link" icon={<LeftOutlined />} onClick={() => nav(-1)}>
-              返回
-            </Button>
-            {/*<TitleElem />*/}
-          </Space>
+          <Button type="link" icon={<LeftOutlined />} onClick={() => nav(-1)}>
+            返回
+          </Button>
+          <HeaderTitle />
         </div>
         <div className={styles.main}>
           <EditToolbar></EditToolbar>
