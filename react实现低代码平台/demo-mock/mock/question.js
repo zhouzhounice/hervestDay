@@ -17,6 +17,7 @@ module.exports = [
                     desc: "问卷描述",
                     js:"",
                     css:"",
+                    isPublished:true,
                     componentList:[
                         {
                             fe_id:Random.id(),
