@@ -1,15 +1,19 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { Button, Result, Spin } from "antd";
 import { useNavigate } from "react-router-dom";
 import useLoadQuestionData from "../../../hooks/useLoadQuestionData";
 import useGetPageInfo from "../../../hooks/useGetPageInfo";
 import styles from "./index.module.scss";
 import StatHeader from "./StatHeader";
+import ComponentList from "./ComponentList";
 
 const Stat: FC = () => {
   const { loading } = useLoadQuestionData();
   const { isPublished } = useGetPageInfo();
   const nav = useNavigate();
+  const [selectedComponentId, setSelectedComponentId] = useState("");
+  const [selectedComponentType, setSelectedComponentType] = useState("");
+  console.log(selectedComponentType);
 
   const genContentElem = () => {
     if (typeof isPublished === "boolean" && !isPublished) {
@@ -29,7 +33,13 @@ const Stat: FC = () => {
     }
     return (
       <>
-        <div className={styles.left}>左侧</div>
+        <div className={styles.left}>
+          <ComponentList
+            selectedComponentId={selectedComponentId}
+            setSelectedComponentId={setSelectedComponentId}
+            setSelectedComponentType={setSelectedComponentType}
+          />
+        </div>
         <div className={styles.main}>中间</div>
         <div className={styles.right}>右侧</div>
       </>
