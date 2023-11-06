@@ -292,7 +292,7 @@ function getNativeBeforeInputChars(topLevelType: TopLevelType, nativeEvent) {
        * In Webkit, preventing default on a spacebar `textInput` event
        * cancels character insertion, but it *also* causes the browser
        * to fall back to its default spacebar behavior of scrolling the
-       * page.
+       * pages.
        *
        * Tracking at:
        * https://code.google.com/p/chromium/issues/detail?id=355103

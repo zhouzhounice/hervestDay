@@ -5,7 +5,7 @@ import App from '../src/components/App';
 
 let assets;
 if (process.env.NODE_ENV === 'development') {
-  // Use the bundle from create-react-app's server in development mode.
+  // Use the bundle from create-react-pages's server in development mode.
   assets = {
     'main.js': '/static/js/bundle.js',
     'main.css': '',

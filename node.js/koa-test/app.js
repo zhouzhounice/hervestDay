@@ -7,21 +7,21 @@ const app = new Koa();
 
 app.use(koaBody())
 app.use(router.routes());
-// app.use(async ctx=>{
+// pages.use(async ctx=>{
 //   ctx.body = 'Hello koa'
 // })
 
-// app.use((ctx,next)=>{
+// pages.use((ctx,next)=>{
 //   console.log('one-1');
 //   next();
 //   console.log('one-2');
 // });
-// app.use((ctx,next)=>{
+// pages.use((ctx,next)=>{
 //   console.log('two-1');
 //   next();
 //   console.log('two-2');
 // });
-// app.use((ctx,next)=>{
+// pages.use((ctx,next)=>{
 //   console.log('three-1');
 //   next();
 //   console.log('three-2');

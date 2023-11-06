@@ -73,7 +73,7 @@ import { Mode } from 'use-switch-tabs';
     </el-main>
   </el-container>
 </el-container>
-  <!-- <div id="app">
+  <!-- <div id="pages">
     <router-view />
   </div> -->
 </template>

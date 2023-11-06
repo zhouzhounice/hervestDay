@@ -445,7 +445,7 @@ var localCancelAnimationFrame =
 var getCurrentTime;
 
 // requestAnimationFrame does not run when the tab is in the background. If
-// we're backgrounded we prefer for that work to happen so that the page
+// we're backgrounded we prefer for that work to happen so that the pages
 // continues to load in the background. So we also schedule a 'setTimeout' as
 // a fallback.
 // TODO: Need a better heuristic for backgrounded work.

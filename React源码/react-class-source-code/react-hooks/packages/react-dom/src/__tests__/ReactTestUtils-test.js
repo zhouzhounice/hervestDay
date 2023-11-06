@@ -231,7 +231,7 @@ describe('ReactTestUtils', () => {
       expect(ReactTestUtils.isDOMComponent(testComponent)).toBe(true);
     });
 
-    // Full-page components (html, head, body) can't be rendered into a div
+    // Full-pages components (html, head, body) can't be rendered into a div
     // directly...
     class Root extends React.Component {
       render() {

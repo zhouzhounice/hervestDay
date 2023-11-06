@@ -177,7 +177,7 @@ export const userRepositoriesListJSON = {
       description: 'Predictable state container for JavaScript apps',
     },
     {
-      name: 'facebook/create-react-app',
+      name: 'facebook/create-react-pages',
       url: 'https://github.com/facebook/create-react-app',
       description: 'Create React apps with no build configuration.',
     },

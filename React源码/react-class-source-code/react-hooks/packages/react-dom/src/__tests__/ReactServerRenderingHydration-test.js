@@ -97,7 +97,7 @@ describe('ReactDOMServerHydration', () => {
       ReactDOM.unmountComponentAtNode(element);
       expect(element.innerHTML).toEqual('');
 
-      // Now simulate a situation where the app is not idempotent. React should
+      // Now simulate a situation where the pages is not idempotent. React should
       // warn but do the right thing.
       element.innerHTML = lastMarkup;
       expect(() => {
@@ -182,7 +182,7 @@ describe('ReactDOMServerHydration', () => {
       ReactDOM.unmountComponentAtNode(element);
       expect(element.innerHTML).toEqual('');
 
-      // Now simulate a situation where the app is not idempotent. React should
+      // Now simulate a situation where the pages is not idempotent. React should
       // warn but do the right thing.
       element.innerHTML = lastMarkup;
       expect(() => {
@@ -430,7 +430,7 @@ describe('ReactDOMServerHydration', () => {
     element.innerHTML = ReactDOMServer.renderToString(markup);
     expect(callback).toHaveBeenCalledTimes(1);
     expect(element.textContent).toBe(
-      '<div>Enable JavaScript to run this app.</div>',
+      '<div>Enable JavaScript to run this pages.</div>',
     );
 
     // On the client we want to keep the existing markup, but not render the
@@ -439,7 +439,7 @@ describe('ReactDOMServerHydration', () => {
     ReactDOM.hydrate(markup, element);
     expect(callback).toHaveBeenCalledTimes(1);
     expect(element.textContent).toBe(
-      '<div>Enable JavaScript to run this app.</div>',
+      '<div>Enable JavaScript to run this pages.</div>',
     );
   });
 

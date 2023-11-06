@@ -231,7 +231,7 @@ describe('rendering React components at document', () => {
       // We would see a warning if the document had React-rendered HTML in it.
     });
 
-    it('supports findDOMNode on full-page components', () => {
+    it('supports findDOMNode on full-pages components', () => {
       const tree = (
         <html>
           <head>
@@ -430,7 +430,7 @@ describe('rendering React components at document', () => {
       expect(testDocument.body.innerHTML).toBe('Hello world');
     });
 
-    it('supports findDOMNode on full-page components', () => {
+    it('supports findDOMNode on full-pages components', () => {
       const tree = (
         <html>
           <head>

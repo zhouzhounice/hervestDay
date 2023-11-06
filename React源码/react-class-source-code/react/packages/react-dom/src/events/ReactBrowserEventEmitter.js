@@ -88,7 +88,7 @@ const alreadyListeningTo = {};
 let reactTopListenersCounter = 0;
 
 /**
- * To ensure no conflicts with other potential React instances on the page
+ * To ensure no conflicts with other potential React instances on the pages
  */
 const topListenersIDKey = '_reactListenersID' + ('' + Math.random()).slice(2);
 

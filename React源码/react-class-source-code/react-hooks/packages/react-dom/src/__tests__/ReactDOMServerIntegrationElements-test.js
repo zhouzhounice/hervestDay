@@ -590,7 +590,7 @@ describe('ReactDOMServerIntegration', () => {
         // On the server or when hydrating the content should be correct
         expect(e.childNodes.length).toBe(1);
         expect(e.firstChild.textContent).toBe(
-          '<div>Enable JavaScript to run this app.</div>',
+          '<div>Enable JavaScript to run this pages.</div>',
         );
       }
     });

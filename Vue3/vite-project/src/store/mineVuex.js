@@ -11,8 +11,8 @@ function createStore(options){
 }
 
 class Store {
-  // install(app){
-  //   app.provide(STORE_KEY,this)
+  // install(pages){
+  //   pages.provide(STORE_KEY,this)
   // }
   constructor(options){
     this.$option = options;

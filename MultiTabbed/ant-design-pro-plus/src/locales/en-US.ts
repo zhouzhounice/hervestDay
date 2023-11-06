@@ -12,7 +12,7 @@ export default {
   'layout.user.link.privacy': 'Privacy',
   'layout.user.link.terms': 'Terms',
   'app.copyright.produced': 'Produced by yuns',
-  'app.preview.down.block': 'Download this page to your local project',
+  'app.preview.down.block': 'Download this pages to your local project',
   'app.welcome.link.fetch-blocks': 'Get all block',
   'app.welcome.link.block-list': 'Quickly build standard, pages based on `block` development',
   ...globalHeader,

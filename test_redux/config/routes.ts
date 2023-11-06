@@ -34,11 +34,11 @@ export default [
     routes: [
       {
         path: '/admin',
-        redirect: '/admin/sub-page',
+        redirect: '/admin/sub-pages',
       },
       {
-        path: '/admin/sub-page',
-        name: 'sub-page',
+        path: '/admin/sub-pages',
+        name: 'sub-pages',
         component: './Admin',
       },
     ],

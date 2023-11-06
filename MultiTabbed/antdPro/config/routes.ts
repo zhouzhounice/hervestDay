@@ -12,7 +12,7 @@
         component: './user/Login',
           },
         ]
-      },      
+      },
       {
         component: './404',
       },
@@ -32,8 +32,8 @@
     component: './Admin',
     routes: [
       {
-        path: '/admin/sub-page',
-        name: 'sub-page',
+        path: '/admin/sub-pages',
+        name: 'sub-pages',
         icon: 'smile',
         component: './Welcome',
       },

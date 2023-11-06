@@ -1720,8 +1720,8 @@ var Vue = (function (exports) {
       [7 /* VNODE_HOOK */]: 'vnode hook',
       [8 /* DIRECTIVE_HOOK */]: 'directive hook',
       [9 /* TRANSITION_HOOK */]: 'transition hook',
-      [10 /* APP_ERROR_HANDLER */]: 'app errorHandler',
-      [11 /* APP_WARN_HANDLER */]: 'app warnHandler',
+      [10 /* APP_ERROR_HANDLER */]: 'pages errorHandler',
+      [11 /* APP_WARN_HANDLER */]: 'pages warnHandler',
       [12 /* FUNCTION_REF */]: 'ref function',
       [13 /* ASYNC_COMPONENT_LOADER */]: 'async component loader',
       [14 /* SCHEDULER */]: 'scheduler flush. This is likely a Vue internals bug. ' +
@@ -1772,7 +1772,7 @@ var Vue = (function (exports) {
               }
               cur = cur.parent;
           }
-          // app-level handling
+          // pages-level handling
           const appErrorHandler = instance.appContext.config.errorHandler;
           if (appErrorHandler) {
               callWithErrorHandling(appErrorHandler, null, 10 /* APP_ERROR_HANDLER */, [err, exposedInstance, errorInfo]);
@@ -2195,7 +2195,7 @@ var Vue = (function (exports) {
       }
   }
   function devtoolsInitApp(app, version) {
-      emit("app:init" /* APP_INIT */, app, version, {
+      emit("pages:init" /* APP_INIT */, app, version, {
           Fragment,
           Text,
           Comment,
@@ -2203,7 +2203,7 @@ var Vue = (function (exports) {
       });
   }
   function devtoolsUnmountApp(app) {
-      emit("app:unmount" /* APP_UNMOUNT */, app);
+      emit("pages:unmount" /* APP_UNMOUNT */, app);
   }
   const devtoolsComponentAdded = /*#__PURE__*/ createDevtoolsComponentHook("component:added" /* COMPONENT_ADDED */);
   const devtoolsComponentUpdated = 
@@ -3190,7 +3190,7 @@ var Vue = (function (exports) {
       const instance = currentInstance || currentRenderingInstance;
       if (instance) {
           // #2400
-          // to support `app.use` plugins,
+          // to support `pages.use` plugins,
           // fallback to appContext's `provides` if the instance is at root
           const provides = instance.parent == null
               ? instance.vnode.appContext && instance.vnode.appContext.provides
@@ -5869,7 +5869,7 @@ var Vue = (function (exports) {
                           context.mixins.push(mixin);
                       }
                       else {
-                          warn$1('Mixin has already been applied to target app' +
+                          warn$1('Mixin has already been applied to target pages' +
                               (mixin.name ? `: ${mixin.name}` : ''));
                       }
                   }
@@ -5910,7 +5910,7 @@ var Vue = (function (exports) {
                               ` you need to unmount the previous app by calling \`app.unmount()\` first.`);
                       }
                       const vnode = createVNode(rootComponent, rootProps);
-                      // store app context on the root VNode.
+                      // store pages context on the root VNode.
                       // this will be set on the root instance on initial mount.
                       vnode.appContext = context;
                       // HMR root reload
@@ -8472,7 +8472,7 @@ var Vue = (function (exports) {
   let uid$1 = 0;
   function createComponentInstance(vnode, parent, suspense) {
       const type = vnode.type;
-      // inherit parent app context - or - if root, adopt from root vnode
+      // inherit parent pages context - or - if root, adopt from root vnode
       const appContext = (parent ? parent.appContext : vnode.appContext) || emptyAppContext;
       const instance = {
           uid: uid$1++,
@@ -9566,7 +9566,7 @@ var Vue = (function (exports) {
       let skipTimestampCheck = false;
       if (typeof window !== 'undefined') {
           // Determine what event timestamp the browser is using. Annoyingly, the
-          // timestamp can either be hi-res (relative to page load) or low-res
+          // timestamp can either be hi-res (relative to pages load) or low-res
           // (relative to UNIX epoch), so in order to compare time we have to use the
           // same timestamp type when saving the flush timestamp.
           if (Date.now() > document.createEvent('Event').timeStamp) {
@@ -10819,7 +10819,7 @@ var Vue = (function (exports) {
           const proxy = mount(container, false, container instanceof SVGElement);
           if (container instanceof Element) {
               container.removeAttribute('v-cloak');
-              container.setAttribute('data-v-app', '');
+              container.setAttribute('data-v-pages', '');
           }
           return proxy;
       };

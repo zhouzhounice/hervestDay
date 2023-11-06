@@ -2,12 +2,12 @@
 
 const { app, assert } = require('egg-mock/bootstrap');
 
-describe('test/app/controller/home.test.js', () => {
+describe('test/pages/controller/home.test.js', () => {
   it('should assert', async () => {
     const pkg = require('../../../package.json');
     assert(app.config.keys.startsWith(pkg.name));
 
-    // const ctx = app.mockContext({});
+    // const ctx = pages.mockContext({});
     // yield ctx.service.xx();
   });
 

@@ -39,7 +39,7 @@ export default function(
    * The methods described here are available on most of the default components
    * provided by React Native. Note, however, that they are *not* available on
    * composite components that aren't directly backed by a native view. This will
-   * generally include most components that you define in your own app. For more
+   * generally include most components that you define in your own pages. For more
    * information, see [Direct
    * Manipulation](docs/direct-manipulation.html).
    *

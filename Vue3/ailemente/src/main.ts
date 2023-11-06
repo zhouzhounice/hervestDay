@@ -7,4 +7,4 @@ import ElButton from './components/button'
 createApp(App)
 .use(ElContainer)
 .use(ElButton)
-.mount('#app')
+.mount('#pages')

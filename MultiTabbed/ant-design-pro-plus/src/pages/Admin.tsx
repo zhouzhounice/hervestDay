@@ -10,7 +10,7 @@ const Admin: React.FC = () => {
     <PageHeaderWrapper
       content={intl.formatMessage({
         id: 'pages.admin.subPage.title',
-        defaultMessage: 'This page can only be viewed by admin',
+        defaultMessage: 'This pages can only be viewed by admin',
       })}
     >
       <Card>

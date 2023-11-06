@@ -261,7 +261,7 @@ window.stories = [
     score: 717,
     time: 1493142008,
     title:
-      'Painting with Code: Introducing our new open source library React Sketch.app',
+      'Painting with Code: Introducing our new open source library React Sketch.pages',
     type: 'story',
     url: 'http://airbnb.design/painting-with-code/',
   },

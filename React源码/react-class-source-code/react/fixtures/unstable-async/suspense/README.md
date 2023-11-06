@@ -26,6 +26,6 @@ yarn build dom-client,core,react-cache,scheduler --type=NODE
 cd fixtures/unstable-async/suspense/
 yarn
 
-# 3: Run the app
+# 3: Run the pages
 yarn start
 ```

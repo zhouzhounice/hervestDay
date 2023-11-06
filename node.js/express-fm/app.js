@@ -7,7 +7,7 @@ const routerVideo = require("./router/video")
 // const router = express.Router();
 
 // 接受客户端发送的不同格式的数据
-// app.use(express.urlencoded());
+// pages.use(express.urlencoded());
 app.use(express.json());
 app.use(router)
 app.use("/video",routerVideo);
@@ -21,12 +21,12 @@ app.use((err,req,res,next)=>{
   res.status(500).send('service Error')
 })
 // 最基本的中间件
-// app.use((req,res,next)=>{
+// pages.use((req,res,next)=>{
 //   console.log(`${req.method} - ${req.url} - ${Date.now()}`);
 //   next()
 // })
 
-// app.use(router.get('/test1',(req,res)=>{
+// pages.use(router.get('/test1',(req,res)=>{
 //   console.log(req.method);
 //   res.send('/test')
 // }))

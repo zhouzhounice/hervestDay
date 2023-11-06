@@ -5,7 +5,7 @@ services:
     build: ../
     container_name: 'ant-design-pro_build'
     volumes:
-      - dist:/usr/src/app/dist
+      - dist:/usr/src/pages/dist
 
   ant-design-pro_web:
     image: nginx

@@ -212,7 +212,7 @@ export function injectEventPluginOrder(
  * Injects plugins to be used by `EventPluginHub`. The plugin names must be
  * in the ordering injected by `injectEventPluginOrder`.
  *
- * Plugins can be injected as part of page initialization or on-the-fly.
+ * Plugins can be injected as part of pages initialization or on-the-fly.
  *
  * @param {object} injectedNamesToPlugins Map from names to plugin modules.
  * @internal
