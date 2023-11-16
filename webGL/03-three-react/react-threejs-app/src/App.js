@@ -4,6 +4,8 @@ import createScene from './utils/Scene';
 import createCamera from './utils/Camera';
 import createRenderer from './utils/Renderer';
 import createCube from './utils/Cube';
+import createAxesHelper from "./utils/AxesHelper";
+import createControls from "./utils/Controls";
 
 const ThreeScene = () => {
   const sceneRef = useRef();
@@ -11,6 +13,8 @@ const ThreeScene = () => {
   const camera = createCamera();
   const renderer = createRenderer();
   const cube = createCube(scene);
+   createAxesHelper(scene);
+  createControls(camera,renderer)
 
   useEffect(() => {
     // 将渲染器的输出附加到HTML容器中
@@ -34,7 +38,7 @@ const ThreeScene = () => {
     return () => {
       renderer.dispose();
     };
-  }, [renderer, cube]);
+  }, [renderer, cube,camera,scene]);
 
   return <div ref={sceneRef} />;
 };
