@@ -3,16 +3,18 @@ import React, { useEffect, useRef } from 'react';
 import createScene from './utils/Scene';
 import createCamera from './utils/Camera';
 import createRenderer from './utils/Renderer';
-import createCube from './utils/Cube';
 import createAxesHelper from "./utils/AxesHelper";
 import createControls from "./utils/Controls";
+import createPoints from "./utils/Points";
+
 
 const ThreeScene = () => {
   const sceneRef = useRef();
   const scene = createScene();
   const camera = createCamera();
   const renderer = createRenderer();
-  const cube = createCube(scene);
+  const points = createPoints(scene);
+
    createAxesHelper(scene);
   createControls(camera,renderer)
 
@@ -24,10 +26,6 @@ const ThreeScene = () => {
     const animate = () => {
       requestAnimationFrame(animate);
 
-      // 旋转立方体
-      cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
-
       // 渲染场景
       renderer.render(scene, camera);
     };
@@ -38,7 +36,7 @@ const ThreeScene = () => {
     return () => {
       renderer.dispose();
     };
-  }, [renderer, cube,camera,scene]);
+  }, [renderer, points,camera,scene]);
 
   return <div ref={sceneRef} />;
 };
