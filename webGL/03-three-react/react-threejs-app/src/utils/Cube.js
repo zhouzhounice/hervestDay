@@ -2,8 +2,9 @@
 import * as THREE from 'three';
 
 const createCube = () => {
-
-    return new THREE.SphereGeometry(3,20,20);
+    const sphereGeometry = new THREE.SphereGeometry(3,30,30);
+    delete sphereGeometry.attributes.uv;
+    return sphereGeometry
 };
 
 export default createCube;
