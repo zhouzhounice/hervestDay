@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import createTexture from "./textureLoader"
+import createTexture from "./TextureLoader"
 
 
 const createMater =  () =>{

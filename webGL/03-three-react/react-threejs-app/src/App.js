@@ -5,7 +5,7 @@ import createCamera from './utils/Camera';
 import createRenderer from './utils/Renderer';
 import createAxesHelper from "./utils/AxesHelper";
 import createControls from "./utils/Controls";
-import createPoints from "./utils/Points";
+import createPoints from "./utils/PointsBase/Points";
 
 
 const ThreeScene = () => {
@@ -37,6 +37,19 @@ const ThreeScene = () => {
       renderer.dispose();
     };
   }, [renderer, points,camera,scene]);
+  // 监听画面变化，更新渲染画面
+  window.addEventListener("resize", () => {
+    //   console.log("画面变化了");
+    // 更新摄像头
+    camera.aspect = window.innerWidth / window.innerHeight;
+    //   更新摄像机的投影矩阵
+    camera.updateProjectionMatrix();
+
+    //   更新渲染器
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    //   设置渲染器的像素比
+    renderer.setPixelRatio(window.devicePixelRatio);
+  });
 
   return <div ref={sceneRef} />;
 };
